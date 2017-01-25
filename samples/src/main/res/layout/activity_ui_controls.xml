@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_maps"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sdk.samples.activities.ActivityMaps">
+
+    <include layout="@layout/layout_map_view" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="#9dffffff">
+
+        <CheckBox
+            android:id="@+id/cb_compass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/compass"
+            android:textSize="12sp"/>
+
+        <CheckBox
+            android:id="@+id/cb_zoom_controls"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zoom_controls"
+            android:textSize="12sp"/>
+
+        <CheckBox
+            android:id="@+id/cb_my_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_location"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

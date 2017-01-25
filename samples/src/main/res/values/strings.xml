@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TPL Maps SDK Samples</string>
+    <string name="tplmaps">TPL Maps</string>
+    <string name="maps">Maps</string>
+    <string name="compass">Compass</string>
+    <string name="zoom_controls">Zoom Controls</string>
+    <string name="my_location">My Location</string>
+    <string name="ui_controls">UI Controls</string>
+</resources>

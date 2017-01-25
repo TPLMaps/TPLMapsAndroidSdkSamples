@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.github.dcendents.android-maven'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.tplmaps.android.sdksamples"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    // TODO Uncomment the code while compiling dependency or project 'apneMaps'
+    maven { url "https://jitpack.io" }
+    flatDir {
+        dirs 'libs'
+    }
+    // END
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile 'com.android.support:appcompat-v7:25.0.1'
+
+    // Maps Dependency
+    /*compile ('com.github.FarazKhalidZaki:apneMaps:0.68') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'xmlpull', module: 'xmlpull'
+    }*/
+    compile project(':tplmaps-sdk')
+}
