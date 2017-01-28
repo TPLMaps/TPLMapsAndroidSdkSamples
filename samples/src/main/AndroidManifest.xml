@@ -12,19 +12,25 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".sdk.samples.activities.ActivityMain"
+            android:configChanges="screenSize|orientation"
             android:label="@string/tplmaps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".sdk.samples.activities.ActivityMaps" android:label="@string/maps"
-            android:parentActivityName=".sdk.samples.activities.ActivityMain"/>
+        <activity
+            android:name=".sdk.samples.activities.ActivityMaps"
+            android:configChanges="screenSize|orientation"
+            android:label="@string/maps"
+            android:parentActivityName=".sdk.samples.activities.ActivityMain" />
 
-        <activity android:name=".sdk.samples.activities.ActivityUIControls" android:label="@string/ui_controls"
-            android:parentActivityName=".sdk.samples.activities.ActivityMain"/>
+        <activity
+            android:name=".sdk.samples.activities.ActivityUIControls"
+            android:configChanges="screenSize|orientation"
+            android:label="@string/ui_controls"
+            android:parentActivityName=".sdk.samples.activities.ActivityMain" />
 
     </application>
 

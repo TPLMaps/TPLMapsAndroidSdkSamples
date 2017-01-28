@@ -1,7 +1,7 @@
 package com.tplmaps.android.sdk.samples.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.tplmaps.android.R;
@@ -22,8 +22,7 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
         setContentView(R.layout.activity_maps);
 
         mMapView = (MapView) findViewById(R.id.map);
-
-        MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
+        MapUtils.initAndLoadMaps(savedInstanceState, (MapView) findViewById(R.id.map), this);
     }
 
     @Override
@@ -37,7 +36,9 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
     @Override
     public void onMapReady(final MapController mapController) {
         // Map loaded and ready, use this instantiated mapController param
-        // TODO: Write you map tasks here
+
         CommonUtils.showToast(this, "Map Ready", Toast.LENGTH_SHORT);
+
+        // TODO: Write your map tasks here
     }
 }
