@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".sdk.samples.activities.ActivityMain"
+        <activity
+            android:name=".sdk.samples.activities.ActivityMain"
             android:configChanges="screenSize|orientation"
             android:label="@string/tplmaps">
             <intent-filter>
@@ -32,6 +33,11 @@
             android:label="@string/ui_controls"
             android:parentActivityName=".sdk.samples.activities.ActivityMain" />
 
+        <activity
+            android:name=".sdk.samples.activities.ActivityShapes"
+            android:configChanges="screenSize|orientation"
+            android:label="@string/shapes"
+            android:parentActivityName=".sdk.samples.activities.ActivityMain" />
     </application>
 
 </manifest>
