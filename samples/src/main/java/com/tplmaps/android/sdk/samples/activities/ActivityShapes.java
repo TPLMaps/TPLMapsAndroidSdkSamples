@@ -9,7 +9,6 @@ import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.Marker;
 import com.tplmaps3d.sdk.model.TPLMarker;
 import com.tplmaps3d.sdk.model.TPLMarkerOptions;
 
@@ -39,8 +38,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
     @Override
     public void onMapReady(final MapController mapController) {
-        // Map loaded and ready, use this instantiated mapController param
-        // TODO: Write you map tasks here
+
         mapController.setPosition(new LngLat(73.093104, 33.730494));
         mapController.setZoom(15);
 
@@ -69,11 +67,9 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
     private TPLMarker addMarker(LngLat lngLat, String title) {
 
-        TPLMarker marker = mMapView.addMarker(new TPLMarkerOptions()
+        return mMapView.addMarker(new TPLMarkerOptions()
                 .position(lngLat)
                 .title(title)
                 .snippet("This is my spot!"));
-
-        return marker;
     }
 }

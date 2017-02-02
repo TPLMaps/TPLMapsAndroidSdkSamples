@@ -11,9 +11,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#9dffffff"
         android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:background="#9dffffff">
+        android:padding="@dimen/activity_horizontal_margin">
 
         <CheckBox
             android:id="@+id/cb_compass"
@@ -34,6 +34,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/my_location"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_my_location_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_location_button"
             android:textSize="12sp"/>
 
     </LinearLayout>

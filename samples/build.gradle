@@ -37,9 +37,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
 
     // Maps Dependency
-    /*compile ('com.github.FarazKhalidZaki:apneMaps:0.68') {
-        exclude group: 'com.android.support', module: 'support-annotations'
-        exclude group: 'xmlpull', module: 'xmlpull'
-    }*/
     compile project(':tplmaps-sdk')
+
+    //https://github.com/TPLMaps/tplmaps-android-sdk/releases/tag/0.01
+    //compile 'com.github.TPLMaps:tplmaps-android-sdk:0.01'
 }
