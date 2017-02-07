@@ -53,8 +53,8 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mapController.setZoom(15);
 
         //addMarkers();
-        addPolyLines();
-        addPolygons();
+        //addPolyLines();
+        //addPolygons();
         addCircles();
     }
 
@@ -152,7 +152,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
     private void addCircles() {
 
-        TPLCircle tplCircle = mMapView.addCircle(new TPLCircleOptions().center(new LngLat(73.092159, 33.728945)).radius(0.001).strokeColor(Color.GREEN).fillColor(Color.MAGENTA));
+        TPLCircle tplCircle = mMapView.addCircle(new TPLCircleOptions().center(new LngLat(73.092159, 33.728945)).radius(10000).strokeColor(Color.GREEN).fillColor(Color.MAGENTA));
         tplCircle.setZIndex(1);
         /*LngLat lngLat = new LngLat(73.092159, 33.728945);
         ArrayList<LngLat> lngLats1 = calculateCircle(lngLat, (float) 0.0001);
