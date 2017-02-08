@@ -1,6 +1,7 @@
 package com.tplmaps.android.sdk.samples.activities;
 
 import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,6 +10,8 @@ import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
+import com.tplmaps3d.Marker;
+import com.tplmaps3d.sdk.model.BitmapDescriptorFactory;
 import com.tplmaps3d.sdk.model.TPLCircle;
 import com.tplmaps3d.sdk.model.TPLCircleOptions;
 import com.tplmaps3d.sdk.model.TPLMarker;
@@ -51,11 +54,11 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
         mapController.setPosition(new LngLat(73.093104, 33.730494));
         mapController.setZoom(15);
-
+        mMapController = mapController;
         addMarkers();
-        //addPolyLines();
-        //addPolygons();
-        //addCircles();
+        addPolyLines();
+        addPolygons();
+        addCircles();
     }
 
     private void addMarkers() {
@@ -63,12 +66,34 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         final TPLMarker marker1 = mMapView.addMarker(new TPLMarkerOptions()
                 .position(new LngLat(73.093104, 33.730494))
                 .title("marker1")
-                .snippet("This is my spot!"));
+                .snippet("This is my spot!")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.RED))
+                .size(new Point(78,78))
+                .flat(false)
+                .rotation(90));
+
+        marker1.setSize(new Point(36,36));
+        marker1.setFlat(true);
+        marker1.setRotation(60);
+
+        //marker1.setVisible(true);
+        //marker1.setZIndex(2);
+
+        /*final TPLMarker marker2 = mMapView.addMarker(new TPLMarkerOptions()
+                .position(new LngLat(73.093104, 33.730494))
+                .title("marker2")
+                .snippet("This is my spot!")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.GREEN)));
+
+        marker2.setZIndex(1);*/
 
         final TPLMarker marker2 = mMapView.addMarker(new TPLMarkerOptions()
                 .position(new LngLat(73.092159, 33.728945))
                 .title("marker2")
                 .snippet("Spotum Here"));
+
+        //marker2.setVisible(true);
+        //marker2.setVisible(false);
 
         mMapView.setOnMarkerClickListener(new MapView.OnMarkerClickListener() {
             @Override
@@ -76,23 +101,30 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
                 if(marker1.equals(tplMarker)) {
                     Log.i(TAG, "Called: id = " + tplMarker.getId());
                     Log.i(TAG, "Called: title = " + tplMarker.getTitle());
+                    marker2.setVisible(false);
                 }
                 else if(marker2.equals(tplMarker)) {
                     Log.i(TAG, "Called: id = " + tplMarker.getId());
                     Log.i(TAG, "Called: Snippet = " + tplMarker.getSnippet());
+                    marker1.setVisible(true);
                 }
                 return false;
             }
         });
 
+        /*String pointStyle2 = "{ style: 'points', interactive: true, color: 'white', size: [50px, 50px], order: 2000, collide: false }";
+        Marker marker2 = mMapController.addMarker();
+        marker2.setStyling(pointStyle2);
+        //marker2.setDrawable(R.mipmap.ic_launcher);
+        marker2.setPoint(new LngLat(73.092159, 33.728945));
 
         // Tangram marker
-        /*String pointStyle = "{ style: 'points', interactive: true, color: 'white', size: [50px, 50px], order: 2000, collide: false }";
-        Marker marker = mapController.addMarker();
+        String pointStyle = "{ style: 'points', interactive: true, color: 'red', size: [50px, 50px], order: 1000, collide: false }";
+        Marker marker = mMapController.addMarker();
         marker.setStyling(pointStyle);
-        marker.setDrawable(R.drawable.marker_default);
-        marker.setPoint(new LngLat(73.092159, 33.728945));
-        marker.setRotation(Math.toRadians(50));*/
+        //marker.setDrawable(R.drawable.marker_default);
+        marker.setPoint(new LngLat(73.092159, 33.728945));*/
+
     }
 
     private void addPolyLines() {
@@ -162,7 +194,6 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         //TPLCircle tplCircle = mMapView.addCircle(new TPLCircleOptions().center(new LngLat(73.092159, 33.728945)).radius(100).fillColor(Color.YELLOW).strokeColor(Color.CYAN).strokeWidth(5).zIndex(0));
         TPLCircle tplCircle = mMapView.addCircle(new TPLCircleOptions().center(new LngLat(73.092159, 33.728945)).radius(100));
         tplCircle.setStrokeColor(Color.CYAN);
-        tplCircle.setStrokeWidth(5);
         tplCircle.setFillColor(Color.YELLOW);
         tplCircle.setZIndex(2);
         /*LngLat lngLat = new LngLat(73.092159, 33.728945);
