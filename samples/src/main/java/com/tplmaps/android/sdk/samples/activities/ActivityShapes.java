@@ -90,7 +90,6 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         marker1.setVisible(true);
         //marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.ORANGE));
         marker1.setPosition(new LngLat(73.092159, 33.728945));
-        marker1.showInfoWindow();
         //marker1.setSize(new Point(300,300));
         //marker1.setIcon(BitmapDescriptorFactory.fromAsset("images/pinassets.png"));
         //marker1.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.marker_default));
