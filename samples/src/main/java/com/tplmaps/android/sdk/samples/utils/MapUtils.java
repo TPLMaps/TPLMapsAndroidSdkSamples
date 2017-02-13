@@ -12,7 +12,7 @@ import com.tplmaps3d.MapView;
 
 public class MapUtils {
 
-    public static final String TAG = MapUtils.class.getSimpleName();
+    private static final String TAG = MapUtils.class.getSimpleName();
 
     public static void initAndLoadMaps(Bundle savedInstanceState, MapView mapView,
                                        MapView.OnMapReadyCallback callback) {

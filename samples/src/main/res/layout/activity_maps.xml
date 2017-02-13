@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_maps"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".sdk.samples.activities.ActivityMaps">
 
     <include layout="@layout/layout_map_view" />
 
-    <!--<LinearLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="#9dffffff"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
 
-        <Button
-            android:id="@+id/btn_compass"
+        <CheckBox
+            android:id="@+id/cb_night_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/compass"
+            android:text="@string/night_mode"
             android:textSize="12sp"/>
 
-        <Button
-            android:id="@+id/btn_zoom_controls"
+        <CheckBox
+            android:id="@+id/cb_buildings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/zoom_controls"
+            android:text="@string/buildings"
             android:textSize="12sp"/>
 
-        <Button
-            android:id="@+id/btn_my_location"
+        <CheckBox
+            android:id="@+id/cb_pois"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/my_location"
-            android:textSize="12sp"/>
+            android:text="@string/pois"
+            android:textSize="12sp" />
 
-    </LinearLayout>-->
+    </LinearLayout>
 
 </RelativeLayout>

@@ -1,8 +1,8 @@
 package com.tplmaps.android.sdk.samples.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,6 +25,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
         Button btnUIControls = (Button) findViewById(R.id.btn_ui_controls);
         btnUIControls.setOnClickListener(this);
 
+        Button btnMapGestures = (Button) findViewById(R.id.btn_map_gestures);
+        btnMapGestures.setOnClickListener(this);
+
         Button btnShapes = (Button) findViewById(R.id.btn_shapes);
         btnShapes.setOnClickListener(this);
     }
@@ -37,6 +40,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_ui_controls:
                 startActivity(new Intent(ActivityMain.this, ActivityUIControls.class));
+                break;
+            case R.id.btn_map_gestures:
+                startActivity(new Intent(ActivityMain.this, ActivityMapGestures.class));
                 break;
             case R.id.btn_shapes:
                 startActivity(new Intent(ActivityMain.this, ActivityShapes.class));

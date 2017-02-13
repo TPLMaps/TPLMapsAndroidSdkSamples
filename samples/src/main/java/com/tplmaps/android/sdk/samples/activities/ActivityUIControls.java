@@ -1,7 +1,7 @@
 package com.tplmaps.android.sdk.samples.activities;
 
-import android.Manifest;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -10,7 +10,6 @@ import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.sdk.utils.PermissionUtils;
 
 public class ActivityUIControls extends AppCompatActivity implements MapView.OnMapReadyCallback,
         CompoundButton.OnCheckedChangeListener {
@@ -75,6 +74,12 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
 
         mMapController = mapController;
 
+        mMapController.getLocationConfig()
+                .setLocationSettings(true)
+                .setPermissionRequestIfDenied(true)
+                .setPermissionReasonDialogContent("Permission Required", "Location permission is required for " +
+                        "the application to show your precise and accurate location on map");
+
         // Setting controls here because functionality of these controls belongs to the MapView
         // And MapView should be ready to perform these actions on it
         CheckBox cbCompass = ((CheckBox) findViewById(R.id.cb_compass));
@@ -85,6 +90,13 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
         cbMyLocation.setOnCheckedChangeListener(this);
         cbMyLocationButton = ((CheckBox) findViewById(R.id.cb_my_location_button));
         cbMyLocationButton.setOnCheckedChangeListener(this);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (mMapController != null)
+            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
@@ -106,20 +118,12 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
 
             case R.id.cb_my_location:
                 try {
-                    // Check location permissions
-                    if (PermissionUtils.isPermissionGranted(ActivityUIControls.this,
-                            Manifest.permission.ACCESS_COARSE_LOCATION)
-                            && PermissionUtils.isPermissionGranted(ActivityUIControls.this,
-                            Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    if (mMapController != null) {
+                        // Enable/Disable My Location
+                        mMapController.setMyLocationEnabled(isChecked);
 
-
-                        if (mMapController != null) {
-                            // Enable/Disable My Location
-                            mMapController.setMyLocationEnabled(isChecked);
-
-                            // Check/Uncheck My Location button's Checkbox
-                            cbMyLocationButton.setChecked(isChecked);
-                        }
+                        // Check/UnCheck My Location button's Checkbox
+                        cbMyLocationButton.setChecked(isChecked);
                     }
                 } catch (SecurityException e) {
                     e.printStackTrace();
@@ -128,16 +132,9 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
 
             case R.id.cb_my_location_button:
                 try {
-                    // Check location permissions
-                    if (PermissionUtils.isPermissionGranted(ActivityUIControls.this,
-                            Manifest.permission.ACCESS_COARSE_LOCATION)
-                            && PermissionUtils.isPermissionGranted(ActivityUIControls.this,
-                            Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                        // Show My Location Button
-                        if (mMapController != null)
-                            mMapController.getUiSettings().showMyLocationButton(isChecked);
-                    }
+                    // Show My Location Button
+                    if (mMapController != null)
+                        mMapController.getUiSettings().showMyLocationButton(isChecked);
                 } catch (SecurityException e) {
                     e.printStackTrace();
                 }

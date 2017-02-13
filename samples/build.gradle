@@ -23,7 +23,7 @@ android {
 
 repositories {
     mavenCentral()
-    // TODO Uncomment the code while compiling dependency or project 'apneMaps'
+    // TODO Uncomment the code while compiling dependency or project 'tplmaps-android-sdk'
     maven { url "https://jitpack.io" }
     flatDir {
         dirs 'libs'
@@ -40,5 +40,6 @@ dependencies {
     compile project(':tplmaps-sdk')
 
     //https://github.com/TPLMaps/tplmaps-android-sdk/releases/tag/0.01
-    //compile 'com.github.TPLMaps:tplmaps-android-sdk:0.01'
+    //https://github.com/TPLMaps/TPLMaps-AndroidSDK/releases/tag/0.01
+    //compile 'com.github.TPLMaps:TPLMaps-AndroidSDK:0.01'
 }

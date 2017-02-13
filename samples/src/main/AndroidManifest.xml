@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -38,6 +41,13 @@
             android:configChanges="screenSize|orientation"
             android:label="@string/shapes"
             android:parentActivityName=".sdk.samples.activities.ActivityMain" />
+
+        <activity
+            android:name=".sdk.samples.activities.ActivityMapGestures"
+            android:configChanges="screenSize|orientation"
+            android:label="@string/map_gestures"
+            android:parentActivityName=".sdk.samples.activities.ActivityMain" />
+
     </application>
 
 </manifest>

@@ -8,4 +8,8 @@
     <string name="my_location_button">My Location Button</string>
     <string name="ui_controls">UI Controls</string>
     <string name="shapes">Shapes</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="buildings">Buildings</string>
+    <string name="pois">POIs</string>
+    <string name="map_gestures">Map Gestures</string>
 </resources>
