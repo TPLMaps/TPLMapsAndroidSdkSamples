@@ -40,4 +40,10 @@
         android:layout_height="wrap_content"
         android:text="@string/shapes"/>
 
+    <Button
+        android:id="@+id/btn_info_windows"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_window"/>
+
 </LinearLayout>

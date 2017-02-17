@@ -33,6 +33,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
 
         Button btnShapes = (Button) findViewById(R.id.btn_shapes);
         btnShapes.setOnClickListener(this);
+
+        Button btnInfoWindows = (Button) findViewById(R.id.btn_info_windows);
+        btnInfoWindows.setOnClickListener(this);
     }
 
     @Override
@@ -52,6 +55,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_shapes:
                 startActivity(new Intent(ActivityMain.this, ActivityShapes.class));
+                break;
+            case R.id.btn_info_windows:
+                startActivity(new Intent(ActivityMain.this, ActivityInfoWindows.class));
                 break;
         }
     }
