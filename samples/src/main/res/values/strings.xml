@@ -12,4 +12,6 @@
     <string name="buildings">Buildings</string>
     <string name="pois">POIs</string>
     <string name="map_gestures">Map Gestures</string>
+    <string name="search">Search</string>
+    <string name="search_text">Search Text</string>
 </resources>

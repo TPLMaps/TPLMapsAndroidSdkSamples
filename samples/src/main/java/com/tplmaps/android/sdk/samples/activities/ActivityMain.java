@@ -28,6 +28,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
         Button btnMapGestures = (Button) findViewById(R.id.btn_map_gestures);
         btnMapGestures.setOnClickListener(this);
 
+        Button btnSearch = (Button) findViewById(R.id.btn_search);
+        btnSearch.setOnClickListener(this);
+
         Button btnShapes = (Button) findViewById(R.id.btn_shapes);
         btnShapes.setOnClickListener(this);
     }
@@ -43,6 +46,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_map_gestures:
                 startActivity(new Intent(ActivityMain.this, ActivityMapGestures.class));
+                break;
+            case R.id.btn_search:
+                startActivity(new Intent(ActivityMain.this, ActivitySearch.class));
                 break;
             case R.id.btn_shapes:
                 startActivity(new Intent(ActivityMain.this, ActivityShapes.class));

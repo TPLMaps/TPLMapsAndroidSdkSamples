@@ -1,18 +1,16 @@
 package com.tplmaps.android.sdk.samples.activities;
 
 import android.graphics.Color;
-import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
 import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.LabelPickResult;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.Marker;
-import com.tplmaps3d.sdk.model.BitmapDescriptorFactory;
 import com.tplmaps3d.sdk.model.TPLCircle;
 import com.tplmaps3d.sdk.model.TPLCircleOptions;
 import com.tplmaps3d.sdk.model.TPLMarker;
@@ -21,10 +19,8 @@ import com.tplmaps3d.sdk.model.TPLPolygon;
 import com.tplmaps3d.sdk.model.TPLPolygonOptions;
 import com.tplmaps3d.sdk.model.TPLPolyline;
 import com.tplmaps3d.sdk.model.TPLPolylineOptions;
-import java.util.ArrayList;
-import java.util.Map;
 
-import static com.tplmaps.android.R.id.map;
+import java.util.ArrayList;
 
 public class ActivityShapes extends AppCompatActivity implements MapView.OnMapReadyCallback {
 
@@ -54,8 +50,8 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
     @Override
     public void onMapReady(final MapController mapController) {
 
-        mapController.setPosition(new LngLat(73.093104, 33.730494));
-        mapController.setZoom(15);
+        mapController.setLngLat(new LngLat(73.093104, 33.730494));
+        mapController.setZoomBy(15);
         mMapController = mapController;
         addMarkers();
         //addPolyLines();
@@ -85,7 +81,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         final TPLMarker marker1 = mMapController.addMarker(new TPLMarkerOptions()
                 .position(new LngLat(73.093104, 33.730494))
                 .title("marker1")
-                .snippet("This is my spot!").flat(false).visible(false).zIndex(0));
+                .snippet("This is my spot!").flat(false).visible(false).zIndex(0).rotation(45));
 
         marker1.setVisible(true);
         //marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.ORANGE));

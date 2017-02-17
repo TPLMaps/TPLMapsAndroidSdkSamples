@@ -7,11 +7,11 @@ import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.utils.CommonUtils;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapMode;
 import com.tplmaps3d.MapView;
+import com.tplmaps3d.sdk.utils.CommonUtils;
 
 public class ActivityMaps extends AppCompatActivity implements MapView.OnMapReadyCallback,
         CompoundButton.OnCheckedChangeListener {
