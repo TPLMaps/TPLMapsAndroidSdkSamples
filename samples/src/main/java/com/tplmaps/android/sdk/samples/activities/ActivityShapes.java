@@ -60,6 +60,12 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         addPolygons();
         addCircles();
 
+        mMapController.setOnOnMapClickListener(new MapController.OnMapClickListener() {
+            @Override
+            public void onMapClick(LngLat lngLat) {
+                Log.i(TAG, "Called: onMapClick lnglat = " + lngLat.latitude);
+            }
+        });
         mMapController.setOnPoiClickListener(new MapController.OnPoiClickListener() {
             @Override
             public void onPoiClick(PointOfInterest place) {
@@ -135,16 +141,18 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
     private void addPolyLines() {
 
-        /*final TPLPolyline polyline = mMapController.addPolyline(new TPLPolylineOptions()
-                .add(new LngLat(73.094177, 33.729113),
-                        new LngLat(73.090913, 33.727616)).color(Color.RED).width(10).zIndex(5));*/
-
         final TPLPolyline polyline = mMapController.addPolyline(new TPLPolylineOptions()
                 .add(new LngLat(73.094177, 33.729113),
-                        new LngLat(73.090913, 33.727616)));
-        polyline.setWidth(5);
-        polyline.setColor(Color.RED);
-        polyline.setZIndex(5);
+                        new LngLat(73.090913, 33.727616)).color(Color.RED).width(10).zIndex(5));
+
+        /*final TPLPolyline polyline = mMapController.addPolyline(new TPLPolylineOptions()
+                .add(new LngLat(73.094177, 33.729113),
+                        new LngLat(73.090913, 33.727616)).color(Color.TRANSPARENT));
+        polyline.setWidth(5);*/
+        //polyline.setColor(Color.TRANSPARENT);
+        //polyline.setZIndex(5);
+        //polyline.setColor(Color.parseColor("#E0FF00FF"));
+        //polyline.setColor(Color.parseColor("#F00FF"));
 
 
         /*ArrayList<LngLat> lngLats = new ArrayList<>();
@@ -176,8 +184,10 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         lngLats2.add(new LngLat(73.093758, 33.728300));
         lngLats2.add(new LngLat(73.093190, 33.729430));
         lngLats2.add(new LngLat(73.092159, 33.728945));
-        tplPolygon.setPoints(lngLats2);
+        //tplPolygon.setPoints(lngLats2);
 
+        //tplPolygon.setFillColor(Color.parseColor("#E0FF00FF"));
+        //tplPolygon.setStrokeColor(Color.TRANSPARENT);
         /*tplPolygon.setStrokeColor(Color.BLUE);
         tplPolygon.setStrokeWidth(8);
         tplPolygon.setFillColor(Color.GREEN);*/
@@ -198,6 +208,9 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         /*tplCircle.setStrokeColor(Color.CYAN);
         tplCircle.setFillColor(Color.YELLOW);
         tplCircle.setZIndex(2);*/
+
+        //tplCircle.setFillColor(Color.parseColor("#50FF00FF"));
+        //tplCircle.setStrokeColor(Color.TRANSPARENT);
 
     }
 }
