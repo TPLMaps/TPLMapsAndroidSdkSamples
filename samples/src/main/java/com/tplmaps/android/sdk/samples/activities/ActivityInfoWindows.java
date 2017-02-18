@@ -1,6 +1,5 @@
 package com.tplmaps.android.sdk.samples.activities;
 
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,17 +15,9 @@ import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.sdk.model.BitmapDescriptorFactory;
-import com.tplmaps3d.sdk.model.TPLCircle;
-import com.tplmaps3d.sdk.model.TPLCircleOptions;
-import com.tplmaps3d.sdk.model.TPLMarker;
-import com.tplmaps3d.sdk.model.TPLMarkerOptions;
-import com.tplmaps3d.sdk.model.TPLPolygon;
-import com.tplmaps3d.sdk.model.TPLPolygonOptions;
-import com.tplmaps3d.sdk.model.TPLPolyline;
-import com.tplmaps3d.sdk.model.TPLPolylineOptions;
-
-import java.util.ArrayList;
+import com.tplmaps3d.BitmapDescriptorFactory;
+import com.tplmaps3d.TPLMarker;
+import com.tplmaps3d.TPLMarkerOptions;
 
 
 public class ActivityInfoWindows extends AppCompatActivity implements MapView.OnMapReadyCallback {

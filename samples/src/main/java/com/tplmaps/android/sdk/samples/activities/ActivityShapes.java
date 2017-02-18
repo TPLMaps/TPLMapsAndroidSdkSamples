@@ -10,16 +10,16 @@ import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.sdk.model.BitmapDescriptorFactory;
+import com.tplmaps3d.BitmapDescriptorFactory;
 import com.tplmaps3d.sdk.model.PointOfInterest;
-import com.tplmaps3d.sdk.model.TPLCircle;
-import com.tplmaps3d.sdk.model.TPLCircleOptions;
-import com.tplmaps3d.sdk.model.TPLMarker;
-import com.tplmaps3d.sdk.model.TPLMarkerOptions;
-import com.tplmaps3d.sdk.model.TPLPolygon;
-import com.tplmaps3d.sdk.model.TPLPolygonOptions;
-import com.tplmaps3d.sdk.model.TPLPolyline;
-import com.tplmaps3d.sdk.model.TPLPolylineOptions;
+import com.tplmaps3d.TPLCircle;
+import com.tplmaps3d.TPLCircleOptions;
+import com.tplmaps3d.TPLMarker;
+import com.tplmaps3d.TPLMarkerOptions;
+import com.tplmaps3d.TPLPolygon;
+import com.tplmaps3d.TPLPolygonOptions;
+import com.tplmaps3d.TPLPolyline;
+import com.tplmaps3d.TPLPolylineOptions;
 
 import java.util.ArrayList;
 
@@ -56,26 +56,9 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mapController.setZoomBy(15);
         mMapController = mapController;
         addMarkers();
-        //addPolyLines();
-        //addPolygons();
-        //addCircles();
-
-        /*mMapController.setLabelPickListener(new MapController.LabelPickListener() {
-            @Override
-            public void onLabelPick(LabelPickResult labelPickResult, float positionX, float positionY) {
-                if(labelPickResult != null) {
-                    Log.i(TAG, "Called: lable = " + labelPickResult.toString());
-                }
-            }
-        });*/
-
-        /*mMapController.setFeaturePickListener(new MapController.FeaturePickListener() {
-            @Override
-            public void onFeaturePick(Map<String, String> properties, float positionX, float positionY) {
-                if(properties != null)
-                    Log.i(TAG, "Called: lable = " + properties.toString());
-            }
-        });*/
+        addPolyLines();
+        addPolygons();
+        addCircles();
 
         mMapController.setOnPoiClickListener(new MapController.OnPoiClickListener() {
             @Override
@@ -134,6 +117,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         //marker1.setPosition(new LngLat(73.092159, 33.728945));
         marker1.setSize(new Point(102, 102));
         marker1.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.marker_default));
+
         /*marker1.setTitle("Titlum");
         marker1.setSnippet("aklsdfj");
         marker1.setInfoWindowOffset(new Point(0, 0));*/
@@ -147,72 +131,21 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
                 .snippet("This is not my spot!").flat(false).zIndex(0)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.YELLOW)));
 
-        //marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.ORANGE));
-        //marker1.setPosition(new LngLat(73.092159, 33.728945));
-        //marker1.showInfoWindow();
-        //marker1.setSize(new Point(300,300));
-        //marker1.setIcon(BitmapDescriptorFactory.fromAsset("images/pinassets.png"));
-        //marker1.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.marker_default));
-
-        //marker1.setZIndex(0);
-        /*marker1.setSize(new Point(36,36));
-        marker1.setFlat(true);
-        marker1.setRotation(60);*/
-
-        //marker1.setVisible(true);
-        //marker1.setZIndex(2);
-
-        /*final TPLMarker marker2 = mMapView.addMarker(new TPLMarkerOptions()
-                .position(new LngLat(73.093104, 33.730494))
-                .title("marker2")
-                .snippet("This is my spot!")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.YELLOW)));
-
-        marker2.setZIndex(1);*/
-
-        /*final TPLMarker marker2 = mMapController.addMarker(new TPLMarkerOptions()
-                .position(new LngLat(73.092159, 33.728945))
-                .title("marker2")
-                .snippet("Spotum Here"));
-
-        marker2.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.marker_default));
-        marker2.setZIndex(1);*/
-
-        //marker2.setVisible(true);
-        //marker2.setVisible(false);
-
-
-        /*String pointStyle2 = "{ style: 'points', interactive: true, color: 'white', size: [50px, 50px], order: 2000, collide: false }";
-        Marker marker2 = mMapController.addMarker();
-        marker2.setStyling(pointStyle2);
-        marker2.setDrawable(R.mipmap.ic_launcher);
-        marker2.setPoint(new LngLat(73.092159, 33.728945));*/
-
-        // Tangram marker
-        /*String pointStyle = "{ style: 'points', interactive: true, color: 'red', visible: true, size: [50px, 50px], order: 1000, collide: false }";
-        Marker marker = mMapController.addMarker();
-        marker.setStyling(pointStyle);
-        //marker.setDrawable(R.drawable.marker_default);
-        marker.setPoint(new LngLat(73.092159, 33.728945));
-
-        String pointStyle3 = "{ style: 'points', interactive: true, color: 'green', visible: true, size: [50px, 50px], order: 1000, collide: false }";
-        marker.setStyling(pointStyle3);
-        marker.setPoint(new LngLat(73.092162, 33.728950));*/
-
     }
 
     private void addPolyLines() {
 
-        final TPLPolyline polyline = mMapController.addPolyline(new TPLPolylineOptions()
+        /*final TPLPolyline polyline = mMapController.addPolyline(new TPLPolylineOptions()
                 .add(new LngLat(73.094177, 33.729113),
-                        new LngLat(73.090913, 33.727616)).color(Color.RED).width(10).zIndex(5));
+                        new LngLat(73.090913, 33.727616)).color(Color.RED).width(10).zIndex(5));*/
 
-        /*final TPLPolyline polyline = mMapView.addPolyline(new TPLPolylineOptions()
+        final TPLPolyline polyline = mMapController.addPolyline(new TPLPolylineOptions()
                 .add(new LngLat(73.094177, 33.729113),
                         new LngLat(73.090913, 33.727616)));
         polyline.setWidth(5);
         polyline.setColor(Color.RED);
-        polyline.setZIndex(0);*/
+        polyline.setZIndex(5);
+
 
         /*ArrayList<LngLat> lngLats = new ArrayList<>();
         lngLats.add(new LngLat(73.091229, 33.732780));
@@ -226,18 +159,6 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         lngLats.add(new LngLat(73.091322, 33.726795));
         final TPLPolyline polyline = mMapView.addPolyline(new TPLPolylineOptions());
         polyline.setPoints(lngLats);*/
-
-        //String pointStyle = "{ style: 'lines', color: '#06a6d4', width: 5px, order: 2000, outline }";
-        /*String pointStyle = "{ style: 'lines', color: '#06a6d4', width: 5px, order: 2000, outline:color: '#ff0000', outline:width: 1px }";
-        Marker marker = mMapController.addMarker();
-        marker.setStyling(pointStyle);
-        ArrayList<LngLat> lngLats1 = new ArrayList<>();
-        lngLats1.add(new LngLat(73.092159, 33.728945));
-        lngLats1.add(new LngLat(73.092620, 33.727624));
-        lngLats1.add(new LngLat(73.091322, 33.726795));
-        lngLats1.add(new LngLat(73.089788, 33.727928));
-        HashMap<String, String> properties = new HashMap<>();
-        marker.setPolyline(new Polyline(lngLats1, properties));*/
     }
 
     private void addPolygons() {
@@ -268,24 +189,6 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         tplPolygon.setStrokeWidth(4);
         tplPolygon.setZIndex(1);*/
         //tplPolygon.setFillColor(Color.TRANSPARENT);
-
-        /*String pointStyle = "{ style: 'polygons', color: '#06a6d4', width: 5px, order: 2000 }";
-        Marker marker = mMapController.addMarker();
-        marker.setStyling(pointStyle);
-        List<List<LngLat>> lngLats = new ArrayList<>();
-        lngLats.add(lngLats1);
-        HashMap<String, String> properties = new HashMap<>();
-        Polygon polygon = new Polygon(lngLats, properties);
-        marker.setPolygon(polygon);
-
-        String pointStyle2 = "{ style: 'polygons', color: '#000000', width: 5px, order: 2000 }";
-        List<List<LngLat>> lngLatss = new ArrayList<>();
-        lngLatss.add(lngLats2);
-        //marker.setStyling(pointStyle2);
-        HashMap<String, String> properties2 = new HashMap<>();
-        Polygon polygon2 = new Polygon(lngLatss, properties2);
-        marker.setPolygon(polygon2);*/
-
     }
 
     private void addCircles() {
@@ -295,19 +198,6 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         /*tplCircle.setStrokeColor(Color.CYAN);
         tplCircle.setFillColor(Color.YELLOW);
         tplCircle.setZIndex(2);*/
-        /*LngLat lngLat = new LngLat(73.092159, 33.728945);
-        ArrayList<LngLat> lngLats1 = calculateCircle(lngLat, (float) 0.0001);
 
-        String pointStyle = "{ style: 'polygons', color: '#06a6d4', width: 5px, order: 2000 }";
-        Marker marker = mMapController.addMarker();
-        marker.setStyling(pointStyle);
-
-        List<List<LngLat>> lngLats = new ArrayList<>();
-        lngLats.add(lngLats1);
-
-        HashMap<String, String> properties = new HashMap<>();
-        properties.put("color", "#06a6d4");
-        Polygon polygon = new Polygon(lngLats, properties);
-        marker.setPolygon(polygon);*/
     }
 }
