@@ -55,7 +55,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mapController.setLngLat(new LngLat(73.093104, 33.730494));
         mapController.setZoomBy(15);
         mMapController = mapController;
-        addMarkers();
+        //addMarkers();
         addPolyLines();
         addPolygons();
         addCircles();
@@ -118,24 +118,37 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         final TPLMarker marker1 = mMapController.addMarker(new TPLMarkerOptions()
                 .position(new LngLat(73.093104, 33.730494))
                 .title("marker1")
-                .snippet("This is my spot!").flat(false).zIndex(1));
+                .snippet("This is my spot!").infoWindowOffset(new Point(-150, 0))
+                .rotation(50).flat(true)
+                .size(new Point(150, 150))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_default)).visible(false));
 
-        //marker1.setPosition(new LngLat(73.092159, 33.728945));
-        marker1.setSize(new Point(102, 102));
-        marker1.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.marker_default));
+        //marker1.setZIndex(1);
+        marker1.setPosition(new LngLat(73.092159, 33.728945));
+        marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.ORANGE));
+        marker1.setSize(new Point(200, 200));
+        marker1.setFlat(false);
+        marker1.setRotation(0);
+        marker1.setInfoWindowOffset(new Point(0, 0));
+        marker1.showInfoWindow();
+        marker1.setVisible(true);
+        marker1.showInfoWindow();
 
         /*marker1.setTitle("Titlum");
-        marker1.setSnippet("aklsdfj");
-        marker1.setInfoWindowOffset(new Point(0, 0));*/
+        marker1.setSnippet("aklsdfj");*/
+
+        //marker1.hideInfoWindow();
+
+        //marker1.setInfoWindowOffset(new Point(0, 0));
         /*
         marker1.hideInfoWindow();*/
         //marker1.setVisible(false);
 
-        final TPLMarker marker2 = mMapController.addMarker(new TPLMarkerOptions()
+        /*final TPLMarker marker2 = mMapController.addMarker(new TPLMarkerOptions()
                 .position(new LngLat(73.092159, 33.728945))
                 .title("marker2")
-                .snippet("This is not my spot!").flat(false).zIndex(0)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.YELLOW)));
+                .snippet("This is not my spot!").flat(false)
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.YELLOW)));*/
 
     }
 
@@ -145,6 +158,8 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
                 .add(new LngLat(73.094177, 33.729113),
                         new LngLat(73.090913, 33.727616)).color(Color.RED).width(10).zIndex(5));
 
+        //polyline.setWidth(3);
+        //polyline.setColor(Color.YELLOW);
         //polyline.setClickable(true);
         /*final TPLPolyline polyline = mMapController.addPolyline(new TPLPolylineOptions()
                 .add(new LngLat(73.094177, 33.729113),
