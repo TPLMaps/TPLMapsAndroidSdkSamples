@@ -1,0 +1,44 @@
+[
+  {
+    "featureType": "map.mode",
+	"styler": {
+		"mode": "night"
+	}
+  },{
+    "featureType": "map.pois",
+	"styler": {
+		"visible": "true"
+	}
+  },{
+    "featureType": "map.buildings",
+	"styler": {
+		"visible": "true"
+	}
+  },{
+    "featureType": "road.motorway",
+    "styler": {
+		"color": "'#4194f4'",
+		"width": "[[5, 0.4px],[10,2px],[15,5px],[20,65px]]",
+		"outline.color": "'#000000'",
+		"outline.width": "[[5, 0.1px],[10, 0.5px],[15,1px],[20,2px]]",
+		"visible": "true"
+	}
+  },{
+    "featureType": "road.street",
+	"styler": {
+		"color": "'#f44141'",
+		"width": "[[14, 1px],[15,3.5px],[20,50px]]",
+		"outline.color": "'#000000'",
+		"visible": "true"
+	}
+  },{
+    "featureType": "road.main",
+	"styler": {
+		"color": "'#55f441'",
+		"width": "[[7, 0.5px],[10,1px],[15,4px],[20,100px]]",
+		"outline.color": "'#000000'",
+		"outline.width": "[[5, 0.1px],[10, 0.5px],[15,1px]]",
+		"visible": "true"
+	}
+  }
+]

@@ -25,6 +25,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
         Button btnUIControls = (Button) findViewById(R.id.btn_ui_controls);
         btnUIControls.setOnClickListener(this);
 
+        Button btnCamera = (Button) findViewById(R.id.btn_map_camera);
+        btnCamera.setOnClickListener(this);
+
         Button btnMapGestures = (Button) findViewById(R.id.btn_map_gestures);
         btnMapGestures.setOnClickListener(this);
 
@@ -36,6 +39,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
 
         Button btnInfoWindows = (Button) findViewById(R.id.btn_info_windows);
         btnInfoWindows.setOnClickListener(this);
+
+        Button btnMapStyle = (Button) findViewById(R.id.btn_map_style);
+        btnMapStyle.setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +52,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_ui_controls:
                 startActivity(new Intent(ActivityMain.this, ActivityUIControls.class));
+                break;
+            case R.id.btn_map_camera:
+                startActivity(new Intent(ActivityMain.this, ActivityCamera.class));
                 break;
             case R.id.btn_map_gestures:
                 startActivity(new Intent(ActivityMain.this, ActivityMapGestures.class));
@@ -58,6 +67,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_info_windows:
                 startActivity(new Intent(ActivityMain.this, ActivityInfoWindows.class));
+                break;
+            case R.id.btn_map_style:
+                startActivity(new Intent(ActivityMain.this, ActivityMapStyle.class));
                 break;
         }
     }

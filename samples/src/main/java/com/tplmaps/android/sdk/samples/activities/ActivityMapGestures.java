@@ -7,7 +7,6 @@ import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.TouchInput;
 
 public class ActivityMapGestures extends AppCompatActivity implements MapView.OnMapReadyCallback {
 
@@ -23,9 +22,6 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
         // Initializing and getting MapView resource
         mMapView = (MapView) findViewById(R.id.map);
 
-        // Setting double tap zooming gesture
-        mMapView.setDoubleTapZoomInGestureEnabled(false);
-
         // Loading map Asynchronously
         MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
     }
@@ -40,20 +36,13 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
 
     @Override
     public void onMapReady(final MapController mapController) {
+
         // TODO: Map loaded and ready, write your tasks here
 
-        mapController.setPanResponder(new TouchInput.PanResponder() {
-            @Override
-            public boolean onPan(float startX, float startY, float endX, float endY) {
-                //CommonUtils.showToast(ActivityMapGestures.this, "Pan", Toast.LENGTH_SHORT, true);
-                return false;
-            }
+        // Set enable/disable double tap zoom gesture
+        mapController.getUiSettings().setDoubleTapZoomInGestureEnabled(true);
 
-            @Override
-            public boolean onFling(float posX, float posY, float velocityX, float velocityY) {
-                //CommonUtils.showToast(ActivityMapGestures.this, "Fling", Toast.LENGTH_SHORT, true);
-                return false;
-            }
-        });
+        // Set enable/disable all gestures
+        mapController.getUiSettings().setAllMapGesturesEnabled(false);
     }
 }

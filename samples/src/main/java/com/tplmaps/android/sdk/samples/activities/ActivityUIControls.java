@@ -14,7 +14,7 @@ import com.tplmaps3d.MapView;
 public class ActivityUIControls extends AppCompatActivity implements MapView.OnMapReadyCallback,
         CompoundButton.OnCheckedChangeListener {
 
-    //private static final String TAG = ActivityUIControls.class.getSimpleName();
+    private static final String TAG = ActivityUIControls.class.getSimpleName();
 
     private MapView mMapView;
 
@@ -32,6 +32,7 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
         mMapView = (MapView) findViewById(R.id.map);
         MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
     }
+
 
     @Override
     protected void onStart() {
@@ -108,6 +109,7 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
                 // Show compass
                 if (mMapController != null)
                     mMapController.getUiSettings().showCompass(isChecked);
+
                 break;
 
             case R.id.cb_zoom_controls:

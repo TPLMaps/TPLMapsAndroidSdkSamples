@@ -23,6 +23,12 @@
         android:text="@string/ui_controls"/>
 
     <Button
+        android:id="@+id/btn_map_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/camera" />
+
+    <Button
         android:id="@+id/btn_map_gestures"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,5 +51,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/info_window"/>
+
+    <Button
+        android:id="@+id/btn_map_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/map_style" />
 
 </LinearLayout>
