@@ -16,7 +16,8 @@ import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
 import com.tplmaps3d.BitmapDescriptorFactory;
-import com.tplmaps3d.PointOptions;
+import com.tplmaps3d.Marker;
+import com.tplmaps3d.MarkerOptions;
 
 
 public class ActivityInfoWindows extends AppCompatActivity implements MapView.OnMapReadyCallback {
@@ -55,15 +56,15 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
 
         mMapController.setOnMarkerClickListener(new MapController.OnMarkerClickListener() {
             @Override
-            public void onMarkerClick(com.tplmaps3d.Point tplMarker) {
+            public void onMarkerClick(Marker tplMarker) {
                 Log.i(TAG, "Called: tplMarker tile = " + tplMarker.getTitle());
             }
         });
 
         mMapController.setOnInfoWindowClickListener(new MapController.OnInfoWindowClickListener() {
             @Override
-            public void onInfoWindowClick(com.tplmaps3d.Point tplMarker) {
-                Log.i(TAG, "Called: tplMarker snippet = " + tplMarker.getSnippet());
+            public void onInfoWindowClick(Marker tplMarker) {
+                Log.i(TAG, "Called: tplMarker snippet = " + tplMarker.getDescription());
             }
         });
 
@@ -71,10 +72,10 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
 
     private void normalInfoWindows() {
 
-        final com.tplmaps3d.Point marker1 = mMapController.addMarker(new PointOptions()
+        final Marker marker1 = mMapController.addMarker(new MarkerOptions()
                 .position(new LngLat(73.093104, 33.730494))
                 .title("marker1")
-                .snippet("This is my spot!").flat(false).zIndex(1));
+                .description("This is my spot!").flat(false).order(1));
 
         marker1.showInfoWindow();
         /*marker1.setPosition(new LngLat(73.090947, 33.730283));
@@ -84,15 +85,15 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         marker1.hideInfoWindow();
         marker1.setVisible(false);*/
 
-        final com.tplmaps3d.Point marker2 = mMapController.addMarker(new PointOptions()
+        final Marker marker2 = mMapController.addMarker(new MarkerOptions()
                 .position(new LngLat(73.092159, 33.728945))
                 .title("marker2")
-                .snippet("This is not my spot!").flat(false).zIndex(0)
+                .description("This is not my spot!").flat(false).order(0)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.YELLOW)));
         marker2.showInfoWindow();
 
         //marker2.setTitle("Titlum");
-        //marker2.setSnippet("TestSnip");
+        //marker2.setDescription("TestSnip");
     }
 
     private void customInfoWindows() {
@@ -100,24 +101,24 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         // Set custom info view to all info windows
         mMapController.setCustomInfoWindow(new MapController.CustomInfoWindow() {
             @Override
-            public View onInfoWindow(com.tplmaps3d.Point tplMarker) {
+            public View onInfoWindow(Marker tplMarker) {
                 return null;
             }
 
             @Override
-            public View onInfoWindowContent(com.tplmaps3d.Point tplMarker) {
+            public View onInfoWindowContent(Marker tplMarker) {
                 return prepareInfoView(tplMarker);
             }
         });
     }
 
-    com.tplmaps3d.Point marker3, marker4;
+    Marker marker3, marker4;
     private void customInfoWindowsMultipleViews() {
 
         // Set different custom views to different info windows
         normalInfoWindows();
-        marker3 = mMapController.addMarker(new PointOptions()
-                .position(new LngLat(73.096719, 33.728160)).zIndex(0)
+        marker3 = mMapController.addMarker(new MarkerOptions()
+                .position(new LngLat(73.096719, 33.728160)).order(0)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.GREEN)));
 
         marker3.showInfoWindow();
@@ -128,8 +129,8 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         marker3.hideInfoWindow();
         marker3.setVisible(false);*/
 
-        marker4 = mMapController.addMarker(new PointOptions()
-                .position(new LngLat(73.090947, 33.730283)).zIndex(0)
+        marker4 = mMapController.addMarker(new MarkerOptions()
+                .position(new LngLat(73.090947, 33.730283)).order(0)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.RED)));
 
         marker4.showInfoWindow();
@@ -137,14 +138,14 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
 
         mMapController.setCustomInfoWindow(new MapController.CustomInfoWindow() {
             @Override
-            public View onInfoWindow(com.tplmaps3d.Point tplMarker) {
+            public View onInfoWindow(Marker tplMarker) {
                 if(tplMarker == marker3)
                     return prepareInfoView(tplMarker);
                 return null;
             }
 
             @Override
-            public View onInfoWindowContent(com.tplmaps3d.Point tplMarker) {
+            public View onInfoWindowContent(Marker tplMarker) {
                 if(tplMarker == marker4)
                     return prepareInfoView(tplMarker);
                 return null;
@@ -153,7 +154,7 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
     }
 
 
-    private View prepareInfoView(com.tplmaps3d.Point tplMarker) {
+    private View prepareInfoView(Marker tplMarker) {
         //prepare InfoView programmatically
         LinearLayout infoView = new LinearLayout(ActivityInfoWindows.this);
         LinearLayout.LayoutParams infoViewParams = new LinearLayout.LayoutParams(
