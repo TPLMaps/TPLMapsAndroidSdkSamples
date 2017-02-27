@@ -4,7 +4,112 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".sdk.samples.activities.ActivityMapGestures">
-
     <include layout="@layout/layout_map_view" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#9dffffff"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <CheckBox
+            android:id="@+id/cb_dtzl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/double_tap_zoom_gesture"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_mag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_map_gestures"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_click_poi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/click_poi"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_click"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/click_map"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_click_double"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/click_double_map"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_click_long"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/click_long_map"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_gesture_pan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gesture_pan_map"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_gestures_rotate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gesture_rotate_map"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_gesture_scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gesture_scale_map"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_gesture_shove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gesture_shove_map"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#9dffffff"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_listener"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            android:text="Listener: " />
+
+        <TextView
+            android:id="@+id/tv_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:textColor="#0040ff"
+            android:text="Values: " />
+    </LinearLayout>
+
 
 </RelativeLayout>

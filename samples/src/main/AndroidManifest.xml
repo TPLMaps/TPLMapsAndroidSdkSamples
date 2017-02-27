@@ -45,7 +45,7 @@
         <activity
             android:name=".sdk.samples.activities.ActivityMapGestures"
             android:configChanges="screenSize|orientation"
-            android:label="@string/map_gestures"
+            android:label="@string/map_features_gestures"
             android:parentActivityName=".sdk.samples.activities.ActivityMain" />
         <activity
             android:name=".sdk.samples.activities.ActivitySearch"
@@ -61,6 +61,11 @@
             android:name=".sdk.samples.activities.ActivityCamera"
             android:configChanges="screenSize|orientation"
             android:label="@string/camera"
+            android:parentActivityName=".sdk.samples.activities.ActivityMain" />
+        <activity
+            android:name=".sdk.samples.activities.ActivityMapFeatures"
+            android:configChanges="screenSize|orientation"
+            android:label="@string/map_features"
             android:parentActivityName=".sdk.samples.activities.ActivityMain" />
 
 

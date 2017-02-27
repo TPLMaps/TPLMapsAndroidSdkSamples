@@ -19,5 +19,6 @@ allprojects {
         jcenter()
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven { url "http://192.168.10.70:8081/artifactory/example-repo-local" }
     }
 }

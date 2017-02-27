@@ -6,10 +6,10 @@ import android.util.Log;
 
 import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
+import com.tplmaps3d.CameraPosition;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.TPLCameraPosition;
 
 public class ActivityCamera extends AppCompatActivity implements MapView.OnMapReadyCallback,
         MapController.OnCameraChangeStartedListener, MapController.OnCameraChangeListener,
@@ -55,7 +55,7 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
 
 
         // Animate Camera to Pakistan Monument
-        mapController.animateCamera(TPLCameraPosition.builder()
+        mapController.animateCamera(CameraPosition.builder()
                 .position(new LngLat(73.0684356, 33.6934396))
                 .zoom(18.3f)
                 .tilt(0.9F)
@@ -72,17 +72,17 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
     }
 
     @Override
-    public void onCameraChangeStarted(TPLCameraPosition cameraPosition) {
+    public void onCameraChangeStarted(CameraPosition cameraPosition) {
         Log.i(TAG, "Camera Change Started");
     }
 
     @Override
-    public void onCameraChange(TPLCameraPosition cameraPosition) {
+    public void onCameraChange(CameraPosition cameraPosition) {
         Log.i(TAG, "Camera Changing");
     }
 
     @Override
-    public void onCameraChangeEnd(TPLCameraPosition cameraPosition) {
+    public void onCameraChangeEnd(CameraPosition cameraPosition) {
         Log.i(TAG, "Camera Change End");
     }
 }

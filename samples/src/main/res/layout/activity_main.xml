@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,54 +8,67 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.tplmaps.android.sdk.samples.activities.ActivityMain">
+    tools:context="com.tplmaps.android.sdk.samples.activities.ActivityMapFeatures">
 
-    <Button
-        android:id="@+id/btn_maps"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/maps"/>
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_ui_controls"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ui_controls"/>
+        <Button
+            android:id="@+id/btn_maps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/maps" />
 
-    <Button
-        android:id="@+id/btn_map_camera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/camera" />
+        <Button
+            android:id="@+id/btn_map_features"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/map_features" />
 
-    <Button
-        android:id="@+id/btn_map_gestures"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/map_gestures" />
+        <Button
+            android:id="@+id/btn_ui_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ui_controls" />
 
-    <Button
-        android:id="@+id/btn_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/search" />
+        <Button
+            android:id="@+id/btn_map_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/camera" />
 
-    <Button
-        android:id="@+id/btn_shapes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/shapes"/>
+        <Button
+            android:id="@+id/btn_map_gestures"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/map_features_gestures" />
 
-    <Button
-        android:id="@+id/btn_info_windows"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/info_window"/>
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/search" />
 
-    <Button
-        android:id="@+id/btn_map_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/map_style" />
+        <Button
+            android:id="@+id/btn_shapes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/shapes" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btn_info_windows"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/info_window" />
+
+        <Button
+            android:id="@+id/btn_map_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/map_style" />
+
+    </LinearLayout>
+</ScrollView>
+

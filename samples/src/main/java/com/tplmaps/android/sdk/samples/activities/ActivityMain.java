@@ -22,6 +22,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
         Button btnMaps = (Button) findViewById(R.id.btn_maps);
         btnMaps.setOnClickListener(this);
 
+        Button btnMapFeatures = (Button) findViewById(R.id.btn_map_features);
+        btnMapFeatures.setOnClickListener(this);
+
         Button btnUIControls = (Button) findViewById(R.id.btn_ui_controls);
         btnUIControls.setOnClickListener(this);
 
@@ -49,6 +52,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
         switch(view.getId()) {
             case R.id.btn_maps:
                 startActivity(new Intent(ActivityMain.this, ActivityMaps.class));
+                break;
+            case R.id.btn_map_features:
+                startActivity(new Intent(ActivityMain.this, ActivityMapFeatures.class));
                 break;
             case R.id.btn_ui_controls:
                 startActivity(new Intent(ActivityMain.this, ActivityUIControls.class));

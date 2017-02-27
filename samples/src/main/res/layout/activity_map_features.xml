@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sdk.samples.activities.ActivityMapFeatures">
+
+    <include layout="@layout/layout_map_view" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#9dffffff"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <CheckBox
+            android:id="@+id/cb_night_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/night_mode"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_buildings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buildings"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/cb_pois"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/point_of_interests"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -12,9 +12,21 @@
     <string name="night_mode">Night Mode</string>
     <string name="buildings">Buildings</string>
     <string name="pois">POIs</string>
-    <string name="map_gestures">Map Gestures</string>
+    <string name="map_features_gestures">Map Gestures</string>
     <string name="search">Search</string>
     <string name="search_text">Search Text</string>
     <string name="map_style">Map Style</string>
     <string name="camera">Camera</string>
+    <string name="map_features">Map Features</string>
+    <string name="point_of_interests">Point of Interests</string>
+    <string name="double_tap_zoom_gesture">Double Tap Zoom Gesture</string>
+    <string name="all_map_gestures">All Map Gestures</string>
+    <string name="click_poi">Click POI</string>
+    <string name="click_map">Click Map</string>
+    <string name="click_double_map">Click Double (Map)</string>
+    <string name="click_long_map">Click Long (Map)</string>
+    <string name="gesture_pan_map">Gesture Pan (Map)</string>
+    <string name="gesture_rotate_map">Gesture Rotate (Map)</string>
+    <string name="gesture_scale_map">Gesture Scale (Map)</string>
+    <string name="gesture_shove_map">Gesture Shove (Map)</string>
 </resources>

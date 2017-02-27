@@ -4,14 +4,15 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
 import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
+import com.tplmaps3d.BitmapDescriptorFactory;
 import com.tplmaps3d.Circle;
 import com.tplmaps3d.CircleOptions;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.BitmapDescriptorFactory;
 import com.tplmaps3d.Marker;
 import com.tplmaps3d.MarkerOptions;
 import com.tplmaps3d.Polygon;
@@ -59,7 +60,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         addPolygons();
         addCircles();
 
-        mMapController.setOnOnMapClickListener(new MapController.OnMapClickListener() {
+        mMapController.setOnMapClickListener(new MapController.OnMapClickListener() {
             @Override
             public void onMapClick(LngLat lngLat) {
                 Log.i(TAG, "Called: onMapClick lnglat = " + lngLat.latitude);
