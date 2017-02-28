@@ -1,24 +1,27 @@
 package com.tplmaps.android.sdk.samples.activities;
 
 import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
-import com.tplmaps3d.BitmapDescriptorFactory;
 import com.tplmaps3d.Circle;
 import com.tplmaps3d.CircleOptions;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
+import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.Marker;
 import com.tplmaps3d.MarkerOptions;
 import com.tplmaps3d.Polygon;
 import com.tplmaps3d.PolygonOptions;
 import com.tplmaps3d.Polyline;
 import com.tplmaps3d.PolylineOptions;
+import com.tplmaps3d.sdk.model.IconSize;
 import com.tplmaps3d.sdk.model.PointOfInterest;
 
 import java.util.ArrayList;
@@ -55,7 +58,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mapController.setLngLat(new LngLat(73.093104, 33.730494));
         mapController.setZoomBy(15);
         mMapController = mapController;
-        addMarkers();
+        //addMarkers();
         addPolyLines();
         addPolygons();
         addCircles();
@@ -63,8 +66,8 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mMapController.setOnMapClickListener(new MapController.OnMapClickListener() {
             @Override
             public void onMapClick(LngLat lngLat) {
-                Log.i(TAG, "Called: onMapClick lnglat = " + lngLat.latitude);
-                //marker2.setPosition(new LngLat(73.090197, 33.723441));
+                Log.i(TAG, "Called: onMapClick lnglat = " + lngLat.longitude + " , " + lngLat.latitude);
+                //mMapController.addMarker(new MarkerOptions().position(lngLat));
             }
         });
 
@@ -117,18 +120,16 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
     private void addMarkers() {
 
-        /*final Marker marker1 = mMapController.addMarker(new MarkerOptions()
+        final Marker marker1 = mMapController.addMarker(new MarkerOptions()
                 .position(new LngLat(73.093104, 33.730494))
                 .title("marker1")
                 .description("This is my spot!").infoWindowOffset(new android.graphics.Point(-150, 0))
                 .rotation(50).flat(true)
-                .size(new android.graphics.Point(150, 150))
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_default)).visible(false));
+                .icon(IconFactory.fromResource(R.drawable.ic_pin_drop, new IconSize(150, 150))).visible(false).order(1));
 
         //marker1.setZIndex(1);
         marker1.setPosition(new LngLat(73.092159, 33.728945));
-        marker1.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.ORANGE));
-        marker1.setSize(new android.graphics.Point(200, 200));
+        //marker1.setIcon(IconFactory.defaultMarker(IconFactory.ORANGE));
         marker1.setFlat(false);
         marker1.setRotation(0);
         marker1.setInfoWindowOffset(new android.graphics.Point(0, 0));
@@ -137,7 +138,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         marker1.showInfoWindow();
 
         marker1.setTitle("Titlum");
-        marker1.setDescription("aklsdfj");*/
+        marker1.setDescription("aklsdfj");
 
         //marker1.hideInfoWindow();
 
@@ -146,11 +147,17 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         marker1.hideInfoWindow();*/
         //marker1.setVisible(false);
 
-        final Marker marker2 = mMapController.addMarker(new MarkerOptions()
+        /*final Marker marker2 = mMapController.addMarker(new MarkerOptions()
                 .position(new LngLat(73.092159, 33.728945))
                 .title("marker2")
-                .description("This is not my spot!").flat(false)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.YELLOW)));
+                .description("This is not my spot!").flat(false).order(0));
+
+        //marker2.setDescription("ksd lfjaksdl fjklad fjkads fklads fjkalsd fjklad fjkalds fjaksd fjaksdl fjakldf jakld fjkald fjkladsf jaklsd fjkals");
+        marker2.showInfoWindow();
+        marker2.setTitle("ksd lfjaksdl fjklad fjkads fklads fjkalsd fjklad fjkalds fjaksd fjaksdl fjakldf jakld fjkald fjkladsf jaklsd fjkals");*/
+
+
+        //marker2.setIcon(IconFactory.fromResource(R.drawable.ic_pin_drop));
 
     }
 
@@ -195,7 +202,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         lngLats1.add(new LngLat(73.091322, 33.726795));
         lngLats1.add(new LngLat(73.092159, 33.728945));
 
-        Polygon tplPolygon = mMapController.addPolygon(new PolygonOptions().addAll(lngLats1).order(1).fillColor(Color.YELLOW).strokeColor(Color.GREEN).strokeWidth(4));
+        Polygon tplPolygon = mMapController.addPolygon(new PolygonOptions().addAll(lngLats1).order(2).fillColor(Color.YELLOW).strokeColor(Color.GREEN).strokeWidth(5));
         tplPolygon.setClickable(true);
         ArrayList<LngLat> lngLats2 = new ArrayList<>();
         lngLats2.add(new LngLat(73.092159, 33.728945));
@@ -222,7 +229,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
     private void addCircles() {
 
         //TPLCircle tplCircle = mMapView.addCircle(new TPLCircleOptions().center(new LngLat(73.092159, 33.728945)).radius(100).fillColor(Color.YELLOW).strokeColor(Color.CYAN).strokeWidth(5).zIndex(0));
-        Circle tplCircle = mMapController.addCircle(new CircleOptions().center(new LngLat(73.092159, 33.728945)).radius(100).fillColor(Color.CYAN).order(0).clickable(true));
+        Circle tplCircle = mMapController.addCircle(new CircleOptions().center(new LngLat(73.092159, 33.728945)).radius(100).fillColor(Color.CYAN).order(1).clickable(true));
         /*tplCircle.setStrokeColor(Color.CYAN);
         tplCircle.setFillColor(Color.YELLOW);
         tplCircle.setOrder(2);*/

@@ -15,7 +15,7 @@ import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.BitmapDescriptorFactory;
+import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.Marker;
 import com.tplmaps3d.MarkerOptions;
 
@@ -80,7 +80,7 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         marker1.showInfoWindow();
         /*marker1.setPosition(new LngLat(73.090947, 33.730283));
         marker1.setSize(new Point(102, 102));
-        marker1.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.marker_default));
+        marker1.setIcon(IconFactory.fromResource(R.drawable.marker_default));
         marker1.setInfoWindowOffset(new Point(-150, 0));
         marker1.hideInfoWindow();
         marker1.setVisible(false);*/
@@ -89,7 +89,7 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
                 .position(new LngLat(73.092159, 33.728945))
                 .title("marker2")
                 .description("This is not my spot!").flat(false).order(0)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.YELLOW)));
+                .icon(IconFactory.defaultMarker(IconFactory.YELLOW)));
         marker2.showInfoWindow();
 
         //marker2.setTitle("Titlum");
@@ -119,19 +119,19 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         normalInfoWindows();
         marker3 = mMapController.addMarker(new MarkerOptions()
                 .position(new LngLat(73.096719, 33.728160)).order(0)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.GREEN)));
+                .icon(IconFactory.defaultMarker(IconFactory.GREEN)));
 
         marker3.showInfoWindow();
         /*marker3.setPosition(new LngLat(73.092159, 33.728945));
         marker3.setSize(new Point(102, 102));
-        marker3.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.marker_default));
+        marker3.setIcon(IconFactory.fromResource(R.drawable.marker_default));
         marker3.setInfoWindowOffset(new Point(-150, 0));
         marker3.hideInfoWindow();
         marker3.setVisible(false);*/
 
         marker4 = mMapController.addMarker(new MarkerOptions()
                 .position(new LngLat(73.090947, 33.730283)).order(0)
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.RED)));
+                .icon(IconFactory.defaultMarker(IconFactory.RED)));
 
         marker4.showInfoWindow();
         marker4.setInfoWindowOffset(new Point(-150, -20));
