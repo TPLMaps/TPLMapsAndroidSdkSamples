@@ -58,10 +58,10 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mapController.setLngLat(new LngLat(73.093104, 33.730494));
         mapController.setZoomBy(15);
         mMapController = mapController;
-        //addMarkers();
+        addMarkers();
         addPolyLines();
-        //addPolygons();
-        //addCircles();
+        addPolygons();
+        addCircles();
 
         mMapController.setOnMapClickListener(new MapController.OnMapClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mMapController.setOnPoiClickListener(new MapController.OnPoiClickListener() {
             @Override
             public void onPoiClick(PointOfInterest place) {
-                Log.i(TAG, "Called: onPoiClick tile = " + place.id);
+                Log.i(TAG, "Called: onPoiClick id = " + place.id);
                 Log.i(TAG, "Called: onPoiClick tile = " + place.name);
                 Log.i(TAG, "Called: onPoiClick lnglat = " + place.lngLat.longitude + " , " + place.lngLat.latitude);
                 Log.i(TAG, " // /// ///// /// ");
@@ -163,13 +163,13 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
     private void addPolyLines() {
 
-        /*final Polyline polyline = mMapController.addPolyline(new PolylineOptions()
-                .add(new LngLat(73.094177, 33.729113),
-                        new LngLat(73.090913, 33.727616)).color(Color.RED).width(10).order(5));*/
-
         final Polyline polyline = mMapController.addPolyline(new PolylineOptions()
-                .add(new LngLat(71.094177, 33.729113),
+                .add(new LngLat(73.094177, 33.729113),
                         new LngLat(73.090913, 33.727616)).color(Color.RED).width(5).order(5));
+
+        /*final Polyline polyline = mMapController.addPolyline(new PolylineOptions()
+                .add(new LngLat(71.094177, 33.729113),
+                        new LngLat(73.090913, 33.727616)).color(Color.RED).width(5).order(5));*/
 
         //polyline.setWidth(3);
         //polyline.setColor(Color.YELLOW);
@@ -238,8 +238,10 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
     private void addCircles() {
 
-        //TPLCircle tplCircle = mMapView.addCircle(new TPLCircleOptions().center(new LngLat(73.092159, 33.728945)).radius(100).fillColor(Color.YELLOW).strokeColor(Color.CYAN).strokeWidth(5).zIndex(0));
-        Circle tplCircle = mMapController.addCircle(new CircleOptions().center(null).radius(100).fillColor(Color.CYAN).order(1).clickable(true));
+        Circle tplCircle = mMapController.addCircle(new CircleOptions()
+                .center(new LngLat(73.092159, 33.728945))
+                .radius(100).fillColor(Color.CYAN)
+                .order(1).clickable(true));
         /*tplCircle.setStrokeColor(Color.CYAN);
         tplCircle.setFillColor(Color.YELLOW);
         tplCircle.setOrder(2);*/

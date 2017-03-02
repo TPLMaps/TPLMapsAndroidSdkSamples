@@ -51,8 +51,8 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         mMapController = mapController;
 
         normalInfoWindows();
-        //customInfoWindows();
-        //customInfoWindowsMultipleViews();
+        customInfoWindows();
+        customInfoWindowsMultipleViews();
 
         mMapController.setOnMarkerClickListener(new MapController.OnMarkerClickListener() {
             @Override
