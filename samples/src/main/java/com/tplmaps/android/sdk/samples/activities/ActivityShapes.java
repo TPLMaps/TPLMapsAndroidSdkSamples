@@ -59,14 +59,15 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mapController.setZoomBy(15);
         mMapController = mapController;
         addMarkers();
-        addPolyLines();
-        addPolygons();
+        //addPolyLines();
+        //addPolygons();
         addCircles();
 
         mMapController.setOnMapClickListener(new MapController.OnMapClickListener() {
             @Override
             public void onMapClick(LngLat lngLat) {
                 Log.i(TAG, "Called: onMapClick lnglat = " + lngLat.longitude + " , " + lngLat.latitude);
+                marker1.setPositionEased(lngLat, 1);
                 //mMapController.addMarker(new MarkerOptions().position(lngLat));
             }
         });
@@ -105,7 +106,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mMapController.setOnPolygonClickListener(new MapController.OnPolygonClickListener() {
             @Override
             public void onPolygonClick(Polygon tplPolygon) {
-                Log.i(TAG, "Called: tplPolygon stroke width = " + tplPolygon.getStrokeWidth());
+                Log.i(TAG, "Called: tplPolygon stroke width = " + tplPolygon.getOutlineWidth());
             }
         });
 
@@ -118,9 +119,10 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
     }
 
+    Marker marker1;
     private void addMarkers() {
 
-        final Marker marker1 = mMapController.addMarker(new MarkerOptions()
+        marker1 = mMapController.addMarker(new MarkerOptions()
                 .position(new LngLat(73.093104, 33.730494))
                 .title("marker1")
                 .description("This is my spot!").infoWindowOffset(new android.graphics.Point(-150, 0))
@@ -165,7 +167,10 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
         final Polyline polyline = mMapController.addPolyline(new PolylineOptions()
                 .add(new LngLat(73.094177, 33.729113),
-                        new LngLat(73.090913, 33.727616)).color(Color.RED).width(5).order(5));
+                        new LngLat(73.090913, 33.727616)).color(Color.WHITE).width(10).order(5).outlineWidth(2).outlineColor(Color.BLUE));
+
+        polyline.setOutlineWidth(5);
+        polyline.setOutlineColor(Color.parseColor("#FF69B4"));
 
         /*final Polyline polyline = mMapController.addPolyline(new PolylineOptions()
                 .add(new LngLat(71.094177, 33.729113),
@@ -212,7 +217,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         lngLats1.add(new LngLat(78.596555, 6.861009));
         lngLats1.add(new LngLat(145.217649, 51.957821));*/
 
-        Polygon tplPolygon = mMapController.addPolygon(new PolygonOptions().addAll(lngLats1).order(2).fillColor(Color.YELLOW).strokeColor(Color.GREEN).strokeWidth(10));
+        Polygon tplPolygon = mMapController.addPolygon(new PolygonOptions().addAll(lngLats1).order(2).fillColor(Color.YELLOW).outlineColor(Color.GREEN).outlineWidth(10));
         tplPolygon.setClickable(true);
         ArrayList<LngLat> lngLats2 = new ArrayList<>();
         lngLats2.add(new LngLat(73.092159, 33.728945));
@@ -240,7 +245,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
         Circle tplCircle = mMapController.addCircle(new CircleOptions()
                 .center(new LngLat(73.092159, 33.728945))
-                .radius(100).fillColor(Color.CYAN)
+                .radius(15).fillColor(Color.CYAN)
                 .order(1).clickable(true));
         /*tplCircle.setStrokeColor(Color.CYAN);
         tplCircle.setFillColor(Color.YELLOW);
