@@ -61,7 +61,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         addMarkers();
         //addPolyLines();
         //addPolygons();
-        addCircles();
+        //addCircles();
 
         mMapController.setOnMapClickListener(new MapController.OnMapClickListener() {
             @Override
