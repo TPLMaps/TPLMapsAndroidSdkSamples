@@ -127,7 +127,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
                 .title("marker1")
                 .description("This is my spot!").infoWindowOffset(new android.graphics.Point(-150, 0))
                 .rotation(50).flat(true)
-                .icon(IconFactory.fromResource(R.drawable.ic_pin_drop, new IconSize(150, 150))).visible(false).order(1));
+                .icon(IconFactory.fromResource(R.drawable.ic_pin_drop)).visible(false).order(1));
 
         //marker1.setZIndex(1);
         marker1.setPosition(new LngLat(73.092159, 33.728945));
