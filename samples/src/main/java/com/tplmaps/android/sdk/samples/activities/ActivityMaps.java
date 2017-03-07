@@ -23,9 +23,40 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
 
         // Initializing and getting MapView resource
         mMapView = (MapView) findViewById(R.id.map);
+        mMapView.onCreate(savedInstanceState);
 
         // Loading map Asynchronously
         MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (mMapView != null)
+            mMapView.onStop();
     }
 
     @Override
