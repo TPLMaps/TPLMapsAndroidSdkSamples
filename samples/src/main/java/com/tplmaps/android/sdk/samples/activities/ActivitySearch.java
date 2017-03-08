@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.tplmaps.android.R;
+import com.tplmaps.android.sdk.samples.constants.URLConstants;
 import com.tplmaps3d.sdk.search.OnSearchResult;
 import com.tplmaps3d.sdk.search.Params;
 import com.tplmaps3d.sdk.search.Place;
@@ -48,7 +49,7 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
             @Override
             public void onClick(View view) {
                 // Request for query after initializing SearchManager
-                searchManager.request("http://175.107.196.76:8080/TestApp/webresources/generic/query",
+                searchManager.request(URLConstants.URL_SEARCH,
                         Params.builder()
                                 .query(etSearch.getText().toString())
                                 .category("")
