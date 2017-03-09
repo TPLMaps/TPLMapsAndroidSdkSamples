@@ -17,7 +17,10 @@ import com.tplmaps3d.sdk.search.Place;
 import com.tplmaps3d.sdk.search.SearchManager;
 import com.tplmaps3d.sdk.utils.CommonUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class ActivitySearch extends AppCompatActivity implements OnSearchResult {
 
@@ -78,8 +81,10 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
     }
 
     @Override
-    public void onSearchResultNotFound(Params params) {
-        CommonUtils.showToast(this, "Results not found against query: " + params.query, 2000, true);
+    public void onSearchResultNotFound(Params params, long requestTimeInMS) {
+        CommonUtils.showToast(this, "Results not found against query: " + params.query +
+                        " at " + getDateFormatFromMilliSeconds(requestTimeInMS),
+                2000, true);
     }
 
     @Override
@@ -88,12 +93,19 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
     }
 
     @Override
-    public void onSearchRequestCancel(Params params) {
-        Log.i(TAG, "Request cancelled against query: " + params.query);
+    public void onSearchRequestCancel(Params params, long requestTimeInMS) {
+        Log.i(TAG, "Request cancelled against query: " + params.query +
+                " at " + getDateFormatFromMilliSeconds(requestTimeInMS));
     }
 
     @Override
-    public void onSearchRequestSuspended(Exception e) {
-        e.printStackTrace();
+    public void onSearchRequestSuspended(String errorMessage, Params params, long requestTimeInMS) {
+        Log.e(TAG, "Request Suspended: " + errorMessage);
+    }
+
+
+    private String getDateFormatFromMilliSeconds(long timeInMS) {
+        final String DATE_FORMAT = "dd-MM-yyyy HH:mm:ss";
+        return new SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(new Date(timeInMS));
     }
 }
