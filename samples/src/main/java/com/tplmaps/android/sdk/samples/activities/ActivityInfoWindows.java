@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
+import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.Marker;
 import com.tplmaps3d.MarkerOptions;
 
@@ -36,6 +36,38 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
 
@@ -43,12 +75,22 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
             mMapView.onDestroy();
     }
 
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+
+        if (mMapView != null)
+            mMapView.onLowMemory();
+    }
+
     @Override
     public void onMapReady(final MapController mapController) {
 
-        mapController.setLngLat(new LngLat(73.093104, 33.730494));
-        mapController.setZoomBy(15);
         mMapController = mapController;
+
+        mMapController.setLngLat(new LngLat(73.093104, 33.730494));
+        mMapController.setZoomBy(15);
 
         normalInfoWindows();
         customInfoWindows();

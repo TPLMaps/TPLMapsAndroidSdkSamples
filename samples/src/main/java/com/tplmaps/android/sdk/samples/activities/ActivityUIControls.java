@@ -32,34 +32,36 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
         mMapView = (MapView) findViewById(R.id.map);
         MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
     }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (mMapController != null)
-            mMapController.onStart();
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
-        if (mMapController != null)
-            mMapController.onResume();
+
+        if (mMapView != null)
+            mMapView.onResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (mMapController != null)
-            mMapController.onPause();
+
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mMapView != null)
+            mMapView.onStart();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (mMapController != null)
-            mMapController.onStop();
+
+        if (mMapView != null)
+            mMapView.onStop();
     }
 
     @Override
@@ -68,6 +70,14 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
 
         if (mMapView != null)
             mMapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+
+        if (mMapView != null)
+            mMapView.onLowMemory();
     }
 
     @Override

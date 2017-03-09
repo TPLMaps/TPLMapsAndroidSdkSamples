@@ -28,6 +28,54 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mMapView != null)
+            mMapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+
+        if (mMapView != null)
+            mMapView.onLowMemory();
+    }
+
+    @Override
     public void onMapReady(MapController mapController) {
 
         // TODO: Do you map tasks here

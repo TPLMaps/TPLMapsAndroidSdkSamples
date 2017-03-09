@@ -57,6 +57,39 @@ public class ActivityMapFeatures extends AppCompatActivity implements MapView.On
         MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -65,12 +98,18 @@ public class ActivityMapFeatures extends AppCompatActivity implements MapView.On
             mMapView.onDestroy();
     }
 
-    private MapController mMapController;
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+
+        if (mMapView != null)
+            mMapView.onLowMemory();
+    }
 
     @Override
     public void onMapReady(final MapController mapController) {
         // TODO: Map loaded and ready, write your map tasks here
-        mMapController = mapController;
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.tplmaps.android.sdk.samples.activities;
 
 import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,17 +9,16 @@ import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.Circle;
 import com.tplmaps3d.CircleOptions;
+import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
-import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.Marker;
 import com.tplmaps3d.MarkerOptions;
 import com.tplmaps3d.Polygon;
 import com.tplmaps3d.PolygonOptions;
 import com.tplmaps3d.Polyline;
 import com.tplmaps3d.PolylineOptions;
-import com.tplmaps3d.sdk.model.IconSize;
 import com.tplmaps3d.sdk.model.PointOfInterest;
 
 import java.util.ArrayList;
@@ -45,11 +42,52 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
 
         if(mMapView != null)
             mMapView.onDestroy();
+    }
+
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+
+        if (mMapView != null)
+            mMapView.onLowMemory();
     }
 
     @Override

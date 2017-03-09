@@ -32,7 +32,9 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
     @Override
     protected void onResume() {
         super.onResume();
-        mMapView.onResume();
+
+        if (mMapView != null)
+            mMapView.onResume();
     }
 
     @Override
@@ -65,6 +67,15 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
 
         if(mMapView != null)
             mMapView.onDestroy();
+    }
+
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+
+        if (mMapView != null)
+            mMapView.onLowMemory();
     }
 
     @Override
