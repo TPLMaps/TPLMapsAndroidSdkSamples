@@ -1,2 +1,2 @@
-include ':samples', ':tplmaps-sdk'
-project(':tplmaps-sdk').projectDir = new File('D:\\AndroidStudioProjects\\apneMaps\\library')
+include ':samples'//, ':tplmaps-sdk'
+//project(':tplmaps-sdk').projectDir = new File('D:\\AndroidStudioProjects\\tplmaps-android-sdk\\library')

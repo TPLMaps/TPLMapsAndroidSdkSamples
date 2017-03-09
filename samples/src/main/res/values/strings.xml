@@ -22,11 +22,15 @@
     <string name="double_tap_zoom_gesture">Double Tap Zoom Gesture</string>
     <string name="all_map_gestures">All Map Gestures</string>
     <string name="click_poi">Click POI</string>
-    <string name="click_map">Click Map</string>
+    <string name="click_map">Click (Map)</string>
     <string name="click_double_map">Click Double (Map)</string>
     <string name="click_long_map">Click Long (Map)</string>
     <string name="gesture_pan_map">Gesture Pan (Map)</string>
+    <string name="gesture_fling_map">Gesture Fling (Map)</string>
     <string name="gesture_rotate_map">Gesture Rotate (Map)</string>
     <string name="gesture_scale_map">Gesture Scale (Map)</string>
     <string name="gesture_shove_map">Gesture Shove (Map)</string>
+    <string name="no_listener_detected">No Listener Detected</string>
+    <string name="no_value">No Value</string>
+
 </resources>

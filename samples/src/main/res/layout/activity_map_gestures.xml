@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#ff0000"
-            android:text="Listener: " />
+            android:hint="@string/no_listener_detected" />
 
         <TextView
             android:id="@+id/tv_value"
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
             android:textColor="#0040ff"
-            android:text="Values: " />
+            android:hint="@string/no_value" />
     </LinearLayout>
 
 
