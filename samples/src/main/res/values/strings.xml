@@ -32,5 +32,6 @@
     <string name="gesture_shove_map">Gesture Shove (Map)</string>
     <string name="no_listener_detected">No Listener Detected</string>
     <string name="no_value">No Value</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

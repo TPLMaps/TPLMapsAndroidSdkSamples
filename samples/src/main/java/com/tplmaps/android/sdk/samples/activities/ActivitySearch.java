@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.tplmaps.android.R;
@@ -25,7 +25,7 @@ import java.util.Locale;
 public class ActivitySearch extends AppCompatActivity implements OnSearchResult {
 
     SearchManager searchManager;
-    Button btnSearch;
+    ImageView ivSearch, ivCancel;
     EditText etSearch;
 
     private static final String TAG = ActivitySearch.class.getSimpleName();
@@ -38,17 +38,20 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
 
         // Initialize SearchManager
         searchManager = new SearchManager(this);
-        /*searchManager.config(SearchManager.Config.builder()
-                .cancelPendingRequests(false)
-                .build());*/
+
         searchManager.setListener(this);
 
-        // Get EditText
+        setViews();
+    }
+
+    private void setViews() {
+
+        // Get search field
         etSearch = (EditText) findViewById(R.id.etSearch);
 
-        // Get Button and set listener
-        btnSearch = (Button) findViewById(R.id.btnSearch);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        // Get and set Search button
+        ivSearch = (ImageView) findViewById(R.id.ivSearch);
+        ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Request for query after initializing SearchManager
@@ -56,7 +59,19 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
                         Params.builder()
                                 .query(etSearch.getText().toString())
                                 .category("")
-                                .macAddress("").build());
+                                .macAddress("")
+                                .build());
+            }
+        });
+
+        // Get and set Cancel button
+        ivCancel = (ImageView) findViewById(R.id.ivCancel);
+        ivCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Cancel all pending requests
+                searchManager.cancelPendingRequests();
+
             }
         });
     }
@@ -83,19 +98,19 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
     @Override
     public void onSearchResultNotFound(Params params, long requestTimeInMS) {
         CommonUtils.showToast(this, "Results not found against query: " + params.query +
-                        " at " + getDateFormatFromMilliSeconds(requestTimeInMS),
+                        " at " + getDateFormatFromMilliSeconds("dd-MM-yyyy HH:mm:ss", requestTimeInMS),
                 2000, true);
     }
 
     @Override
     public void onSearchRequestFailure(Exception e) {
-        e.printStackTrace();
+        //e.printStackTrace();
     }
 
     @Override
     public void onSearchRequestCancel(Params params, long requestTimeInMS) {
         Log.i(TAG, "Request cancelled against query: " + params.query +
-                " at " + getDateFormatFromMilliSeconds(requestTimeInMS));
+                " at " + getDateFormatFromMilliSeconds("dd-MM-yyyy HH:mm:ss", requestTimeInMS));
     }
 
     @Override
@@ -104,8 +119,7 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
     }
 
 
-    private String getDateFormatFromMilliSeconds(long timeInMS) {
-        final String DATE_FORMAT = "dd-MM-yyyy HH:mm:ss";
-        return new SimpleDateFormat(DATE_FORMAT, Locale.getDefault()).format(new Date(timeInMS));
+    private String getDateFormatFromMilliSeconds(String format, long timeInMS) {
+        return new SimpleDateFormat(format, Locale.getDefault()).format(new Date(timeInMS));
     }
 }
