@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.tplmaps.android.R;
+import com.tplmaps.android.sdk.samples.constants.OfflineMapConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
@@ -32,6 +33,7 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
         mMapView = (MapView) findViewById(R.id.map);
         MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -84,6 +86,9 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
     public void onMapReady(final MapController mapController) {
 
         mMapController = mapController;
+
+        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+                OfflineMapConstants.getInstance(this).getOfflineMapKey());
 
         mMapController.getLocationConfig()
                 .setLocationSettings(true)

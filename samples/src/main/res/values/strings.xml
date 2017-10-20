@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">TPL Maps SDK Samples</string>
-    <string name="tplmaps">TPL Maps</string>
     <string name="maps">Maps</string>
     <string name="compass">Compass</string>
     <string name="zoom_controls">Zoom Controls</string>
@@ -33,5 +32,6 @@
     <string name="no_listener_detected">No Listener Detected</string>
     <string name="no_value">No Value</string>
     <string name="cancel">Cancel</string>
+    <string name="button">Button</string>
 
 </resources>

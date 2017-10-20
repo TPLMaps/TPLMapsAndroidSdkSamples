@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.tplmaps.android.R;
+import com.tplmaps.android.sdk.samples.constants.OfflineMapConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
@@ -65,7 +66,7 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
     protected void onDestroy() {
         super.onDestroy();
 
-        if(mMapView != null)
+        if (mMapView != null)
             mMapView.onDestroy();
     }
 
@@ -82,6 +83,9 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
     public void onMapReady(final MapController mapController) {
 
         CommonUtils.showToast(this, "Map Ready", Toast.LENGTH_SHORT, false);
+
+        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+                OfflineMapConstants.getInstance(this).getOfflineMapKey());
 
         // TODO: Map loaded and ready, write your map tasks here
     }

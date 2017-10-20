@@ -8,11 +8,13 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.tplmaps.android.R;
+import com.tplmaps.android.sdk.samples.constants.OfflineMapConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
 import com.tplmaps3d.TouchInput;
+import com.tplmaps3d.sdk.model.PointOfInterest;
 
 import java.text.DecimalFormat;
 
@@ -95,6 +97,11 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
 
         mMapController = mapController;
 
+        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+                OfflineMapConstants.getInstance(this).getOfflineMapKey());
+
+        mapController.setPickRadius(getResources().getInteger(R.integer.pick_radius));
+
         // TODO: Map loaded and ready, write your map tasks here
     }
 
@@ -150,7 +157,7 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
     }
 
 
-    enum ListenerType {
+    private enum ListenerType {
         CLICK_SINGLE, CLICK_DOUBLE, CLICK_LONG, PAN, ROTATE, SCALE, SHOVE, POI
     }
 
@@ -221,8 +228,8 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
                         @Override
                         public boolean onRotate(float x, float y, float rotation) {
                             tvListener.setText(getString(R.string.gesture_rotate_map));
-                            String valueRotation = "Rotation (In Degrees): " +
-                                    roundDecimalsUpto(Math.toDegrees(mMapController.getMapCameraPosition().rotation), 2);
+                            String valueRotation = "Rotation: " +
+                                    roundDecimalsUpto(rotation, 2);
                             tvValues.setText(valueRotation);
                             return false;
                         }
@@ -247,6 +254,18 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
                 break;
 
             case POI:
+                if (mMapController != null) {
+                    mMapController.setOnPoiClickListener(register ? new MapController.OnPoiClickListener() {
+                        @Override
+                        public void onPoiClick(PointOfInterest place) {
+                            LngLat lngLat = mMapController.screenPositionToLngLat(new PointF((float) place.lngLat.longitude,
+                                    (float) place.lngLat.latitude));
+                            tvListener.setText(getString(R.string.click_poi));
+                            tvValues.setText(place.name + ", " + roundDecimalsUpto(lngLat.latitude, 4)
+                                    + ", " + roundDecimalsUpto(lngLat.longitude, 4));
+                        }
+                    } : null);
+                }
                 break;
         }
     }

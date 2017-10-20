@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.tplmaps.android.R;
+import com.tplmaps.android.sdk.samples.constants.OfflineMapConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.CameraPosition;
 import com.tplmaps3d.LngLat;
@@ -16,7 +17,6 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
         MapController.OnCameraChangeEndListener {
 
     private MapView mMapView;
-
     private static final String TAG = ActivityCamera.class.getSimpleName();
 
     @Override
@@ -82,34 +82,48 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
 
     @Override
     public void onMapReady(MapController mapController) {
-        // TODO: Do you map tasks here
+        // TODO: Do your map tasks here
+
+        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+                OfflineMapConstants.getInstance(this).getOfflineMapKey());
 
         mapController.setOnCameraChangeStartedListener(this);
         mapController.setOnCameraChangeListener(this);
         mapController.setOnCameraChangeEndListener(this);
 
-        performCameraFunctions(mapController);
+        // Setting map max tilt value
+        mapController.setMaxTilt(85);
+
+        // Applying animation to map camera
+        mapController.animateCamera(CameraPosition.builder(mapController)
+                .position(new LngLat(73.0684356, 33.6934396))
+                .zoom(18.3f)
+                .tilt(0.9F)
+                .rotation(13.0F)
+                .build(), 2000);
+
+        //performCameraFunctions(mapController);
     }
 
-    public void performCameraFunctions(MapController mapController) {
+    /*public void performCameraFunctions(MapController mapController) {
 
         // Bounds I-10 in Rect Window
-        /*mapController.setBoundsInWindow(
+        *//*mapController.setBoundsInWindow(
                         new Bounds(new LngLat(73.035070, 33.637313), new LngLat(73.041247, 33.659408)),
                         new Rect(50, 50, 720, 1118),
-                        150, 2000);*/
+                        150, 2000);*//*
 
         // Point Pakistan Monument
         //mapController.setLngLatToPointOnScreen(new LngLat(73.0684356, 33.6934396), new PointF(200, 200), 1000);
 
-
         // Animate Camera to Pakistan Monument
-        mapController.animateCamera(CameraPosition.builder()
+        *//*mapController.animateCamera(CameraPosition.builder(mapController)
                 .position(new LngLat(73.0684356, 33.6934396))
                 .zoom(18.3f)
                 .tilt(0.9F)
-                .rotation((float) Math.toRadians(13.0F))
-                .build(), 2000);
+                .rotation(13.0F)
+                .build(), 2000);*//*
+
 
         // Get Map Bounds
         //CommonUtils.showToastShort(ActivityUIControls.this, mapController.getMapBounds().toString(), true);
@@ -118,7 +132,7 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
         //mapController.setLngLat(new LngLat(73.168284, 45.793298));
 
         //CommonUtils.showToastShort(ActivityUIControls.this, mapController.getMapCameraPosition().toString(), true);
-    }
+    }*/
 
     @Override
     public void onCameraChangeStarted(CameraPosition cameraPosition) {
