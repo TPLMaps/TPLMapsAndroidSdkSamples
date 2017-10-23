@@ -223,6 +223,8 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
         final Polyline polyline = mMapController.addPolyline(new PolylineOptions()
                 .add(new LngLat(73.094177, 33.729113), new LngLat(73.090913, 33.727616))
+                .add(new LngLat(73.090913, 33.727616), new LngLat(73.096118, 33.728488))
+                .add(new LngLat(73.096118, 33.728488), new LngLat(73.106513, 33.714936))
                 .color(Color.WHITE).width(10).order(5).outlineWidth(2)
                 .outlineColor(Color.BLUE).clickable(true));
 

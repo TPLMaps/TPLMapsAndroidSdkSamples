@@ -33,5 +33,6 @@
     <string name="no_value">No Value</string>
     <string name="cancel">Cancel</string>
     <string name="button">Button</string>
+    <string name="zoom_camera_to_bounds">Zoom Camera to Bounds</string>
 
 </resources>
