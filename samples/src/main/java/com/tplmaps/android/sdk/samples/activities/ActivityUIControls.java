@@ -87,7 +87,7 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
 
         mMapController = mapController;
 
-        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
                 OfflineMapConstants.getInstance(this).getOfflineMapKey());
 
         mMapController.getLocationConfig()

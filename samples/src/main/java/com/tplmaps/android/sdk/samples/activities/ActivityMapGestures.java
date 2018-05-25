@@ -97,7 +97,7 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
 
         mMapController = mapController;
 
-        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
                 OfflineMapConstants.getInstance(this).getOfflineMapKey());
 
         mapController.setPickRadius(getResources().getInteger(R.integer.pick_radius));

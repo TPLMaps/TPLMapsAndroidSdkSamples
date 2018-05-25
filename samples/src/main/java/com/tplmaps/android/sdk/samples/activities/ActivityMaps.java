@@ -84,8 +84,11 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
 
         CommonUtils.showToast(this, "Map Ready", Toast.LENGTH_SHORT, false);
 
-        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
                 OfflineMapConstants.getInstance(this).getOfflineMapKey());
+
+        // Setting map max tilt value
+        mapController.setMaxTilt(85);
 
         // TODO: Map loaded and ready, write your map tasks here
     }

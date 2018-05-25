@@ -90,7 +90,7 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
 
         mMapController = mapController;
 
-        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
                 OfflineMapConstants.getInstance(this).getOfflineMapKey());
 
         mMapController.setLngLat(new LngLat(73.093104, 33.730494));

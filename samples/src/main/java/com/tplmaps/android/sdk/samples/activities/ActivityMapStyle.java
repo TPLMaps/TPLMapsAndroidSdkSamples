@@ -81,7 +81,7 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
 
         // TODO: Do you map tasks here
 
-        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
                 OfflineMapConstants.getInstance(this).getOfflineMapKey());
 
         // Setting custom map style after map ready
@@ -96,7 +96,7 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
         mMapView.setMapStyle(R.raw.sample_map_style1);
     }
 
-    private String getJsonString() {
+    /*private String getJsonString() {
         return "[\n" +
                 "  {\n" +
                 "    \"featureType\": \"map.mode\",\n" +
@@ -141,5 +141,5 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
                 "\t}\n" +
                 "  }\n" +
                 "]";
-    }
+    }*/
 }

@@ -94,7 +94,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
     @Override
     public void onMapReady(final MapController mapController) {
 
-        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
                 OfflineMapConstants.getInstance(this).getOfflineMapKey());
 
         mapController.setLngLat(new LngLat(73.093104, 33.730494));

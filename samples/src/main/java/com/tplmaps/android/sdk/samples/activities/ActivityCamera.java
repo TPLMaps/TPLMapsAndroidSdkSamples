@@ -107,7 +107,7 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
     public void onMapReady(MapController mapController) {
         // TODO: Do your map tasks here
 
-        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
                 OfflineMapConstants.getInstance(this).getOfflineMapKey());
 
         mapController.setOnCameraChangeStartedListener(this);

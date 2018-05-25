@@ -112,7 +112,7 @@ public class ActivityMapFeatures extends AppCompatActivity implements MapView.On
     public void onMapReady(final MapController mapController) {
         // TODO: Map loaded and ready, write your map tasks here
 
-        mapController.configureOfflineMap(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
                 OfflineMapConstants.getInstance(this).getOfflineMapKey());
     }
 
