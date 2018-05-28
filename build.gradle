@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.google.gms:google-services:3.0.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
 
@@ -19,6 +19,7 @@ allprojects {
         jcenter()
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-        maven { url "http://192.168.10.70:8081/artifactory/example-repo-local" }
+        //maven { url "http://192.168.10.70:8081/artifactory/example-repo-local" }
+        maven { url "http://175.107.206.56:8081/artifactory/example-repo-local" }
     }
 }
