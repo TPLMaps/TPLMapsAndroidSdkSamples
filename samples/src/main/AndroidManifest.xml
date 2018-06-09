@@ -68,11 +68,9 @@
             android:label="@string/map_features"
             android:parentActivityName=".sdk.samples.activities.ActivityMain" />
 
-
         <meta-data
-            android:name="com.tplmaps.android.sdk.API_KEY"
+            android:name="@string/metadata_name_api_key"
             android:value="YOUR_API_KEY" />
-
 
     </application>
 
