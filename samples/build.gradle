@@ -38,8 +38,7 @@ dependencies {
 
     // Maps Dependency
     //compile project(':tplmaps-sdk')
-
-    compile 'com.tplmaps.sdk:library:1.1.0'
+    compile 'com.tplmaps.sdk:library:1.1.01'
 
     //compile 'com.github.TPLMaps:library:1.0.11'
     //compile 'com.github.TPLMaps:tplmaps-android-sdk:0.01'
