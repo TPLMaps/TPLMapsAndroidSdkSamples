@@ -6,7 +6,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.constants.OfflineMapConstants;
+import com.tplmaps.android.sdk.samples.constants.DecryptManagerConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapMode;
@@ -113,7 +113,7 @@ public class ActivityMapFeatures extends AppCompatActivity implements MapView.On
         // TODO: Map loaded and ready, write your map tasks here
 
         mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
-                OfflineMapConstants.getInstance(this).getOfflineMapKey());
+                DecryptManagerConstants.getInstance(this).getKey());
     }
 
     @Override

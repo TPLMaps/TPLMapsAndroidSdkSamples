@@ -10,7 +10,7 @@ package com.tplmaps.android.sdk.samples.constants;
 public class SecurityConstants {
 
     // TODO [Release] Set false when prepare release build
-    public static final boolean BUILD_CONFIG_DEBUG = true;
+    public static final boolean BUILD_CONFIG_DEBUG = false;
 
     // TODO [Release] Set false when prepare release build
     public static final boolean ENABLE_DEBUGGER_LOGS = true;

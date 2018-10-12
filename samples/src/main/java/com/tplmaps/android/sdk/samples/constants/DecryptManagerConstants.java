@@ -5,26 +5,26 @@ import android.content.Context;
 import com.tplmaps.android.sdk.samples.utils.CipherUtils;
 
 @SuppressWarnings("FieldCanBeLocal")
-public class OfflineMapConstants {
+public class DecryptManagerConstants {
 
     private Context mContext;
 
-    private static OfflineMapConstants mInstance;
+    private static DecryptManagerConstants mInstance;
 
     private final String O_M_K = "MiXViOMloiBvoSa2KD9g7RGtFSSMhQq83llsbfh7X9cDaNNKT4bQFStaj6XV3fn0";
 
-    private OfflineMapConstants(Context context) {
+    private DecryptManagerConstants(Context context) {
         mContext = context;
     }
 
-    public static OfflineMapConstants getInstance(Context context) {
+    public static DecryptManagerConstants getInstance(Context context) {
         if (mInstance == null)
-            mInstance = new OfflineMapConstants(context);
+            mInstance = new DecryptManagerConstants(context);
 
         return mInstance;
     }
 
-    public String getOfflineMapKey() {
+    public String getKey() {
         return CipherUtils.decrypt(mContext, O_M_K);
     }
 }

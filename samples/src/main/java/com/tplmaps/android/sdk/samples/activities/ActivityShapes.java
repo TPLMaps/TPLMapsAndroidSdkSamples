@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.constants.OfflineMapConstants;
+import com.tplmaps.android.sdk.samples.constants.DecryptManagerConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.Circle;
 import com.tplmaps3d.CircleOptions;
@@ -95,7 +95,7 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
     public void onMapReady(final MapController mapController) {
 
         mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
-                OfflineMapConstants.getInstance(this).getOfflineMapKey());
+                DecryptManagerConstants.getInstance(this).getKey());
 
         mapController.setLngLat(new LngLat(73.093104, 33.730494));
         mapController.setZoomBy(15);
