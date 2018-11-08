@@ -220,9 +220,11 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         subInfoView.setLayoutParams(subInfoViewParams);
 
         TextView subInfoLat = new TextView(ActivityInfoWindows.this);
-        subInfoLat.setText("Lat: " + tplMarker.getPosition().latitude);
+        String text = "Lat: " + tplMarker.getPosition().latitude;
+        subInfoLat.setText(text);
         TextView subInfoLnt = new TextView(ActivityInfoWindows.this);
-        subInfoLnt.setText("Lnt: " + tplMarker.getPosition().longitude);
+        text = "Lnt: " + tplMarker.getPosition().longitude;
+        subInfoLnt.setText(text);
         subInfoView.addView(subInfoLat);
         subInfoView.addView(subInfoLnt);
         infoView.addView(subInfoView);

@@ -47,10 +47,10 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
     private void setViews() {
 
         // Get search field
-        etSearch = (EditText) findViewById(R.id.etSearch);
+        etSearch = findViewById(R.id.etSearch);
 
         // Get and set Search button
-        ivSearch = (ImageView) findViewById(R.id.ivSearch);
+        ivSearch = findViewById(R.id.ivSearch);
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,29 +65,41 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
         });
 
         // Get and set Cancel button
-        ivCancel = (ImageView) findViewById(R.id.ivCancel);
+        ivCancel = findViewById(R.id.ivCancel);
         ivCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Cancel all pending requests
+                etSearch.getText().clear();
                 searchManager.cancelPendingRequests();
-
+                clearList();
             }
         });
     }
 
+    ArrayList<String> strResults;
+    ArrayAdapter<String> adapter;
     void populateListView(ArrayList<Place> results) {
         if (results == null)
             return;
 
-        ArrayList<String> strResults = new ArrayList<>();
+        strResults = new ArrayList<>();
         for (Place place : results) {
             strResults.add(place.getName());
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+        adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_2, android.R.id.text1, strResults);
         ((ListView) findViewById(R.id.listview)).setAdapter(adapter);
+    }
+
+    void clearList() {
+        if(strResults != null)
+            strResults.clear();
+        if(adapter != null && strResults != null && strResults.size() > 0)
+            adapter.clear();
+        if(adapter != null)
+            adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -119,6 +131,7 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
     }
 
 
+    @SuppressWarnings("SameParameterValue")
     private String getDateFormatFromMilliSeconds(String format, long timeInMS) {
         return new SimpleDateFormat(format, Locale.getDefault()).format(new Date(timeInMS));
     }

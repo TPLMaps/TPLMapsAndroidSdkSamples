@@ -6,9 +6,10 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath 'com.google.gms:google-services:3.0.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.0"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -19,8 +20,8 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        google()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
-        //maven { url "http://192.168.10.70:8081/artifactory/example-repo-local" }
-        maven { url "http://175.107.206.56:8081/artifactory/example-repo-local" }
+        maven { url "http://api.tplmaps.com:8081/artifactory/example-repo-local/" }
     }
 }
