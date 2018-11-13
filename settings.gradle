@@ -2,3 +2,6 @@ include ':samples'
 
 /*include ':tplmaps-sdk-maps'
 project(':tplmaps-sdk-maps').projectDir = new File('E:\\AndroidStudioProjects\\tplmaps-android-sdk\\maps')*/
+
+/*include ':tplmaps-sdk-routing'
+project(':tplmaps-sdk-routing').projectDir = new File('E:\\AndroidStudioProjects\\tplmaps-android-sdk\\routing')*/

@@ -11,10 +11,10 @@ import android.widget.ListView;
 
 import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.constants.URLConstants;
-import com.tplmaps3d.sdk.search.OnSearchResult;
-import com.tplmaps3d.sdk.search.Params;
-import com.tplmaps3d.sdk.search.Place;
-import com.tplmaps3d.sdk.search.SearchManager;
+import com.tplmaps.sdk.places.OnSearchResult;
+import com.tplmaps.sdk.places.Params;
+import com.tplmaps.sdk.places.Place;
+import com.tplmaps.sdk.places.SearchManager;
 import com.tplmaps3d.sdk.utils.CommonUtils;
 
 import java.text.SimpleDateFormat;

@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.tplmaps.android.R;
 
-public class ActivityMain extends AppCompatActivity implements View.OnClickListener{
+public class ActivityMain extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,37 +19,40 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initViews() {
-        Button btnMaps = (Button) findViewById(R.id.btn_maps);
+        Button btnMaps = findViewById(R.id.btn_maps);
         btnMaps.setOnClickListener(this);
 
-        Button btnMapFeatures = (Button) findViewById(R.id.btn_map_features);
+        Button btnMapFeatures = findViewById(R.id.btn_map_features);
         btnMapFeatures.setOnClickListener(this);
 
-        Button btnUIControls = (Button) findViewById(R.id.btn_ui_controls);
+        Button btnUIControls = findViewById(R.id.btn_ui_controls);
         btnUIControls.setOnClickListener(this);
 
-        Button btnCamera = (Button) findViewById(R.id.btn_map_camera);
+        Button btnCamera = findViewById(R.id.btn_map_camera);
         btnCamera.setOnClickListener(this);
 
-        Button btnMapGestures = (Button) findViewById(R.id.btn_map_gestures);
+        Button btnMapGestures = findViewById(R.id.btn_map_gestures);
         btnMapGestures.setOnClickListener(this);
 
-        Button btnSearch = (Button) findViewById(R.id.btn_search);
+        Button btnSearch = findViewById(R.id.btn_search);
         btnSearch.setOnClickListener(this);
 
-        Button btnShapes = (Button) findViewById(R.id.btn_shapes);
+        Button btnRouting = findViewById(R.id.btn_routing);
+        btnRouting.setOnClickListener(this);
+
+        Button btnShapes = findViewById(R.id.btn_shapes);
         btnShapes.setOnClickListener(this);
 
-        Button btnInfoWindows = (Button) findViewById(R.id.btn_info_windows);
+        Button btnInfoWindows = findViewById(R.id.btn_info_windows);
         btnInfoWindows.setOnClickListener(this);
 
-        Button btnMapStyle = (Button) findViewById(R.id.btn_map_style);
+        Button btnMapStyle = findViewById(R.id.btn_map_style);
         btnMapStyle.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch(view.getId()) {
+        switch (view.getId()) {
             case R.id.btn_maps:
                 startActivity(new Intent(ActivityMain.this, ActivityMaps.class));
                 break;
@@ -67,6 +70,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_search:
                 startActivity(new Intent(ActivityMain.this, ActivitySearch.class));
+                break;
+            case R.id.btn_routing:
+                startActivity(new Intent(ActivityMain.this, ActivityRouting.class));
                 break;
             case R.id.btn_shapes:
                 startActivity(new Intent(ActivityMain.this, ActivityShapes.class));

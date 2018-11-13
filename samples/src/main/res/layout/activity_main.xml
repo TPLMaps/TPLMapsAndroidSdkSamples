@@ -52,6 +52,12 @@
             android:text="@string/search" />
 
         <Button
+            android:id="@+id/btn_routing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/routing" />
+
+        <Button
             android:id="@+id/btn_shapes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

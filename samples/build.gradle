@@ -32,14 +32,45 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Dependencies
+    /*
+     Dependencies
+    */
+
     implementation 'com.android.support:appcompat-v7:28.0.0'
 
-    implementation 'com.tpl.maps.sdk:maps:1.1.01'
+    // 1 Dependency to incorporate TPLMaps SDK (TPLMaps API) with the project
+    implementation 'com.tpl.maps.sdk:maps:1.1.0'
 
+    // 2 Dependencies must add to utilize places artifact of TPLMaps SDK
+    implementation 'com.tpl.maps.sdk:places:1.0.0@aar'
+    // Retrofit
+    implementation('com.squareup.retrofit2:retrofit:2.4.0') {
+        exclude group: 'com.android.support'
+    }
+    // Retrofit Converter Gson
+    implementation('com.squareup.retrofit2:converter-gson:2.4.0') {
+        exclude group: 'com.android.support'
+    }
+    // 2 END
+
+    // 3 Dependencies must add to utilize routing artifact of TPLMaps SDK
+    implementation 'com.tpl.maps.sdk:routing:1.0.0@aar'
+    // Volley (HTTP library)
+    implementation 'com.mcxiaoke.volley:library-aar:1.0.0'
+    // Material Dialogs Library
+    implementation('com.afollestad.material-dialogs:core:0.9.1.0') {
+        exclude group: 'com.android.support', module: 'support-v4'
+    }
+    //implementation 'com.android.support:support-v4:28.0.0'
+    // 3 END
+
+    // To exclude support-v4 module from all mentioned dependencies to avoid MultiDex problem or Resources conflicts
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     configurations {
         all*.exclude group: 'com.android.support', module: 'support-v4'
+        all*.exclude group: 'com.android.support', module: 'support-v13'
     }
 
     //implementation project(':tplmaps-sdk-maps')
+    //implementation project(':tplmaps-sdk-routing')
 }
