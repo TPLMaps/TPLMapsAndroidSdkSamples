@@ -45,13 +45,16 @@ public class ActivityRouting extends AppCompatActivity {
             @Override
             public void onMapRoutingOverview(ArrayList<Place> endPoints, ArrayList<TPLRoute> routes) {
                 String response;
-                response = "Start: " + endPoints.get(0).getY() + "," + endPoints.get(0).getX() + "\n";
-                response += "End: " + endPoints.get(1).getY() + "," + endPoints.get(1).getX() + "\n";
+                response = "Start: " + endPoints.get(0).getName() + " (" + endPoints.get(0).getY() +
+                        "," + endPoints.get(0).getX() + ")\n";
+                response += "End: " + endPoints.get(1).getName() + " (" + endPoints.get(1).getY() +
+                        "," + endPoints.get(1).getX() + ")\n";
 
                 int routeNo = 0;
                 for (TPLRoute route : routes) {
-                    response += "\n\nRoute " + (++routeNo) + "\nRoute Length (In Meters): " + route.getTotalLength() + "\n"
-                            + "Route Time (In Milliseconds): " + route.getTotalTime() + "\n";
+                    response += "\n\nRoute " + (++routeNo) + "\nRoute Length (In Meters): "
+                            + route.getTotalLength() + "\n" + "Route Time (In Milliseconds): "
+                            + route.getTotalTime() + "\n";
                     response += "Turns: \n";
                     for (TPLRouteDirection routeDirection : route.getListRouteDirections()) {
                         response += routeDirection.getCompleteText() + "\n";
