@@ -38,27 +38,25 @@ dependencies {
 
     //implementation 'com.android.support:appcompat-v7:28.0.0'
 
-     //1 Dependency to incorporate TPLMaps SDK (TPLMaps API) with the project
+     //MAPS: Dependency to incorporate TPLMaps SDK (TPLMaps API) with the project
     implementation 'com.tpl.maps.sdk:maps:1.1.01'
 
-    // 2 Dependencies must add to utilize places artifact of TPLMaps SDK
+    //SEARCH: START Dependencies must add to utilize places artifact of TPLMaps SDK
     implementation 'com.tpl.maps.sdk:places:1.0.0@aar'
     // Retrofit
     implementation('com.squareup.retrofit2:retrofit:2.4.0')
-    // Retrofit Converter Gson
     implementation('com.squareup.retrofit2:converter-gson:2.4.0')
-    //2 END
+    //END
 
-    // 3 Dependencies must add to utilize routing artifact of TPLMaps SDK
+    //ROUTING: START Dependencies must add to utilize routing artifact of TPLMaps SDK
     implementation 'com.tpl.maps.sdk:routing:1.0.0@aar'
-    // Volley (HTTP library)
+
     implementation 'com.mcxiaoke.volley:library-aar:1.0.0'
-    // Material Dialogs Library
     implementation('com.afollestad.material-dialogs:core:0.9.1.0') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
     implementation 'com.android.support:support-v4:28.0.0'
-    // 3 END
+    //END
 
     // To exclude support-v4 module from all mentioned dependencies to avoid MultiDex problem or Resources conflicts
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
