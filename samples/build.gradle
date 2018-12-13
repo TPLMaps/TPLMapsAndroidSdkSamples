@@ -36,22 +36,18 @@ dependencies {
      Dependencies
     */
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    //implementation 'com.android.support:appcompat-v7:28.0.0'
 
-    // 1 Dependency to incorporate TPLMaps SDK (TPLMaps API) with the project
-    implementation 'com.tpl.maps.sdk:maps:1.1.0'
+     //1 Dependency to incorporate TPLMaps SDK (TPLMaps API) with the project
+    implementation 'com.tpl.maps.sdk:maps:1.1.01'
 
     // 2 Dependencies must add to utilize places artifact of TPLMaps SDK
     implementation 'com.tpl.maps.sdk:places:1.0.0@aar'
     // Retrofit
-    implementation('com.squareup.retrofit2:retrofit:2.4.0') {
-        exclude group: 'com.android.support'
-    }
+    implementation('com.squareup.retrofit2:retrofit:2.4.0')
     // Retrofit Converter Gson
-    implementation('com.squareup.retrofit2:converter-gson:2.4.0') {
-        exclude group: 'com.android.support'
-    }
-    // 2 END
+    implementation('com.squareup.retrofit2:converter-gson:2.4.0')
+    //2 END
 
     // 3 Dependencies must add to utilize routing artifact of TPLMaps SDK
     implementation 'com.tpl.maps.sdk:routing:1.0.0@aar'
@@ -61,7 +57,7 @@ dependencies {
     implementation('com.afollestad.material-dialogs:core:0.9.1.0') {
         exclude group: 'com.android.support', module: 'support-v4'
     }
-    //implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
     // 3 END
 
     // To exclude support-v4 module from all mentioned dependencies to avoid MultiDex problem or Resources conflicts
@@ -71,6 +67,24 @@ dependencies {
         all*.exclude group: 'com.android.support', module: 'support-v13'
     }
 
-    //implementation project(':tplmaps-sdk-maps')
-    //implementation project(':tplmaps-sdk-routing')
+    ////////////////////// For internal developers use ////////////////////////////////
+    /*implementation project(':sdk-maps')
+    implementation project(':sdk-routing')
+    implementation project(':sdk-places')
+    implementation 'com.android.support:appcompat-v7:28.0.0'*/
+
+    /*configurations {
+        all*.exclude group: 'com.android.support'
+        all*.exclude group: 'com.android.support', module: 'support-v4'
+        all*.exclude group: 'com.android.support', module: 'support-v13'
+    }*/
+    ////////////////////// END ///////////////////////////
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-v4:28.0.0'
+        force 'com.android.support:support-v7:28.0.0'
+        force 'com.android.support:support-v13:28.0.0'
+    }
 }
