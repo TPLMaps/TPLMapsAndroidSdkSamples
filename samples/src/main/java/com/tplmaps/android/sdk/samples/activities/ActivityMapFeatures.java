@@ -22,6 +22,7 @@ public class ActivityMapFeatures extends AppCompatActivity implements MapView.On
     final boolean ENABLE_NIGHT_MODE_DEFAULT = false;
     final boolean ENABLE_BUILDINGS_DEFAULT = true;
     final boolean ENABLE_POIS_DEFAULT = true;
+    final boolean ENABLE_TRAFFIC_DEFAULT = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,12 @@ public class ActivityMapFeatures extends AppCompatActivity implements MapView.On
         cbPOIs.setChecked(ENABLE_POIS_DEFAULT);
         // Setting POIs as default
         onCheckedChanged(cbPOIs, ENABLE_POIS_DEFAULT);
+
+        CheckBox cbTraffic = ((CheckBox) findViewById(R.id.cb_traffic));
+        cbTraffic.setOnCheckedChangeListener(this);
+        cbTraffic.setChecked(ENABLE_TRAFFIC_DEFAULT);
+        // Setting POIs as default
+        onCheckedChanged(cbTraffic, ENABLE_TRAFFIC_DEFAULT);
 
         // OR you can make settings for map defaults by calling these methods but before loading map
         /*mMapView.setMapMode(MapMode.DEFAULT);
@@ -131,6 +138,10 @@ public class ActivityMapFeatures extends AppCompatActivity implements MapView.On
 
             case R.id.cb_pois:
                 mMapView.setPOIsEnabled(checked);
+                break;
+
+            case R.id.cb_traffic:
+                mMapView.setTrafficEnabled(checked);
                 break;
         }
     }
