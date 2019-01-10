@@ -39,7 +39,7 @@ dependencies {
     //implementation 'com.android.support:appcompat-v7:28.0.0'
 
      //MAPS: Dependency to incorporate TPLMaps SDK (TPLMaps API) with the project
-    /*implementation 'com.tpl.maps.sdk:maps:1.1.01'
+    implementation 'com.tpl.maps.sdk:maps:1.2'
 
     //SEARCH: START Dependencies must add to utilize places artifact of TPLMaps SDK
     implementation 'com.tpl.maps.sdk:places:1.0.0@aar'
@@ -63,13 +63,13 @@ dependencies {
     configurations {
         all*.exclude group: 'com.android.support', module: 'support-v4'
         all*.exclude group: 'com.android.support', module: 'support-v13'
-    }*/
+    }
 
     ////////////////////// For internal developers use ////////////////////////////////
-    implementation project(':sdk-maps')
+    /*implementation project(':sdk-maps')
     implementation project(':sdk-routing')
     implementation project(':sdk-places')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'*/
 
     /*configurations {
         all*.exclude group: 'com.android.support'
