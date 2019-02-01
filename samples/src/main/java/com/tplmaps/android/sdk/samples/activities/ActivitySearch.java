@@ -42,6 +42,16 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
         searchManager.setListener(this);
 
         setViews();
+
+        searchManager.onCreate();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        searchManager.onDestroy();
+        searchManager = null;
     }
 
     private void setViews() {
@@ -55,12 +65,9 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
             @Override
             public void onClick(View view) {
                 // Request for query after initializing SearchManager
-                searchManager.request(URLConstants.URL_SEARCH,
-                        Params.builder()
-                                .query(etSearch.getText().toString())
-                                .category("")
-                                .macAddress("")
-                                .build());
+                searchManager.request(Params.builder()
+                        .query(etSearch.getText().toString())
+                        .build());
             }
         });
 

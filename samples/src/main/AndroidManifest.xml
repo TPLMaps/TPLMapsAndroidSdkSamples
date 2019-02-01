@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sdk.samples.activities.ActivityRouting"></activity>
+
         <activity
             android:name=".sdk.samples.activities.ActivityMain"
             android:configChanges="screenSize|orientation"
@@ -67,6 +67,11 @@
             android:name=".sdk.samples.activities.ActivityMapFeatures"
             android:configChanges="screenSize|orientation"
             android:label="@string/map_features"
+            android:parentActivityName=".sdk.samples.activities.ActivityMain" />
+        <activity
+            android:name=".sdk.samples.activities.ActivityRouting"
+            android:configChanges="screenSize|orientation"
+            android:label="@string/routing"
             android:parentActivityName=".sdk.samples.activities.ActivityMain" />
 
         <meta-data
