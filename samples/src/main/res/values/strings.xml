@@ -36,5 +36,6 @@
     <string name="button">Button</string>
     <string name="zoom_camera_to_bounds">Zoom Camera to Bounds</string>
     <string name="routing">Routing</string>
+    <string name="calculate">Calculate</string>
 
 </resources>
