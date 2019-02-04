@@ -42,14 +42,14 @@ dependencies {
     implementation 'com.tpl.maps.sdk:maps:1.2'
 
     //SEARCH: START Dependencies must add to utilize places artifact of TPLMaps SDK
-    implementation 'com.tpl.maps.sdk:places:1.0.0@aar'
+    implementation 'com.tpl.maps.sdk:places:1.0.1@aar'
     // Retrofit
     implementation('com.squareup.retrofit2:retrofit:2.4.0')
     implementation('com.squareup.retrofit2:converter-gson:2.4.0')
     //END
 
     //ROUTING: START Dependencies must add to utilize routing artifact of TPLMaps SDK
-    implementation 'com.tpl.maps.sdk:routing:1.0.0@aar'
+    implementation 'com.tpl.maps.sdk:routing:1.0.1@aar'
 
     implementation 'com.mcxiaoke.volley:library-aar:1.0.0'
     implementation('com.afollestad.material-dialogs:core:0.9.1.0') {
