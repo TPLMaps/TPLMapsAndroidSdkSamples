@@ -8,7 +8,6 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.constants.DecryptManagerConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
@@ -96,9 +95,6 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
     public void onMapReady(final MapController mapController) {
 
         mMapController = mapController;
-
-        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
-                DecryptManagerConstants.getInstance(this).getKey());
 
         mapController.setPickRadius(getResources().getInteger(R.integer.pick_radius));
 

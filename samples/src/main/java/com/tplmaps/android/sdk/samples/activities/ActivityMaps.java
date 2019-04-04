@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.constants.DecryptManagerConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
@@ -84,8 +83,8 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
 
         CommonUtils.showToast(this, "Map Ready", Toast.LENGTH_SHORT, false);
 
-        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
-                DecryptManagerConstants.getInstance(this).getKey());
+        /*mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
+                DecryptManagerConstants.getInstance(this).getKey());*/
 
         // Setting map max tilt value
         mapController.setMaxTilt(85);

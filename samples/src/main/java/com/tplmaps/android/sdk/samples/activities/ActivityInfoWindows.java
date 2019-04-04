@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.constants.DecryptManagerConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.LngLat;
@@ -89,9 +88,6 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
     public void onMapReady(final MapController mapController) {
 
         mMapController = mapController;
-
-        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
-                DecryptManagerConstants.getInstance(this).getKey());
 
         mMapController.setLngLat(new LngLat(73.093104, 33.730494));
         mMapController.setZoomBy(15);

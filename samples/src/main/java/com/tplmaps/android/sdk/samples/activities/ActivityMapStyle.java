@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.constants.DecryptManagerConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
@@ -80,9 +79,6 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
     public void onMapReady(MapController mapController) {
 
         // TODO: Do you map tasks here
-
-        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
-                DecryptManagerConstants.getInstance(this).getKey());
 
         // Setting custom map style after map ready
         //setMapStyle();

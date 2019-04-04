@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.constants.DecryptManagerConstants;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.CameraPosition;
 import com.tplmaps3d.LngLat;
@@ -106,9 +105,6 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
     @Override
     public void onMapReady(MapController mapController) {
         // TODO: Do your map tasks here
-
-        mapController.registerMapDecryptManager(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
-                DecryptManagerConstants.getInstance(this).getKey());
 
         mapController.setOnCameraChangeStartedListener(this);
         mapController.setOnCameraChangeListener(this);
