@@ -29,6 +29,9 @@ allprojects {
 ```
 ### Screenshot
 ![Maps](/Screenshots/Maps.png?raw=true "Preview Maps")
+
+### Sample APK
+[APK](/APK/samples-debug.apk)
 ### Contributor
 Muhammad Hassan Jamil - Team Lead Android Development - TPL Maps - hassan.jamil@tplmaps.com
 ### User guide
