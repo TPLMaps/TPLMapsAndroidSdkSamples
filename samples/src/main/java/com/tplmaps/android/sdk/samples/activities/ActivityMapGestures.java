@@ -98,6 +98,16 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
 
         mapController.setPickRadius(getResources().getInteger(R.integer.pick_radius));
 
+        // Loading Default Map Controls
+        mapController.getLocationConfig()
+                .setLocationSettings(true)
+                .setPermissionRequestIfDenied(true)
+                .setPermissionReasonDialogContent("Permission Required",
+                        "Location permission is required for the application to show your" +
+                                " precise and accurate location on map");
+        mapController.getUiSettings().showZoomControls(true);
+        mapController.getUiSettings().showMyLocationButton(true);
+
         // TODO: Map loaded and ready, write your map tasks here
     }
 

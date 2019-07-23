@@ -117,10 +117,18 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
         mapController.animateCamera(CameraPosition.builder(mapController)
                 .position(new LngLat(73.0684356, 33.6934396))
                 .zoom(18.3f)
-                .tilt(0.9F)
                 .rotation(13.0F)
                 .build(), 2000);
 
+        // Loading Default Map Controls
+        mapController.getLocationConfig()
+                .setLocationSettings(true)
+                .setPermissionRequestIfDenied(true)
+                .setPermissionReasonDialogContent("Permission Required",
+                        "Location permission is required for the application to show your" +
+                                " precise and accurate location on map");
+        mapController.getUiSettings().showZoomControls(true);
+        mapController.getUiSettings().showMyLocationButton(true);
     }
 
     @Override

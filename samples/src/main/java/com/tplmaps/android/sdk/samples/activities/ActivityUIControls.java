@@ -89,8 +89,9 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
         mMapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialogContent("Permission Required", "Location permission is required for " +
-                        "the application to show your precise and accurate location on map");
+                .setPermissionReasonDialogContent("Permission Required",
+                        "Location permission is required for the application to show your" +
+                                " precise and accurate location on map");
 
         // Setting controls here because functionality of these controls belongs to the MapView
         // And MapView should be ready to perform these actions on it
@@ -134,7 +135,6 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
                     if (mMapController != null) {
                         // Enable/Disable My Location
                         mMapController.setMyLocationEnabled(isChecked);
-
                         // Check/UnCheck My Location button's Checkbox
                         cbMyLocationButton.setChecked(isChecked);
                     }

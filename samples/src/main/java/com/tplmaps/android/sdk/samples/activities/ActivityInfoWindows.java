@@ -110,6 +110,16 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
             }
         });
 
+        // Loading Default Map Controls
+        mapController.getLocationConfig()
+                .setLocationSettings(true)
+                .setPermissionRequestIfDenied(true)
+                .setPermissionReasonDialogContent("Permission Required",
+                        "Location permission is required for the application to show your" +
+                                " precise and accurate location on map");
+        mapController.getUiSettings().showZoomControls(true);
+        mapController.getUiSettings().showMyLocationButton(true);
+
     }
 
     private void normalInfoWindows() {
