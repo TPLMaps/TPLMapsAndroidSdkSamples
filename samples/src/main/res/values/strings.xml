@@ -37,5 +37,6 @@
     <string name="zoom_camera_to_bounds">Zoom Camera to Bounds</string>
     <string name="routing">Routing</string>
     <string name="calculate">Calculate</string>
+    <string name="crash_toast_text">Application has been crashed, please send the crash report via mail to the developer to help fix it...</string>
 
 </resources>
