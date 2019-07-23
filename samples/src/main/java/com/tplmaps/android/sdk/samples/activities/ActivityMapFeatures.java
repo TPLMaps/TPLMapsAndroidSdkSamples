@@ -55,7 +55,7 @@ public class ActivityMapFeatures extends AppCompatActivity implements MapView.On
         // Setting POIs as default
         onCheckedChanged(cbTraffic, ENABLE_TRAFFIC_DEFAULT);
 
-        // OR you can make settings for map defaults by calling these methods but before loading map
+        // OR you can make settings for map defaults by calling these methods before call to load maps
         /*mMapView.setMapMode(MapMode.DEFAULT);
         mMapView.setBuildingsEnabled(true);
         mMapView.setPOIsEnabled(true);*/
@@ -117,6 +117,16 @@ public class ActivityMapFeatures extends AppCompatActivity implements MapView.On
     @Override
     public void onMapReady(final MapController mapController) {
         // TODO: Map loaded and ready, write your map tasks here
+
+        // Loading Default Map Controls
+        mapController.getLocationConfig()
+                .setLocationSettings(true)
+                .setPermissionRequestIfDenied(true)
+                .setPermissionReasonDialogContent("Permission Required",
+                        "Location permission is required for the application to show your" +
+                                " precise and accurate location on map");
+        mapController.getUiSettings().showZoomControls(true);
+        mapController.getUiSettings().showMyLocationButton(true);
     }
 
     @Override

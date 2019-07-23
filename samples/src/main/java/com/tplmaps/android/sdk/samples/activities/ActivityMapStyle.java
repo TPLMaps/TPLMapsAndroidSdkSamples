@@ -82,6 +82,16 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
 
         // Setting custom map style after map ready
         //setMapStyle();
+
+        // Loading Default Map Controls
+        mapController.getLocationConfig()
+                .setLocationSettings(true)
+                .setPermissionRequestIfDenied(true)
+                .setPermissionReasonDialogContent("Permission Required",
+                        "Location permission is required for the application to show your" +
+                                " precise and accurate location on map");
+        mapController.getUiSettings().showZoomControls(true);
+        mapController.getUiSettings().showMyLocationButton(true);
     }
 
     private void setMapStyle() {
