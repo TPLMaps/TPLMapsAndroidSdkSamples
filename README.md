@@ -1,6 +1,6 @@
 # TPL Maps Android SDK Samples
 
-An open source Android (Java) Native Library to incorporate/start Android Qibla Direction Activity in your Native Android Applcation.
+A Native Android SDK to integrate Vector 3D Maps in your Android Application Project.
 
 
 ## Configurations
