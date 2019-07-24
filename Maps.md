@@ -1,7 +1,6 @@
 # Setup Maps API
 To setup TPL Maps in your application follow these steps
 1. Add the following configuration in project level `build.gradle`
-
 ``` groovy
 allprojects {
 repositories {
