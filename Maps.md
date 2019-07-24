@@ -206,7 +206,6 @@ public void onMapReady(final MapController mapController) {
   android:layout_height="match_parent"
   tools:context=".sdk.samples.activities.ActivityMaps">
 
-
   <com.tplmaps3d.MapView
     android:id="@+id/map"
     android:layout_width="match_parent"
