@@ -2,6 +2,8 @@
 
 A Native Android SDK to integrate Vector 3D Maps in your Android Application Project.
 
+The project is tested on Android Studio versions 3.3, 3.3.1 & 3.4.2 - if you have issues building it, please upgrade to one of these versions.
+
 
 ## Configurations
 ### Dependencies/Artifacts
@@ -32,8 +34,10 @@ allprojects {
 
 ### Sample APK
 [APK](/APK/samples-debug.apk)
+
 ### Contributor
-Muhammad Hassan Jamil - Team Lead Android Development - TPL Maps - hassan.jamil@tplmaps.com
+Muhammad Hassan Jamil  (Team Lead Android Development - TPL Maps - hassan.jamil@tplmaps.com)
+
 ### User guide
 We are writing developers guide till then consult
 
