@@ -45,4 +45,4 @@ Developers guide from: https://api.tplmaps.com/android-doc/
 
 API Documentation from: https://api.tplmaps.com/apiportal/#/portal/sdk-doc 
 
-## [FAQs](\FAQs.md)
+## [FAQs](FAQs.md)
