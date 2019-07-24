@@ -36,6 +36,7 @@ dependencies {
     //ROUTING: Dependency added to utilize Routing artifact of SDK
     implementation 'com.tpl.maps.sdk:routing:1.1.1'
 
+    implementation 'ch.acra:acra:4.9.1'
     ////////////////////// For internal developers use ////////////////////////////////
     /*implementation project(':sdk-maps')
     implementation project(':sdk-routing')
