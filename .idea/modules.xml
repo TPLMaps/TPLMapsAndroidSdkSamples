@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TPLMapsAndroidSdkSamples.iml" filepath="$PROJECT_DIR$/TPLMapsAndroidSdkSamples.iml" />
       <module fileurl="file://$PROJECT_DIR$/samples/samples.iml" filepath="$PROJECT_DIR$/samples/samples.iml" />
-      <module fileurl="file://D:/AndroidStudioProjects/apneMaps/library/tplmaps-sdk.iml" filepath="D:/AndroidStudioProjects/apneMaps/library/tplmaps-sdk.iml" />
     </modules>
   </component>
 </project>
