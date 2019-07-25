@@ -59,3 +59,5 @@ new TPLRouteManager().calculate(this, config, new IMapRoute() {
 }
 });
 ```
+## Response
+![Elaboration](/images/assets/routing-response.jpg?raw=true)
