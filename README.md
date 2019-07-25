@@ -10,7 +10,7 @@ The project is tested on Android Studio versions 3.3, 3.3.1 & 3.4.2 - if you hav
 - [**Routing API**](Routing.md)
 
 ### Screenshot
-![Maps](/Screenshots/Maps.png?raw=true "Preview Maps")
+![Maps](/Screenshots/Map-UI-Controls.png?raw=true "Preview Maps")
 
 ### Sample APK
 [APK](/APK/samples-debug.apk)
