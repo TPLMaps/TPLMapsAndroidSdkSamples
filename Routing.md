@@ -12,7 +12,7 @@ repositories {
 2. Add the following gradle dependency in android application module’s `build.gradle`
 ``` groovy
 dependencies {
-  implementation 'com.tpl.maps.sdk:maps:1.3.1'
+  implementation 'com.tpl.maps.sdk:routing:1.1.1'
 }
 ```
 3. Add Internet permission in your `AndroidManifest.xml`
@@ -28,4 +28,34 @@ dependencies {
         android:name="com.tplmaps.android.sdk.API_KEY"
         android:value="YOUR_API_KEY_HERE" />
 ```
-> Updating the file...
+5.	Initialize locations array with source and destination locations
+``` java
+// Initializing locations array
+ArrayList<Place> locations = new ArrayList<>();
+// Preparing source location
+Place source = new Place();
+source.setName("TPL Corp ISE Office");
+source.setX(73.058382);
+source.setY(33.711556);
+// Preparing destination location
+Place destination = new Place();
+destination.setName("TPL Maps Bahria Office");
+destination.setX(73.094223);
+destination.setY(33.522695);
+// Adding locations to the array
+locations.add(source);
+locations.add(destination);
+```
+6.	Prepare `TPLRouteConfig` object and pass it to `TPLRouteManager.calculate(TPLRouteConfig)` method with necessary arguments as given below, You will get list of **multiple routes** if exist between source & destination locations in `IMapRoute#onMapRoutingOverview(ArrayList<Place> endPoints, ArrayList<TPLRoute> routes)` callback.
+``` java
+TPLRouteConfig config = new TPLRouteConfig.Builder(false, locations)
+        .build();
+
+new TPLRouteManager().calculate(this, config, new IMapRoute() {
+    @Override
+    public void onMapRoutingOverview(ArrayList<Place> endPoints, ArrayList<TPLRoute>
+            routes) {
+         // TODO Use data from ArrayList<TPLRoute> routes
+}
+});
+```
