@@ -16,12 +16,21 @@ A Native Android SDK to integrate 3D Vector Maps, Places & Routing API in your A
 - [FAQs](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples#faqs) 
 
 ## Features:
-- [**Maps API**](Maps.md)
-- [**Places API**](Places.md)
-- [**Routing API**](Routing.md)
+- [**Maps API**](/docs/Maps.md)
+- [**Places API**](/docs/Places.md)
+- [**Routing API**](/docs/Routing.md)
 
 ### Screenshot
-![Maps](/Screenshots/Map-UI-Controls.png?raw=true "Preview Maps")
+<p float="left">
+ <img src="images/screenshots/Maps.png" width="150" />
+ <img src="images/screenshots/Map-Features.png" width="150" /> 
+ <img src="images/screenshots/Map-Marker-Info-Windows.png" width="150" />
+ <img src="images/screenshots/Map-Shapes.png" width="150" />
+ <img src="images/screenshots/Map-UI-Controls.png" width="150" />
+ <img src="images/screenshots/Map-Camera.png" width="150" />
+ <img src="images/screenshots/Map-Gestures.png" width="150" />
+ <img src="images/screenshots/Map-Style.png" width="150" />
+</p>
 
 ### Sample APK
 [APK](/APK/samples-debug.apk)
@@ -35,4 +44,4 @@ You can find a brief developer guide [here] (https://api.tplmaps.com/android-doc
 ## API Documentation
 You can find API Documentation from [here](https://api.tplmaps.com/apiportal/#/portal/sdk-doc)
  
-## [FAQs](FAQs.md)
+## [FAQs](/docs/FAQs.md)
