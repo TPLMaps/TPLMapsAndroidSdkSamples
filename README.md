@@ -1,4 +1,4 @@
-# TPL Maps Android SDK Samples
+# TPL Maps Android SDK
 
 ## Overview
 A Native Android SDK to integrate 3D Vector Maps, Places & Routing API in your Android Application Project.
