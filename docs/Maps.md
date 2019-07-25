@@ -217,4 +217,6 @@ You will get TPL Maps loaded successfully in your application.
 > Furthermore, you can view or download our open source [samples project](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples) to get help for more features of SDK.
 
 ### Screenshot
-![Maps](/Screenshots/Maps.png?raw=true "Preview Maps")
+<p float="left">
+ <img src="/images/screenshots/Maps.png" width="150" />
+</p>
