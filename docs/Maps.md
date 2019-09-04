@@ -218,5 +218,5 @@ You will get TPL Maps loaded successfully in your application.
 
 ### Screenshot
 <p float="left">
- <img src="images/screenshots/Maps.png" width="150" />
+ <img src="/images/screenshots/Maps.png" width="150" />
 </p>
