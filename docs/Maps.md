@@ -12,7 +12,7 @@ repositories {
 2. Add the following gradle dependency in android application module’s `build.gradle`
 ``` groovy
 dependencies {
-  implementation 'com.tpl.maps.sdk:maps:1.3.1'
+  implementation 'com.tpl.maps.sdk:maps:1.3.1.1'
 }
 ```
 3. Add Internet permission in your `AndroidManifest.xml`
@@ -218,5 +218,5 @@ You will get TPL Maps loaded successfully in your application.
 
 ### Screenshot
 <p float="left">
- <img src="/images/screenshots/Maps.png" width="150" />
+ <img src="images/screenshots/Maps.png" width="150" />
 </p>
