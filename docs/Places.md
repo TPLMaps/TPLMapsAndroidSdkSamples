@@ -1,5 +1,5 @@
 # Setup Places/Search API
-To setup TPL Maps in your application follow these steps
+To setup Places API in your application follow these steps
 1. Add the following configuration in project level `build.gradle`
 ``` groovy
 allprojects {
