@@ -15,3 +15,10 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-repackageclasses
+
+-keep class com.tplmaps3d.** { *; }
+
+-dontwarn org.xmlpull.v1.**
+-keep class org.xmlpull.v1.** { *; }
