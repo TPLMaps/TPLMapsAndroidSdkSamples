@@ -216,7 +216,16 @@ public void onMapReady(final MapController mapController) {
 You will get TPL Maps loaded successfully in your application.
 > Furthermore, you can view or download our open source [samples project](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples) to get help for more features of SDK.
 
-### Screenshot
+## Proguard
+Add the following rules to your app module's `proguard-rules.pro` file, to generate **minified release build**
+```
+-keep class com.tplmaps3d.** { *; }
+
+-dontwarn org.xmlpull.v1.**
+-keep class org.xmlpull.v1.** { *; }
+```
+
+## Screenshot
 <p float="left">
  <img src="/images/screenshots/Maps.png" width="150" />
 </p>
