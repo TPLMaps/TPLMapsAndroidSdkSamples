@@ -16,9 +16,9 @@
 #   public *;
 #}
 
+# OPTIONAL
 -repackageclasses
-
+# NEEDED
 -keep class com.tplmaps3d.** { *; }
-
 -dontwarn org.xmlpull.v1.**
 -keep class org.xmlpull.v1.** { *; }
