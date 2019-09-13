@@ -1,10 +1,11 @@
 package com.tplmaps.android.sdk.samples.activities;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;

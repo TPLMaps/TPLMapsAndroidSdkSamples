@@ -38,5 +38,10 @@
     <string name="routing">Routing</string>
     <string name="calculate">Calculate</string>
     <string name="crash_toast_text">Application has been crashed, please send the crash report via mail to the developer to help fix it...</string>
+    <string name="source">Source e.g. 33.12345,64.12345</string>
+    <string name="destination">Destination e.g. 33.12345,64.12345</string>
+    <string name="source_destination_location_layout">Input source and destination location field layout</string>
+    <string name="calculate_route">Calculate Route</string>
+    <string name="locations_are_invalid">Locations are invalid</string>
 
 </resources>

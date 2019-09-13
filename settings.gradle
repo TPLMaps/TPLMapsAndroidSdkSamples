@@ -1,2 +1,5 @@
 include ':samples'
 
+//include ':sdk-routing'
+//project(':sdk-routing').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\routing')
+

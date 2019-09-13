@@ -3,12 +3,13 @@ package com.tplmaps.android.sdk.samples.activities;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
 import com.tplmaps.android.sdk.samples.utils.MapUtils;

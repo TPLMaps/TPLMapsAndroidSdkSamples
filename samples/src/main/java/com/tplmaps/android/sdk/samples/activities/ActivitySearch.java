@@ -1,7 +1,6 @@
 package com.tplmaps.android.sdk.samples.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -9,8 +8,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.constants.URLConstants;
 import com.tplmaps.sdk.places.OnSearchResult;
 import com.tplmaps.sdk.places.Params;
 import com.tplmaps.sdk.places.Place;
