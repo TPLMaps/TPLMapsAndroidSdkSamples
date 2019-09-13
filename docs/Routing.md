@@ -61,7 +61,7 @@ new TPLRouteManager().calculate(this, config, new IMapRoute() {
 ```
 ## Response
 <p float="left">
- <img src="images/screenshots/Routing.png" width="150" />
+ <img src="/images/screenshots/Routing.png" width="150" />
 </p></br>
 
 ![Elaboration](/images/assets/routing-response.jpg?raw=true)
