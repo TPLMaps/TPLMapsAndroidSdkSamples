@@ -61,3 +61,8 @@ searchManager.setListener(this);
 searchManager.request(url, Params.builder().query(“restaurant”).build());
 ```
 > **Note:** Call SearchManager.request (String, Params) for search query after an interval of minimum 3 seconds because of network limitations applied on our servers otherwise all your request will be suspended
+
+## Screenshot
+<p float="left">
+ <img src="/images/screenshots/Search.png" width="150" />
+</p></br>
