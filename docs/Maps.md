@@ -218,7 +218,7 @@ You will get TPL Maps loaded successfully in your application.
 
 ## Proguard
 Add the following rules to your app module's `proguard-rules.pro` file, to generate **minified release build**
-```
+``` groovy
 -keep class com.tplmaps3d.** { *; }
 
 -dontwarn org.xmlpull.v1.**
