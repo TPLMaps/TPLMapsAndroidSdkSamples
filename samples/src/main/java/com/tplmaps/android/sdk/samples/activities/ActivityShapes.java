@@ -91,6 +91,7 @@ public class ActivityShapes extends BaseMapActivity {
     }
 
     Marker marker1;
+
     private void addMarkers() {
 
         LngLat latLngISB = new LngLat(73.093104, 33.730494);

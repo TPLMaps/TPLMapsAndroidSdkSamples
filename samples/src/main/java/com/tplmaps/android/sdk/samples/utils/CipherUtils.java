@@ -1,4 +1,3 @@
-
 package com.tplmaps.android.sdk.samples.utils;
 
 import android.annotation.SuppressLint;

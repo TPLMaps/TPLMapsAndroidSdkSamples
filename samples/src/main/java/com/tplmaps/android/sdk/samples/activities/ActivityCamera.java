@@ -34,6 +34,7 @@ public class ActivityCamera extends BaseMapActivity implements MapView.OnMapRead
                             new LngLat(73.041247, 33.659408)), 200, 1000);
         });
     }
+
     @Override
     public void onMapReady(MapController mapController) {
         // TODO: Do your map tasks here

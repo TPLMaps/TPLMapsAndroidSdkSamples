@@ -7,6 +7,7 @@ import com.tplmaps3d.MapView;
 
 /**
  * Created by hassanjamil on 2017-01-25.
+ *
  * @author hassanjamil
  */
 
@@ -16,12 +17,12 @@ public class MapUtils {
 
     public static void initAndLoadMaps(Bundle savedInstanceState, MapView mapView,
                                        MapView.OnMapReadyCallback callback) {
-        if(mapView == null) {
+        if (mapView == null) {
             Log.e(TAG, "::initAndLoadMaps: MapView instance is null");
             return;
         }
 
-        if(callback == null) {
+        if (callback == null) {
             Log.e(TAG, "::initAndLoadMaps: OnMapReadyCallback instance is null");
             return;
         }

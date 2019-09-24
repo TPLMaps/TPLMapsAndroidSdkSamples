@@ -79,6 +79,7 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
 
     ArrayList<String> strResults;
     ArrayAdapter<String> adapter;
+
     void populateListView(ArrayList<Place> results) {
         if (results == null)
             return;
@@ -94,12 +95,12 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
     }
 
     void clearList() {
-        if(strResults != null)
+        if (strResults != null)
             strResults.clear();
         if (adapter != null && strResults != null) {
             strResults.size();
         }
-        if(adapter != null)
+        if (adapter != null)
             adapter.notifyDataSetChanged();
     }
 

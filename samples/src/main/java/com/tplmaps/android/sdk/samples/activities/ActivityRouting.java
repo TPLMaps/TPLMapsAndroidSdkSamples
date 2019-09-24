@@ -168,6 +168,7 @@ public class ActivityRouting extends BaseMapActivity {
                         .outlineWidth(2)
                         .clickable(true));
 
+                // Setting map (regarding route's extent e.g. zoom and position)
                 RouteUtils routeUtils = new RouteUtils(mMapView.getWidth(), mMapView.getHeight(),
                         mMapView.getScrollX(), mMapView.getScrollY(), mapController.getMapCameraPosition().zoom);
                 HashMap<String, String> mapValues = routeUtils.zoomToPointsBoundingBox(
@@ -179,7 +180,6 @@ public class ActivityRouting extends BaseMapActivity {
                 double lng = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LNG)));
                 int positionEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_EASED)));
 
-                // Setting map (regarding zoom and position)
                 mapController.setZoomBy((float) zoom, zoomEased);
                 mapController.setLngLat(new LngLat(lng, lat), positionEased);
             }

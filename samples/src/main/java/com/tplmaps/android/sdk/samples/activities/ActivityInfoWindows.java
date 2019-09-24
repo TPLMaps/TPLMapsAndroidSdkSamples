@@ -103,6 +103,7 @@ public class ActivityInfoWindows extends BaseMapActivity {
     }
 
     Marker marker3, marker4;
+
     private void customInfoWindowsMultipleViews() {
 
         // Set different custom views to different info windows
@@ -129,14 +130,14 @@ public class ActivityInfoWindows extends BaseMapActivity {
         mMapController.setCustomInfoWindow(new MapController.CustomInfoWindow() {
             @Override
             public View onInfoWindow(Marker tplMarker) {
-                if(tplMarker == marker3)
+                if (tplMarker == marker3)
                     return prepareInfoView(tplMarker);
                 return null;
             }
 
             @Override
             public View onInfoWindowContent(Marker tplMarker) {
-                if(tplMarker == marker4)
+                if (tplMarker == marker4)
                     return prepareInfoView(tplMarker);
                 return null;
             }
