@@ -6,10 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".sdk.samples.activities.ActivityRouting">
 
-    <com.tplmaps3d.MapView
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <include layout="@layout/layout_map_view" />
 
     <include layout="@layout/layout_bottom_sheet_routing" />
 

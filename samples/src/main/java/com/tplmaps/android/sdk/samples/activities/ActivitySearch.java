@@ -2,7 +2,6 @@ package com.tplmaps.android.sdk.samples.activities;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -61,26 +60,20 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
 
         // Get and set Search button
         ivSearch = findViewById(R.id.ivSearch);
-        ivSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Request for query after initializing SearchManager
-                searchManager.request(Params.builder()
-                        .query(etSearch.getText().toString())
-                        .build());
-            }
+        ivSearch.setOnClickListener(view -> {
+            // Request for query after initializing SearchManager
+            searchManager.request(Params.builder()
+                    .query(etSearch.getText().toString())
+                    .build());
         });
 
         // Get and set Cancel button
         ivCancel = findViewById(R.id.ivCancel);
-        ivCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Cancel all pending requests
-                etSearch.getText().clear();
-                searchManager.cancelPendingRequests();
-                clearList();
-            }
+        ivCancel.setOnClickListener(view -> {
+            // Cancel all pending requests
+            etSearch.getText().clear();
+            searchManager.cancelPendingRequests();
+            clearList();
         });
     }
 
@@ -103,8 +96,9 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
     void clearList() {
         if(strResults != null)
             strResults.clear();
-        if(adapter != null && strResults != null && strResults.size() > 0)
-            adapter.clear();
+        if (adapter != null && strResults != null) {
+            strResults.size();
+        }
         if(adapter != null)
             adapter.notifyDataSetChanged();
     }

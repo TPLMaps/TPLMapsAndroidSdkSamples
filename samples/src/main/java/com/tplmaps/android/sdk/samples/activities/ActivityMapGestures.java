@@ -6,25 +6,16 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
-import com.tplmaps3d.MapView;
 import com.tplmaps3d.TouchInput;
-import com.tplmaps3d.sdk.model.PointOfInterest;
 
 import java.text.DecimalFormat;
 
-public class ActivityMapGestures extends AppCompatActivity implements MapView.OnMapReadyCallback,
-        CompoundButton.OnCheckedChangeListener {
+public class ActivityMapGestures extends BaseMapActivity implements CompoundButton.OnCheckedChangeListener {
 
     //private static final String TAG = ActivityMaps.class.getSimpleName();
-
-    private MapView mMapView;
-
     TextView tvListener, tvValues;
 
     @Override
@@ -32,62 +23,50 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_gestures);
 
-        // Initializing and getting MapView resource
-        mMapView = (MapView) findViewById(R.id.map);
-        // Loading map Asynchronously
-        MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
+        onMapCreate(savedInstanceState);
 
+        tvListener = findViewById(R.id.tv_listener);
+        tvValues = findViewById(R.id.tv_value);
 
-        tvListener = (TextView) findViewById(R.id.tv_listener);
-        tvValues = (TextView) findViewById(R.id.tv_value);
-
-        CheckBox cbDoubleTapZoomGesture = ((CheckBox) findViewById(R.id.cb_dtzl));
+        CheckBox cbDoubleTapZoomGesture = findViewById(R.id.cb_dtzl);
         cbDoubleTapZoomGesture.setChecked(true);
         cbDoubleTapZoomGesture.setOnCheckedChangeListener(this);
 
-        CheckBox cbMapAllGestures = ((CheckBox) findViewById(R.id.cb_mag));
+        CheckBox cbMapAllGestures = findViewById(R.id.cb_mag);
         cbMapAllGestures.setChecked(true);
         cbMapAllGestures.setOnCheckedChangeListener(this);
 
-        CheckBox cbClick = ((CheckBox) findViewById(R.id.cb_click));
+        CheckBox cbClick = findViewById(R.id.cb_click);
         cbClick.setChecked(false);
         cbClick.setOnCheckedChangeListener(this);
 
-        CheckBox cbClickDouble = ((CheckBox) findViewById(R.id.cb_click_double));
+        CheckBox cbClickDouble = findViewById(R.id.cb_click_double);
         cbClickDouble.setChecked(false);
         cbClickDouble.setOnCheckedChangeListener(this);
 
-        CheckBox cbClickLong = ((CheckBox) findViewById(R.id.cb_click_long));
+        CheckBox cbClickLong = findViewById(R.id.cb_click_long);
         cbClickLong.setChecked(false);
         cbClickLong.setOnCheckedChangeListener(this);
 
-        CheckBox cbGesturePan = ((CheckBox) findViewById(R.id.cb_gesture_pan));
+        CheckBox cbGesturePan = findViewById(R.id.cb_gesture_pan);
         cbGesturePan.setChecked(false);
         cbGesturePan.setOnCheckedChangeListener(this);
 
-        CheckBox cbGestureRotate = ((CheckBox) findViewById(R.id.cb_gestures_rotate));
+        CheckBox cbGestureRotate = findViewById(R.id.cb_gestures_rotate);
         cbGestureRotate.setChecked(false);
         cbGestureRotate.setOnCheckedChangeListener(this);
 
-        CheckBox cbGestureScale = ((CheckBox) findViewById(R.id.cb_gesture_scale));
+        CheckBox cbGestureScale = findViewById(R.id.cb_gesture_scale);
         cbGestureScale.setChecked(false);
         cbGestureScale.setOnCheckedChangeListener(this);
 
-        CheckBox cbGestureShove = ((CheckBox) findViewById(R.id.cb_gesture_shove));
+        CheckBox cbGestureShove = findViewById(R.id.cb_gesture_shove);
         cbGestureShove.setChecked(false);
         cbGestureShove.setOnCheckedChangeListener(this);
 
-        CheckBox cbClickPOI = ((CheckBox) findViewById(R.id.cb_click_poi));
+        CheckBox cbClickPOI = findViewById(R.id.cb_click_poi);
         cbClickPOI.setChecked(false);
         cbClickPOI.setOnCheckedChangeListener(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if (mMapView != null)
-            mMapView.onDestroy();
     }
 
     private MapController mMapController;
@@ -100,6 +79,7 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
         mapController.setPickRadius(getResources().getInteger(R.integer.pick_radius));
 
         // Loading Default Map Controls
+        mapController.setMaxTilt(85);
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
@@ -172,39 +152,36 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
         switch (listenerType) {
             case CLICK_SINGLE:
                 if (mMapController != null) {
-                    mMapController.setOnMapClickListener(register ? new MapController.OnMapClickListener() {
-                        @Override
-                        public void onMapClick(LngLat lngLat) {
-                            tvListener.setText(getString(R.string.click_map));
-                            tvValues.setText(roundDecimalsUpto(lngLat.latitude, 4) + ", " + roundDecimalsUpto(lngLat.longitude, 4));
-                        }
+                    mMapController.setOnMapClickListener(register ? (MapController.OnMapClickListener) lngLat -> {
+                        tvListener.setText(getString(R.string.click_map));
+                        String text = roundDecimalsUpto(lngLat.latitude, 4)
+                                + ", " + roundDecimalsUpto(lngLat.longitude, 4);
+                        tvValues.setText(text);
                     } : null);
                 }
                 break;
 
             case CLICK_DOUBLE:
                 if (mMapController != null) {
-                    mMapController.setOnMapDoubleClickListener(register ? new TouchInput.DoubleTapResponder() {
-                        @Override
-                        public boolean onDoubleTap(float x, float y) {
-                            LngLat lngLat = mMapController.screenPositionToLngLat(new PointF(x, y));
-                            tvListener.setText(getString(R.string.click_double_map));
-                            tvValues.setText(roundDecimalsUpto(lngLat.latitude, 4) + ", " + roundDecimalsUpto(lngLat.longitude, 4));
-                            return false;
-                        }
+                    mMapController.setOnMapDoubleClickListener(register ? (TouchInput.DoubleTapResponder) (x, y) -> {
+                        LngLat lngLat = mMapController.screenPositionToLngLat(new PointF(x, y));
+                        tvListener.setText(getString(R.string.click_double_map));
+                        String text = roundDecimalsUpto(lngLat.latitude, 4)
+                                + ", " + roundDecimalsUpto(lngLat.longitude, 4);
+                        tvValues.setText(text);
+                        return false;
                     } : null);
                 }
                 break;
 
             case CLICK_LONG:
                 if (mMapController != null) {
-                    mMapController.setOnMapLongClickListener(register ? new TouchInput.LongPressResponder() {
-                        @Override
-                        public void onLongPress(float x, float y) {
-                            LngLat lngLat = mMapController.screenPositionToLngLat(new PointF(x, y));
-                            tvListener.setText(getString(R.string.click_long_map));
-                            tvValues.setText(roundDecimalsUpto(lngLat.latitude, 4) + ", " + roundDecimalsUpto(lngLat.longitude, 4));
-                        }
+                    mMapController.setOnMapLongClickListener(register ? (TouchInput.LongPressResponder) (x, y) -> {
+                        LngLat lngLat = mMapController.screenPositionToLngLat(new PointF(x, y));
+                        tvListener.setText(getString(R.string.click_long_map));
+                        String text = roundDecimalsUpto(lngLat.latitude, 4)
+                                + ", " + roundDecimalsUpto(lngLat.longitude, 4);
+                        tvValues.setText(text);
                     } : null);
                 }
                 break;
@@ -231,15 +208,11 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
 
             case ROTATE:
                 if (mMapController != null) {
-                    mMapController.setOnMapRotateListener(register ? new TouchInput.RotateResponder() {
-                        @Override
-                        public boolean onRotate(float x, float y, float rotation) {
-                            tvListener.setText(getString(R.string.gesture_rotate_map));
-                            String valueRotation = "Rotation: " +
-                                    roundDecimalsUpto(rotation, 2);
-                            tvValues.setText(valueRotation);
-                            return false;
-                        }
+                    mMapController.setOnMapRotateListener(register ? (TouchInput.RotateResponder) (x, y, rotation) -> {
+                        tvListener.setText(getString(R.string.gesture_rotate_map));
+                        String valueRotation = "Rotation: " + roundDecimalsUpto(rotation, 2);
+                        tvValues.setText(valueRotation);
+                        return false;
                     } : null);
                 }
                 break;
@@ -262,15 +235,13 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
 
             case POI:
                 if (mMapController != null) {
-                    mMapController.setOnPoiClickListener(register ? new MapController.OnPoiClickListener() {
-                        @Override
-                        public void onPoiClick(PointOfInterest place) {
-                            LngLat lngLat = mMapController.screenPositionToLngLat(new PointF((float) place.lngLat.longitude,
-                                    (float) place.lngLat.latitude));
-                            tvListener.setText(getString(R.string.click_poi));
-                            tvValues.setText(place.name + ", " + roundDecimalsUpto(lngLat.latitude, 4)
-                                    + ", " + roundDecimalsUpto(lngLat.longitude, 4));
-                        }
+                    mMapController.setOnPoiClickListener(register ? (MapController.OnPoiClickListener) place -> {
+                        LngLat lngLat = mMapController.screenPositionToLngLat(new PointF((float) place.lngLat.longitude,
+                                (float) place.lngLat.latitude));
+                        tvListener.setText(getString(R.string.click_poi));
+                        String text = place.name + ", " + roundDecimalsUpto(lngLat.latitude, 4)
+                                + ", " + roundDecimalsUpto(lngLat.longitude, 4);
+                        tvValues.setText(text);
                     } : null);
                 }
                 break;
@@ -282,15 +253,15 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
         if (digitsAfterDecimalPoint <= 0)
             return d;
 
-        String pattern = "#.";
+        StringBuilder pattern = new StringBuilder("#.");
 
         int digits = digitsAfterDecimalPoint;
         while (digits > 0) {
-            pattern += "#";
+            pattern.append("#");
             digits -= 1;
         }
 
-        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        DecimalFormat decimalFormat = new DecimalFormat(pattern.toString());
         return Double.valueOf(decimalFormat.format(d));
     }
 }

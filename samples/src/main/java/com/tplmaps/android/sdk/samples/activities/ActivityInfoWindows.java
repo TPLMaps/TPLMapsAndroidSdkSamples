@@ -9,80 +9,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
-import com.tplmaps3d.MapView;
 import com.tplmaps3d.Marker;
 import com.tplmaps3d.MarkerOptions;
 
 
-public class ActivityInfoWindows extends AppCompatActivity implements MapView.OnMapReadyCallback {
+public class ActivityInfoWindows extends BaseMapActivity {
 
     private static final String TAG = ActivityMaps.class.getSimpleName();
 
-    private MapView mMapView;
     private MapController mMapController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_windows);
-        mMapView = (MapView) findViewById(R.id.map);
-        MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (mMapView != null)
-            mMapView.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if (mMapView != null)
-            mMapView.onPause();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (mMapView != null)
-            mMapView.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (mMapView != null)
-            mMapView.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if(mMapView != null)
-            mMapView.onDestroy();
-    }
-
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-
-        if (mMapView != null)
-            mMapView.onLowMemory();
+        onMapCreate(savedInstanceState);
     }
 
     @Override
@@ -97,21 +43,12 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         customInfoWindows();
         customInfoWindowsMultipleViews();
 
-        mMapController.setOnMarkerClickListener(new MapController.OnMarkerClickListener() {
-            @Override
-            public void onMarkerClick(Marker tplMarker) {
-                Log.i(TAG, "Called: tplMarker tile = " + tplMarker.getTitle());
-            }
-        });
+        mMapController.setOnMarkerClickListener(tplMarker -> Log.i(TAG, "Called: tplMarker tile = " + tplMarker.getTitle()));
 
-        mMapController.setOnInfoWindowClickListener(new MapController.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker tplMarker) {
-                Log.i(TAG, "Called: tplMarker snippet = " + tplMarker.getDescription());
-            }
-        });
+        mMapController.setOnInfoWindowClickListener(tplMarker -> Log.i(TAG, "Called: tplMarker snippet = " + tplMarker.getDescription()));
 
         // Loading Default Map Controls
+        mapController.setMaxTilt(85);
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)

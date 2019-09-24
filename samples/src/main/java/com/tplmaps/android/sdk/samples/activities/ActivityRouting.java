@@ -7,7 +7,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.snackbar.Snackbar;
@@ -20,17 +19,16 @@ import com.tpl.maps.sdk.utils.boundingBox.RouteUtils;
 import com.tplmaps.android.R;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
-import com.tplmaps3d.MapView;
 import com.tplmaps3d.PolylineOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
-public class ActivityRouting extends AppCompatActivity implements MapView.OnMapReadyCallback {
+public class ActivityRouting extends BaseMapActivity {
 
     TPLRouteManager mRouteManager;
     BottomSheetBehavior bottomSheetBehavior;
-    MapView map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +43,12 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
         initBottomSheet();
 
         // Filled field with sample location values
-        ((EditText) findViewById(R.id.source)).setText("33.711556,73.058382");
-        ((EditText) findViewById(R.id.destination)).setText("33.522695,73.094223");
+        String strSrc = "33.711556,73.058382";
+        ((EditText) findViewById(R.id.source)).setText(strSrc);
+        String strDest = "33.522695,73.094223";
+        ((EditText) findViewById(R.id.destination)).setText(strDest);
 
-        // Loading Map
-        map = findViewById(R.id.map);
-        map.loadMapAsync(this);
+        onMapCreate(savedInstanceState);
     }
 
     private void initBottomSheet() {
@@ -170,16 +168,16 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
                         .outlineWidth(2)
                         .clickable(true));
 
-                RouteUtils routeUtils = new RouteUtils(map.getWidth(), map.getHeight(),
-                        map.getScrollX(), map.getScrollY(), mapController.getMapCameraPosition().zoom);
+                RouteUtils routeUtils = new RouteUtils(mMapView.getWidth(), mMapView.getHeight(),
+                        mMapView.getScrollX(), mMapView.getScrollY(), mapController.getMapCameraPosition().zoom);
                 HashMap<String, String> mapValues = routeUtils.zoomToPointsBoundingBox(
                         route.getRouteNodes());
 
-                double zoom = Double.valueOf(mapValues.get(RouteUtils.KEY_ZOOM_LEVEL));
-                int zoomEased = Integer.valueOf(mapValues.get(RouteUtils.KEY_ZOOM_EASED));
-                double lat = Double.valueOf(mapValues.get(RouteUtils.KEY_POSITION_LAT));
-                double lng = Double.valueOf(mapValues.get(RouteUtils.KEY_POSITION_LNG));
-                int positionEased = Integer.valueOf(mapValues.get(RouteUtils.KEY_POSITION_EASED));
+                double zoom = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_LEVEL)));
+                int zoomEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_EASED)));
+                double lat = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LAT)));
+                double lng = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LNG)));
+                int positionEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_EASED)));
 
                 // Setting map (regarding zoom and position)
                 mapController.setZoomBy((float) zoom, zoomEased);
@@ -193,6 +191,5 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
         super.onDestroy();
         mRouteManager.onDestroy();
         mRouteManager = null;
-        map.onDestroy();
     }
 }

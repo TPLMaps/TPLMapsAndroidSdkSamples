@@ -5,19 +5,13 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
-import com.tplmaps.android.sdk.samples.utils.MapUtils;
 import com.tplmaps3d.MapController;
-import com.tplmaps3d.MapView;
 
-public class ActivityUIControls extends AppCompatActivity implements MapView.OnMapReadyCallback,
-        CompoundButton.OnCheckedChangeListener {
+public class ActivityUIControls extends BaseMapActivity implements CompoundButton.OnCheckedChangeListener {
 
-    private static final String TAG = ActivityUIControls.class.getSimpleName();
-
-    private MapView mMapView;
+    //private static final String TAG = ActivityUIControls.class.getSimpleName();
 
     private MapController mMapController;
 
@@ -27,59 +21,9 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_ui_controls);
 
-        mMapView = (MapView) findViewById(R.id.map);
-        MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (mMapView != null)
-            mMapView.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if (mMapView != null)
-            mMapView.onPause();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        if (mMapView != null)
-            mMapView.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (mMapView != null)
-            mMapView.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        if (mMapView != null)
-            mMapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-
-        if (mMapView != null)
-            mMapView.onLowMemory();
+        onMapCreate(savedInstanceState);
     }
 
     @Override
@@ -96,13 +40,13 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
 
         // Setting controls here because functionality of these controls belongs to the MapView
         // And MapView should be ready to perform these actions on it
-        CheckBox cbCompass = ((CheckBox) findViewById(R.id.cb_compass));
+        CheckBox cbCompass = findViewById(R.id.cb_compass);
         cbCompass.setOnCheckedChangeListener(this);
-        CheckBox cbZoomControls = ((CheckBox) findViewById(R.id.cb_zoom_controls));
+        CheckBox cbZoomControls = findViewById(R.id.cb_zoom_controls);
         cbZoomControls.setOnCheckedChangeListener(this);
-        CheckBox cbMyLocation = ((CheckBox) findViewById(R.id.cb_my_location));
+        CheckBox cbMyLocation = findViewById(R.id.cb_my_location);
         cbMyLocation.setOnCheckedChangeListener(this);
-        cbMyLocationButton = ((CheckBox) findViewById(R.id.cb_my_location_button));
+        cbMyLocationButton = findViewById(R.id.cb_my_location_button);
         cbMyLocationButton.setOnCheckedChangeListener(this);
     }
 
