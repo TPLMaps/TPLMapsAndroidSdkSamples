@@ -20,7 +20,7 @@ A Native Android SDK to integrate 3D Vector Maps, Places & Routing API in your A
 - [**Places API**](/docs/Places.md)
 - [**Routing API**](/docs/Routing.md)
 
-## Screenshot
+## Screenshots
 <p float="left">
  <img src="images/screenshots/Maps.png" width="150" />
  <img src="images/screenshots/Map-Features.png" width="150" /> 

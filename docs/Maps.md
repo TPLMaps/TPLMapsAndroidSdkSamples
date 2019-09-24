@@ -199,7 +199,7 @@ public void onMapReady(final MapController mapController) {
 ## layout_tpl_maps.xml
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayoutxmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
