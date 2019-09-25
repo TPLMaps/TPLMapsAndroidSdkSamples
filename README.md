@@ -3,7 +3,7 @@
 ## Overview
 A Native Android SDK to integrate 3D Vector Maps, Places & Routing API in your Android Application Project.
 
-> The project is tested on Android Studio versions 3.3, 3.3.1, 3.4.2 & 3.5 - if you have issues building it, please upgrade to one of these versions.
+> The project is tested on Android Studio versions 3.3, 3.3.1, 3.4.2 & 3.5 - if you have issues building it, please upgrade to one of these versions. Try this samples project with latest version of [Android Studio](https://developer.android.com/studio)
 
 ## Content
 [Overview](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples#overview)</br>
