@@ -12,7 +12,7 @@ repositories {
 2. Add the following gradle dependency in android application module’s `build.gradle`
 ``` groovy
 dependencies {
-  implementation 'com.tpl.maps.sdk:places:1.1.1'
+  implementation 'com.tpl.maps.sdk:places:1.1.3'
 }
 ```
 3. Add Internet permission in your `AndroidManifest.xml`
@@ -58,7 +58,7 @@ searchManager.setListener(this);
 ```
 7. The method will take a reference of `OnSearchResult` interface’s instance Call `SearchManager.request (String, Params)` method by setting at least one param named Params.query you will get response in your callback methods defined by your listener. In case of missing some configurations related to the API or exceptions, you will get informed in these callbacks.
 ``` java
-searchManager.request(url, Params.builder().query(“restaurant”).build());
+searchManager.request(url, Params.builder().query(String).location(LngLat).build());
 ```
 > **Note:** Call SearchManager.request (String, Params) for search query after an interval of minimum 3 seconds because of network limitations applied on our servers otherwise all your request will be suspended
 
