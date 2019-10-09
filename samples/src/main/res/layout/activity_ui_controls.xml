@@ -19,14 +19,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/compass"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <CheckBox
             android:id="@+id/cb_zoom_controls"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/zoom_controls"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <CheckBox
             android:id="@+id/cb_my_location"
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/my_location_button"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
     </LinearLayout>
 

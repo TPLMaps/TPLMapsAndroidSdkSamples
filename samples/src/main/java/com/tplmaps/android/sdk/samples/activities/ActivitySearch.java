@@ -10,10 +10,12 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
+import com.tplmaps.sdk.places.LngLat;
 import com.tplmaps.sdk.places.OnSearchResult;
 import com.tplmaps.sdk.places.Params;
 import com.tplmaps.sdk.places.Place;
 import com.tplmaps.sdk.places.SearchManager;
+import com.tplmaps.sdk.utils.StringUtils;
 import com.tplmaps3d.sdk.utils.CommonUtils;
 
 import java.text.SimpleDateFormat;
@@ -62,8 +64,10 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
         ivSearch = findViewById(R.id.ivSearch);
         ivSearch.setOnClickListener(view -> {
             // Request for query after initializing SearchManager
+            // put your query string with location to get your nearer results first
             searchManager.request(Params.builder()
                     .query(etSearch.getText().toString())
+                    .location(new LngLat(33.717864, 73.071648))    // Default location of Islamabad
                     .build());
         });
 
@@ -91,7 +95,16 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
 
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_2, android.R.id.text1, strResults);
-        ((ListView) findViewById(R.id.listview)).setAdapter(adapter);
+        ListView listView = findViewById(R.id.listview);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Place place = results.get(i);
+            String strLocation = place.getName()
+                    + "\n" + place.getY() + "," + place.getX();
+            Log.i(StringUtils.TAG, strLocation);
+            /*CommonUtils.showToast(ActivitySearch.this, strLocation,
+                    Toast.LENGTH_SHORT, true);*/
+        });
     }
 
     void clearList() {

@@ -11,9 +11,7 @@ import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
 import com.tplmaps3d.sdk.model.Bounds;
 
-public class ActivityCamera extends BaseMapActivity implements MapView.OnMapReadyCallback,
-        MapController.OnCameraChangeStartedListener, MapController.OnCameraChangeListener,
-        MapController.OnCameraChangeEndListener {
+public class ActivityCamera extends BaseMapActivity implements MapView.OnMapReadyCallback {
     private static final String TAG = ActivityCamera.class.getSimpleName();
 
     @Override
@@ -28,6 +26,11 @@ public class ActivityCamera extends BaseMapActivity implements MapView.OnMapRead
             if (mMapView.getMapController() == null)
                 return;
 
+            // Resetting tilt and rotation if made any, previously
+            mMapView.getMapController().animateCamera(new CameraPosition.Builder(mMapView.getMapController())
+                    .tilt(0)
+                    .rotation(0f)
+                    .build(), 0);
             // Zoom camera to bounds of Sector I-10, Islamabad with animation
             mMapView.getMapController().setBounds(
                     new Bounds(new LngLat(73.035070, 33.637313),
@@ -39,18 +42,15 @@ public class ActivityCamera extends BaseMapActivity implements MapView.OnMapRead
     public void onMapReady(MapController mapController) {
         // TODO: Do your map tasks here
 
-        mapController.setOnCameraChangeStartedListener(this);
-        mapController.setOnCameraChangeListener(this);
-        mapController.setOnCameraChangeEndListener(this);
-
         // Setting map max tilt value
         mapController.setMaxTilt(85);
 
         // Applying animation to map camera
-        mapController.animateCamera(CameraPosition.builder(mapController)
+        mapController.animateCamera(new CameraPosition.Builder(mapController)
                 .position(new LngLat(73.0684356, 33.6934396))
-                .zoom(18.3f)
-                .rotation(13.0F)
+                .zoom(18.5f)
+                .rotation(48.0f)
+                .tilt(1f)
                 .build(), 2000);
 
         // Loading Default Map Controls
@@ -59,23 +59,15 @@ public class ActivityCamera extends BaseMapActivity implements MapView.OnMapRead
                 .setPermissionRequestIfDenied(true)
                 .setPermissionReasonDialogContent("Permission Required",
                         "Location permission is required for the application to show your" +
-                                " precise and accurate location on map");
+                                " precise and accurate location on mapController");
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
-    }
 
-    @Override
-    public void onCameraChangeStarted(CameraPosition cameraPosition) {
-        Log.i(TAG, "Camera Change Started");
-    }
-
-    @Override
-    public void onCameraChange(CameraPosition cameraPosition) {
-        Log.i(TAG, "Camera Changing");
-    }
-
-    @Override
-    public void onCameraChangeEnd(CameraPosition cameraPosition) {
-        Log.i(TAG, "Camera Change End");
+        // Camera Change (ChangeStart, Change, ChangeEnd) listeners
+        mapController.setOnCameraChangeStartedListener(cameraPostion -> Log.i(TAG, "Camera Change Started"));
+        mapController.setOnCameraChangeListener(cameraPosition -> Log.i(TAG, "Camera Changing"));
+        mapController.setOnCameraChangeEndListener(cameraPosition -> {
+            Log.i(TAG, "Camera Change End: " + cameraPosition.toString());
+        });
     }
 }
