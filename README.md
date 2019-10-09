@@ -38,7 +38,7 @@ Assistant Manager & Team Lead (Android Development)<br/>
 hassan.jamil@tplmaps.com
 
 ## Latest Release
-Always go for [latest release](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples/releases/tag/2) while working with the TPL Maps Android SDK to get the more improved version, sample APK can be found with the release.
+Always go for [latest release](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples/releases) while working with the TPL Maps Android SDK to get the more improved version, sample APK can be found with the release.
 
 ## Developer guide
 You can find a brief developer guide [here](https://api.tplmaps.com/android-doc/)
