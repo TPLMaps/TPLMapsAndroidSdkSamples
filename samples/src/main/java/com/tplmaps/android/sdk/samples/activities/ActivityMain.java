@@ -17,7 +17,16 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initViews();
+        //CommonUtils.showToast(this, getDeviceAbi(), Toast.LENGTH_LONG, true);
     }
+
+    /*public String getDeviceAbi() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return Build.SUPPORTED_ABIS[0];
+        } else {
+            return Build.CPU_ABI;
+        }
+    }*/
 
     private void initViews() {
         Button btnMaps = findViewById(R.id.btn_maps);
