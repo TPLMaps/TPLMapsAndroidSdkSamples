@@ -23,6 +23,7 @@ import com.tplmaps3d.PolylineOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class ActivityRouting extends BaseMapActivity {
@@ -150,6 +151,7 @@ public class ActivityRouting extends BaseMapActivity {
                 .heading(90)
                 .build();
 
+        List<com.tpl.maps.sdk.routing.LngLat> listNodes = new ArrayList<>();
         // Calling for calculating routes for source and destination locations with config
         mRouteManager.calculate(this, config, (endPoints, routes) -> {
             for (int i = 0; i < routes.size(); i++) {
@@ -168,21 +170,23 @@ public class ActivityRouting extends BaseMapActivity {
                         .outlineWidth(2)
                         .clickable(true));
 
-                // Setting map (regarding route's extent e.g. zoom and position)
-                RouteUtils routeUtils = new RouteUtils(mMapView.getWidth(), mMapView.getHeight(),
-                        mMapView.getScrollX(), mMapView.getScrollY(), mapController.getMapCameraPosition().getZoom());
-                HashMap<String, String> mapValues = routeUtils.zoomToPointsBoundingBox(
-                        route.getRouteNodes());
-
-                double zoom = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_LEVEL)));
-                int zoomEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_EASED)));
-                double lat = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LAT)));
-                double lng = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LNG)));
-                int positionEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_EASED)));
-
-                mapController.setZoomBy((float) zoom, zoomEased);
-                mapController.setLngLat(new LngLat(lng, lat), positionEased);
+                listNodes.addAll(route.getRouteNodes());
             }
+
+            // Setting map (regarding route's extent e.g. zoom and position)
+            RouteUtils routeUtils = new RouteUtils(mMapView.getWidth(), mMapView.getHeight(),
+                    mMapView.getScrollX(), mMapView.getScrollY(),
+                    mapController.getMapCameraPosition().getZoom());
+            HashMap<String, String> mapValues = routeUtils.zoomToPointsBoundingBox(listNodes);
+
+            double zoom = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_LEVEL)));
+            int zoomEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_EASED)));
+            double lat = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LAT)));
+            double lng = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LNG)));
+            int positionEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_EASED)));
+
+            mapController.setZoomBy((float) zoom, zoomEased);
+            mapController.setLngLat(new LngLat(lng, lat), positionEased);
         });
     }
 
