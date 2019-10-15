@@ -80,9 +80,8 @@ public class ActivityUIControls extends BaseMapActivity implements CompoundButto
                 try {
                     if (mMapController != null) {
                         // Enable/Disable My Location
-                        mMapController.setMyLocationEnabled(isChecked);
-                        // Check/UnCheck My Location button's Checkbox
-                        cbMyLocationButton.setChecked(isChecked);
+                        mMapController.setMyLocationEnabled(isChecked,
+                                MapController.MyLocationArg.ZOOM_ON_LOCATION);
                     }
                 } catch (SecurityException e) {
                     e.printStackTrace();
