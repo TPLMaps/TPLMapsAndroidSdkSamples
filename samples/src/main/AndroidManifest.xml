@@ -81,7 +81,7 @@
 
         <meta-data
             android:name="@string/metadata_name_api_key"
-            android:value="$2a$10$NEk1VUzWe1OlWxUxefjeiOxeeYeZA4W6U18CplzKhkvPAdUAqfDlD" />
+            android:value="YOUR_API_KEY_HERE" />
     </application>
 
 </manifest>
