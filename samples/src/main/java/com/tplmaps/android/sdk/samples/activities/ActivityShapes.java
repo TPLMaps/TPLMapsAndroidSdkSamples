@@ -1,10 +1,12 @@
 package com.tplmaps.android.sdk.samples.activities;
 
 import android.graphics.Color;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.tplmaps.android.R;
+import com.tplmaps3d.CameraPosition;
 import com.tplmaps3d.Circle;
 import com.tplmaps3d.CircleOptions;
 import com.tplmaps3d.IconFactory;
@@ -16,6 +18,8 @@ import com.tplmaps3d.Polygon;
 import com.tplmaps3d.PolygonOptions;
 import com.tplmaps3d.Polyline;
 import com.tplmaps3d.PolylineOptions;
+import com.tplmaps3d.TouchInput;
+import com.tplmaps3d.sdk.utils.MapViewUtils;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -38,23 +42,34 @@ public class ActivityShapes extends BaseMapActivity {
     @Override
     public void onMapReady(final MapController mapController) {
 
-        mapController.setLngLat(new LngLat(73.093104, 33.730494));
-        mapController.setZoomBy(15);
+        CameraPosition cameraPosition = mapController.getCameraPosition();
+        cameraPosition.latitude = 33.730494;
+        cameraPosition.longitude = 73.093104;
+        cameraPosition.zoom = 15;
+        MapViewUtils.setCameraPosition(mapController, cameraPosition, null);
         mMapController = mapController;
         addMarkers();
         addPolyLines();
         addPolygons();
         addCircles();
 
-        mMapController.setOnMapClickListener(lngLat -> {
-            Log.i(TAG, "Called: onMapClick lnglat = " + lngLat.longitude + " , " + lngLat.latitude);
-            //marker1.setPositionEased(lngLat, 1);
-            //mMapController.addMarker(new MarkerOptions().position(lngLat));
+        mMapController.setTapResponder(new TouchInput.TapResponder() {
+            @Override
+            public boolean onSingleTapUp(float x, float y) {
+                return false;
+            }
+
+            @Override
+            public boolean onSingleTapConfirmed(float x, float y) {
+                LngLat lngLat = mMapController.screenPositionToLngLat(new PointF(x, y));
+                Log.i(TAG, "Called: onMapClick lnglat = " + lngLat.latitude + " , " + lngLat.longitude);
+                return false;
+            }
         });
 
         mMapController.setOnPoiClickListener(place -> {
             Log.i(TAG, "Called: onPoiClick id = " + place.id);
-            Log.i(TAG, "Called: onPoiClick tile = " + place.name);
+            Log.i(TAG, "Called: onPoiClick name = " + place.name);
             Log.i(TAG, "Called: onPoiClick lnglat = " + place.lngLat.longitude + " , " + place.lngLat.latitude);
             Log.i(TAG, " // /// ///// /// ");
         });
@@ -174,6 +189,7 @@ public class ActivityShapes extends BaseMapActivity {
         mMapController.addCircle(new CircleOptions()
                 .center(new LngLat(73.093104, 33.730494))
                 .radius(150).fillColor(Color.BLUE)
+                .outlineColor(Color.RED)
                 .order(1).clickable(true));
 
         tplCircle.remove();

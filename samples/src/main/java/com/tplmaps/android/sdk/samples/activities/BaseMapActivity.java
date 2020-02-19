@@ -16,7 +16,7 @@ import com.tplmaps3d.MapView;
  * plus {@link MapView}'s lifecycle methods.
  */
 @SuppressLint("Registered")
-public class BaseMapActivity extends AppCompatActivity implements MapView.OnMapReadyCallback {
+public class BaseMapActivity extends AppCompatActivity implements MapView.MapReadyCallback {
 
     protected MapView mMapView;
 
@@ -32,6 +32,10 @@ public class BaseMapActivity extends AppCompatActivity implements MapView.OnMapR
         mMapView.onCreate(savedInstanceState);
         // Loading map Asynchronously vie registering call
         MapUtils.initAndLoadMaps(savedInstanceState, mMapView, this);
+    }
+
+    public MapView getMapView() {
+        return mMapView;
     }
 
     @Override
@@ -78,6 +82,5 @@ public class BaseMapActivity extends AppCompatActivity implements MapView.OnMapR
 
     @Override
     public void onMapReady(MapController mapController) {
-
     }
 }

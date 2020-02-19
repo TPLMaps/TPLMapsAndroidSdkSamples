@@ -43,5 +43,6 @@
     <string name="source_destination_location_layout">Input source and destination location field layout</string>
     <string name="calculate_route">Calculate Route</string>
     <string name="locations_are_invalid">Locations are invalid</string>
+    <string name="map_stats">Map Stats</string>
 
 </resources>

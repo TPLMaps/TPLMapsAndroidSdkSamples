@@ -16,7 +16,7 @@ public class MapUtils {
     private static final String TAG = MapUtils.class.getSimpleName();
 
     public static void initAndLoadMaps(Bundle savedInstanceState, MapView mapView,
-                                       MapView.OnMapReadyCallback callback) {
+                                       MapView.MapReadyCallback callback) {
         if (mapView == null) {
             Log.e(TAG, "::initAndLoadMaps: MapView instance is null");
             return;

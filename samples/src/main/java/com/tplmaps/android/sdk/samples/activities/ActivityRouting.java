@@ -17,9 +17,11 @@ import com.tpl.maps.sdk.routing.structures.Place;
 import com.tpl.maps.sdk.routing.structures.TPLRoute;
 import com.tpl.maps.sdk.utils.boundingBox.RouteUtils;
 import com.tplmaps.android.R;
+import com.tplmaps3d.CameraPosition;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.PolylineOptions;
+import com.tplmaps3d.sdk.utils.MapViewUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -176,17 +178,20 @@ public class ActivityRouting extends BaseMapActivity {
             // Setting map (regarding route's extent e.g. zoom and position)
             RouteUtils routeUtils = new RouteUtils(mMapView.getWidth(), mMapView.getHeight(),
                     mMapView.getScrollX(), mMapView.getScrollY(),
-                    mapController.getMapCameraPosition().getZoom());
+                    mapController.getCameraPosition().getZoom());
             HashMap<String, String> mapValues = routeUtils.zoomToPointsBoundingBox(listNodes);
 
             double zoom = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_LEVEL)));
-            int zoomEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_EASED)));
             double lat = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LAT)));
             double lng = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LNG)));
             int positionEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_EASED)));
 
-            mapController.setZoomBy((float) zoom, zoomEased);
-            mapController.setLngLat(new LngLat(lng, lat), positionEased);
+            CameraPosition cameraPosition = mapController.getCameraPosition();
+            cameraPosition.zoom = (float) zoom;
+            cameraPosition.latitude = lat;
+            cameraPosition.longitude = lng;
+            MapViewUtils.setCameraPositionEased(mapController, cameraPosition, positionEased,
+                    null);
         });
     }
 

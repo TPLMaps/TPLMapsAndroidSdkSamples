@@ -2,6 +2,7 @@ package com.tplmaps.android.sdk.samples.activities;
 
 import android.graphics.PointF;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import com.tplmaps.android.R;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.TouchInput;
+import com.tplmaps3d.sdk.OnPoiClickListener;
 
 import java.text.DecimalFormat;
 
@@ -67,6 +69,8 @@ public class ActivityMapGestures extends BaseMapActivity implements CompoundButt
         CheckBox cbClickPOI = findViewById(R.id.cb_click_poi);
         cbClickPOI.setChecked(false);
         cbClickPOI.setOnCheckedChangeListener(this);
+
+        getMapView().setLogo(Gravity.TOP | Gravity.END);
     }
 
     private MapController mMapController;
@@ -88,6 +92,7 @@ public class ActivityMapGestures extends BaseMapActivity implements CompoundButt
                                 " precise and accurate location on map");
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
+        mapController.getUiSettings().showCompass(true);
 
         // TODO: Map loaded and ready, write your map tasks here
     }
@@ -152,18 +157,28 @@ public class ActivityMapGestures extends BaseMapActivity implements CompoundButt
         switch (listenerType) {
             case CLICK_SINGLE:
                 if (mMapController != null) {
-                    mMapController.setOnMapClickListener(register ? (MapController.OnMapClickListener) lngLat -> {
-                        tvListener.setText(getString(R.string.click_map));
-                        String text = roundDecimalsUpto(lngLat.latitude, 4)
-                                + ", " + roundDecimalsUpto(lngLat.longitude, 4);
-                        tvValues.setText(text);
+                    mMapController.setTapResponder(register ? new TouchInput.TapResponder() {
+                        @Override
+                        public boolean onSingleTapUp(float x, float y) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onSingleTapConfirmed(float x, float y) {
+                            tvListener.setText(getString(R.string.click_map));
+                            LngLat lngLat = mMapController.screenPositionToLngLat(new PointF(x, y));
+                            String text = roundDecimalsUpto(lngLat.latitude, 4)
+                                    + ", " + roundDecimalsUpto(lngLat.longitude, 4);
+                            tvValues.setText(text);
+                            return false;
+                        }
                     } : null);
                 }
                 break;
 
             case CLICK_DOUBLE:
                 if (mMapController != null) {
-                    mMapController.setOnMapDoubleClickListener(register ? (TouchInput.DoubleTapResponder) (x, y) -> {
+                    mMapController.setDoubleTapResponder(register ? (TouchInput.DoubleTapResponder) (x, y) -> {
                         LngLat lngLat = mMapController.screenPositionToLngLat(new PointF(x, y));
                         tvListener.setText(getString(R.string.click_double_map));
                         String text = roundDecimalsUpto(lngLat.latitude, 4)
@@ -176,7 +191,7 @@ public class ActivityMapGestures extends BaseMapActivity implements CompoundButt
 
             case CLICK_LONG:
                 if (mMapController != null) {
-                    mMapController.setOnMapLongClickListener(register ? (TouchInput.LongPressResponder) (x, y) -> {
+                    mMapController.setLongPressResponder(register ? (TouchInput.LongPressResponder) (x, y) -> {
                         LngLat lngLat = mMapController.screenPositionToLngLat(new PointF(x, y));
                         tvListener.setText(getString(R.string.click_long_map));
                         String text = roundDecimalsUpto(lngLat.latitude, 4)
@@ -188,11 +203,21 @@ public class ActivityMapGestures extends BaseMapActivity implements CompoundButt
 
             case PAN:
                 if (mMapController != null) {
-                    mMapController.setOnMapPanListener(register ? new TouchInput.PanResponder() {
+                    mMapController.setPanResponder(register ? new TouchInput.PanResponder() {
+                        @Override
+                        public boolean onPanBegin() {
+                            return false;
+                        }
+
                         @Override
                         public boolean onPan(float startX, float startY, float endX, float endY) {
                             tvListener.setText(getString(R.string.gesture_pan_map));
                             tvValues.setText("");
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onPanEnd() {
                             return false;
                         }
 
@@ -202,40 +227,91 @@ public class ActivityMapGestures extends BaseMapActivity implements CompoundButt
                             tvValues.setText("");
                             return false;
                         }
+
+                        @Override
+                        public boolean onCancelFling() {
+                            return false;
+                        }
                     } : null);
                 }
                 break;
 
             case ROTATE:
                 if (mMapController != null) {
-                    mMapController.setOnMapRotateListener(register ? (TouchInput.RotateResponder) (x, y, rotation) -> {
-                        tvListener.setText(getString(R.string.gesture_rotate_map));
-                        String valueRotation = "Rotation: " + roundDecimalsUpto(rotation, 2);
-                        tvValues.setText(valueRotation);
-                        return false;
+                    mMapController.setRotateResponder(register ? new TouchInput.RotateResponder() {
+                        @Override
+                        public boolean onRotateBegin() {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onRotate(float x, float y, float rotation) {
+                            tvListener.setText(getString(R.string.gesture_rotate_map));
+                            String valueRotation = "Rotation: " + roundDecimalsUpto(rotation, 2);
+                            tvValues.setText(valueRotation);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onRotateEnd() {
+                            return false;
+                        }
                     } : null);
                 }
                 break;
 
             case SCALE:
-                /*if (mMapController != null) {
-                    mMapController.setOnMapScaleListener(register ? new TouchInput.ScaleResponder() {
+                if (mMapController != null) {
+                    mMapController.setScaleResponder(register ? new TouchInput.ScaleResponder() {
+                        @Override
+                        public boolean onScaleBegin() {
+                            return false;
+                        }
+
                         @Override
                         public boolean onScale(float x, float y, float scale, float velocity) {
-                            tvListener.setText(getString(R.string.gesture_rotate_map));
-                            tvValues.setText(scale);
+                            tvListener.setText(getString(R.string.gesture_scale_map));
+                            String value = "Scale: " + roundDecimalsUpto(scale, 2);
+                            tvValues.setText(value);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onScaleEnd() {
                             return false;
                         }
                     } : null);
-                }*/
+                }
                 break;
 
             case SHOVE:
+                if (mMapController != null) {
+                    mMapController.setShoveResponder(register ? new TouchInput.ShoveResponder() {
+                        @Override
+                        public boolean onShoveBegin() {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onShove(float distance) {
+                            tvListener.setText(getString(R.string.gesture_shove_map));
+                            String value = "Shove: " + roundDecimalsUpto(distance, 2);
+                            tvValues.setText(value);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onShoveEnd() {
+                            return false;
+                        }
+
+                    } : null);
+                }
                 break;
 
             case POI:
                 if (mMapController != null) {
-                    mMapController.setOnPoiClickListener(register ? (MapController.OnPoiClickListener) place -> {
+                    mMapController.setOnPoiClickListener(register ? (OnPoiClickListener) place -> {
                         LngLat lngLat = mMapController.screenPositionToLngLat(new PointF((float) place.lngLat.longitude,
                                 (float) place.lngLat.latitude));
                         tvListener.setText(getString(R.string.click_poi));
@@ -248,20 +324,19 @@ public class ActivityMapGestures extends BaseMapActivity implements CompoundButt
         }
     }
 
-    double roundDecimalsUpto(double d, int digitsAfterDecimalPoint) {
-
-        if (digitsAfterDecimalPoint <= 0)
-            return d;
+    double roundDecimalsUpto(double value, int upto) {
+        if (upto <= 0)
+            return value;
 
         StringBuilder pattern = new StringBuilder("#.");
 
-        int digits = digitsAfterDecimalPoint;
+        int digits = upto;
         while (digits > 0) {
             pattern.append("#");
             digits -= 1;
         }
 
         DecimalFormat decimalFormat = new DecimalFormat(pattern.toString());
-        return Double.valueOf(decimalFormat.format(d));
+        return Double.valueOf(decimalFormat.format(value));
     }
 }

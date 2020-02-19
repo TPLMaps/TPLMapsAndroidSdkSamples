@@ -10,11 +10,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tplmaps.android.R;
+import com.tplmaps3d.CameraPosition;
 import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.Marker;
 import com.tplmaps3d.MarkerOptions;
+import com.tplmaps3d.sdk.CustomInfoWindowListener;
+import com.tplmaps3d.sdk.utils.MapViewUtils;
 
 
 public class ActivityInfoWindows extends BaseMapActivity {
@@ -36,8 +39,11 @@ public class ActivityInfoWindows extends BaseMapActivity {
 
         mMapController = mapController;
 
-        mMapController.setLngLat(new LngLat(73.093104, 33.730494));
-        mMapController.setZoomBy(15);
+        CameraPosition cameraPosition = mMapView.getMapController().getCameraPosition();
+        cameraPosition.latitude = 33.730494;
+        cameraPosition.longitude = 73.093104;
+        cameraPosition.zoom = 15;
+        MapViewUtils.setCameraPosition(mMapView.getMapController(), cameraPosition, null);
 
         normalInfoWindows();
         customInfoWindows();
@@ -89,7 +95,7 @@ public class ActivityInfoWindows extends BaseMapActivity {
     private void customInfoWindows() {
         normalInfoWindows();
         // Set custom info view to all info windows
-        mMapController.setCustomInfoWindow(new MapController.CustomInfoWindow() {
+        mMapController.setCustomInfoWindow(new CustomInfoWindowListener() {
             @Override
             public View onInfoWindow(Marker tplMarker) {
                 return null;
@@ -127,7 +133,7 @@ public class ActivityInfoWindows extends BaseMapActivity {
         marker4.showInfoWindow();
         marker4.setInfoWindowOffset(new Point(-150, -20));
 
-        mMapController.setCustomInfoWindow(new MapController.CustomInfoWindow() {
+        mMapController.setCustomInfoWindow(new CustomInfoWindowListener() {
             @Override
             public View onInfoWindow(Marker tplMarker) {
                 if (tplMarker == marker3)
