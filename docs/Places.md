@@ -12,7 +12,7 @@ repositories {
 2. Add the following gradle dependency in android application module’s `build.gradle`
 ``` groovy
 dependencies {
-  implementation 'com.tpl.maps.sdk:places:1.1.3'
+  implementation 'com.tpl.maps.sdk:places:1.5'
 }
 ```
 3. Add Internet permission in your `AndroidManifest.xml`
