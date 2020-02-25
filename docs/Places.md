@@ -5,8 +5,7 @@ To setup Places API in your application follow these steps
 allprojects {
 repositories {
    jcenter()
-   maven { url "http://api.tplmaps.com:8081/artifactory/example-repo-local/"
-   }
+   maven { url "http://api.tplmaps.com:8081/artifactory/example-repo-local/" }
 }
 ```
 2. Add the following gradle dependency in android application module’s `build.gradle`
