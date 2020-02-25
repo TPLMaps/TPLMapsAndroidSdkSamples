@@ -7,7 +7,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 29
         versionCode 1
-        versionName "1.1"
+        versionName "${rootProject.ext.version}"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -36,16 +36,16 @@ repositories {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'ch.acra:acra:4.9.1'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'com.google.android.material:material:1.2.0-alpha04'
     //MAPS: Dependency to utilize Maps API artifact of SDK
-    implementation 'com.tpl.maps.sdk:maps:1.4.1.2'
+    implementation "com.tpl.maps.sdk:maps:${rootProject.ext.version}"
     //SEARCH/PLACES: Dependency added to utilize Places API artifact of SDK
-    implementation 'com.tpl.maps.sdk:places:1.1.3'
+    implementation "com.tpl.maps.sdk:places:${rootProject.ext.version}"
     //ROUTING: Dependency added to utilize Routing artifact of SDK
-    implementation 'com.tpl.maps.sdk:routing:1.1.2'
+    implementation "com.tpl.maps.sdk:routing:${rootProject.ext.version}"
     ////////////////////// For internal developers use ////////////////////////////////
-    /*implementation project(':maps')
-    implementation project(':routing')
-    implementation project(':places')*/
+    //implementation project(':maps')
+    //implementation project(':routing')
+    //implementation project(':places')
     ////////////////////// END ///////////////////////////
 }

@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tplmaps.android.BuildConfig;
 import com.tplmaps.android.R;
 
 public class ActivityMain extends AppCompatActivity implements View.OnClickListener {
@@ -17,6 +18,8 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initViews();
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setTitle("SDK v" + BuildConfig.VERSION_NAME);
         //CommonUtils.showToast(this, getDeviceAbi(), Toast.LENGTH_LONG, true);
     }
 
