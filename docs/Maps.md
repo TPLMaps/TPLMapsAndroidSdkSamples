@@ -16,7 +16,13 @@ dependencies {
 ```
 3. Add Internet permission in your `AndroidManifest.xml`
 ``` xml
+<!-- TO GIVE MAPS INTERNET ACCESS TO LOAD -->
 <uses-permission android:name="android.permission.INTERNET" />
+<!-- TO USE LOCATION FUNCTIONS OF SDK -->
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<!-- TO GIVE MAPS NETWORK (WIFI) ACCESS -->
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
 4. Configure API Key
    - Create an account on [TPLMaps LBS Portal](https://api.tplmaps.com/apiportal).
