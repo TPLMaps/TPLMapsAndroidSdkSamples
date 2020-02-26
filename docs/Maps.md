@@ -26,7 +26,7 @@ dependencies {
 ```
 4. Configure API Key
    - Create an account on [TPLMaps LBS Portal](https://api.tplmaps.com/apiportal).
-   - Generate Android API Key through [Generate Key](https://api.tplmaps.com/apiportal/#/app/key-generation) option.
+   - In your **User Profile** menu, under **Billing**, find **API Key** Tab and [**Generate New Key**](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option.
    - Copy the key put it into `<meta-data>` tag mentioned below and copy the tag in your project’s `AndroidManifest.xml` under `<application>` tag
 ``` xml
       <meta-data 
@@ -93,7 +93,7 @@ public void onMapReady(final MapController mapController) {
   // TODO: Map loaded and ready, write your map tasks here by using the mapController instance
 }
 ```
-9. Load Map by adding the below lines of code. The method loads map asynchronously and you will get callback in `onMapReady(MapController)` when map ready. The method will take a reference of `MapView.OnMapReadyCallback` instance as parameter.
+9. Load Map by adding the below line of code called with **MapView**. The method loads map asynchronously and you will get callback in `onMapReady(MapController)` when map ready. The method will take a reference of `MapView.OnMapReadyCallback` instance as parameter.
 ``` java
    mapView.loadMapAsync(this);
 ```
