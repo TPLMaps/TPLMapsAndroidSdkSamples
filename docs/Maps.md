@@ -1,12 +1,24 @@
 # Setup Maps API
 To setup TPL Maps in your application follow these steps
-1. Add the following configuration in project level `build.gradle`
+1. Add the following recommended gradle configuration in your root/project level **`build.gradle`**
 ``` groovy
-allprojects {
-repositories {
-   jcenter()
-   maven { url "http://api.tplmaps.com:8081/artifactory/example-repo-local/" }
+buildscript {
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.5.0'
+  }
 }
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "http://api.tplmaps.com:8081/artifactory/example-repo-local/" }
+    }
+}
+```
+> Use distributionUrl for your root/gradle/wrapper/**gradle-wrapper.properties**
+```xml
+distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
 ```
 2. Add the following gradle dependency in android application module’s `build.gradle`
 ``` groovy
