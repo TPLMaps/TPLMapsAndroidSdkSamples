@@ -11,6 +11,7 @@ buildscript {
 
 allprojects {
 repositories {
+   google()
    jcenter()
    maven { url "http://api.tplmaps.com:8081/artifactory/example-repo-local/" }
 }
