@@ -18,7 +18,7 @@ allprojects {
 ```
 > Use distributionUrl for your root/gradle/wrapper/**gradle-wrapper.properties**
 ```groovy
-distributionUrl=https//://services.gradle.org/distributions/gradle-5.4.1-all.zip
+distributionUrl=https://services.gradle.org/distributions/gradle-5.4.1-all.zip
 ```
 2. Add the following gradle dependency in android application module’s `build.gradle`
 ``` groovy
