@@ -81,7 +81,7 @@ public class ActivityUIControls extends BaseMapActivity implements CompoundButto
                     if (mMapController != null) {
                         // Enable/Disable My Location
                         mMapController.setMyLocationEnabled(isChecked,
-                                MapController.MyLocationArg.ZOOM_ON_LOCATION);
+                                MapController.MyLocationArg.ZOOM_LOCATION_UPDATES);
                     }
                 } catch (SecurityException e) {
                     e.printStackTrace();

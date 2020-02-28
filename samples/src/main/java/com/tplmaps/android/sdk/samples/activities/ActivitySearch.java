@@ -2,6 +2,8 @@ package com.tplmaps.android.sdk.samples.activities;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,7 +42,7 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
         // Initialize SearchManager
         searchManager = new SearchManager(this);
 
-        searchManager.setListener(this);
+        //searchManager.setListener(this);
 
         setViews();
 
@@ -60,17 +62,36 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
         // Get search field
         etSearch = findViewById(R.id.etSearch);
 
+        LngLat islamabad = new LngLat(33.717864, 73.071648);
+
         // Get and set Search button
+        EditText etSearch = findViewById(R.id.etSearch);
         ivSearch = findViewById(R.id.ivSearch);
         ivSearch.setOnClickListener(view -> {
             // Request for query after initializing SearchManager
             // put your query string with location to get your nearer results first
             searchManager.request(Params.builder()
                     .query(etSearch.getText().toString())
-                    .location(new LngLat(33.717864, 73.071648))    // Default location of Islamabad
-                    .build());
+                    .location(islamabad)    // Default location of Islamabad
+                    .build(), this);
         });
-
+        etSearch.setOnEditorActionListener(
+                (v, actionId, event) -> {
+                    // Identifier of the action. This will be either the identifier you supplied,
+                    // or EditorInfo.IME_NULL if being called due to the enter key being pressed.
+                    if (actionId == EditorInfo.IME_ACTION_SEARCH
+                            || actionId == EditorInfo.IME_ACTION_DONE
+                            || event.getAction() == KeyEvent.ACTION_DOWN
+                            && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                        searchManager.request(Params.builder()
+                                .query(etSearch.getText().toString())
+                                .location(islamabad)    // Default location of Islamabad
+                                .build(), this);
+                        return true;
+                    }
+                    // Return true if you have consumed the action, else false.
+                    return false;
+                });
         // Get and set Cancel button
         ivCancel = findViewById(R.id.ivCancel);
         ivCancel.setOnClickListener(view -> {

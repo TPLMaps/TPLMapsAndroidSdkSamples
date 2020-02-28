@@ -2,4 +2,7 @@ include ':samples'
 
 //include ':maps'
 //project(':maps').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\maps')
-
+//include ':places'
+//project(':places').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\places')
+//include ':routing'
+//project(':routing').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\routing')
