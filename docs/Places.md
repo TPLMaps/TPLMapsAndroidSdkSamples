@@ -48,7 +48,7 @@ Params params = Params.builder()
                 .build();
 ```
 
-   - Initialize a local reference of `OnSearchResult` interface OR implement it your activity class. You will get responses in their respective callback methods.
+6. Initialize a local reference of `OnSearchResult` interface OR implement it your activity class. You will get responses in their respective callback methods.
 For example,
 ``` java
 OnSearchResult callback = new OnSearchResult() {
