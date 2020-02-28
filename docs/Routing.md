@@ -1,9 +1,16 @@
 # Setup Routing API
 To setup Routing API in your application follow these steps
-1. Add the following configuration in project level `build.gradle`
+1. Add the following recommended gradle configuration in your root/project level `build.gradle`
 ``` groovy
+buildscript {
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.5.0'
+  }
+}
+
 allprojects {
 repositories {
+   google()
    jcenter()
    maven { url "http://api.tplmaps.com:8081/artifactory/example-repo-local/" }
 }
