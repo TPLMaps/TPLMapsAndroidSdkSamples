@@ -47,8 +47,11 @@ locations.add(destination);
 ```
 6.	Prepare `TPLRouteConfig` object and pass it to `TPLRouteManager.calculate(TPLRouteConfig)` method with necessary arguments as given below, You will get list of **multiple routes** if exist between source & destination locations in `IMapRoute#onMapRoutingOverview(ArrayList<Place> endPoints, ArrayList<TPLRoute> routes)` callback.
 ``` java
-TPLRouteConfig config = new TPLRouteConfig.Builder(false, locations)
-        .build();
+TPLRouteConfig config = new TPLRouteConfig.Builder()
+                .reRoute(false)
+                .endPoints(locations)
+                .heading(90)
+                .build();
 
 new TPLRouteManager().calculate(this, config, new IMapRoute() {
     @Override
