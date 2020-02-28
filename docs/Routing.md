@@ -30,9 +30,9 @@ dependencies {
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 4. Configure API Key
-   - Create an account on [TPLMaps LBS Portal](https://api.tplmaps.com/apiportal).
-   - Generate Android API Key through [Generate Key](https://api.tplmaps.com/apiportal/#/app/key-generation) option.
-   - Copy the key put it into `<meta-data>` tag mentioned below and copy the tag in your project’s `AndroidManifest.xml` under `<application>` tag
+      - Create an account on [TPLMaps LBS Portal](https://api.tplmaps.com/apiportal).
+      - In your **User Profile** menu, under **Billing**, find **API Key** Tab and [**Generate New Key**](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option.
+      - Copy the key put it into `<meta-data>` tag mentioned below and copy the tag in your project’s `AndroidManifest.xml` under `<application>` tag
 ``` xml
       <meta-data
         android:name="com.tplmaps.android.sdk.API_KEY"
