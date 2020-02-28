@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/latest--release-1.5-green" />
+<img src="https://img.shields.io/badge/latest--release-1.5.1-green" />
 
 # TPL Maps Android SDK
 
