@@ -27,37 +27,42 @@ dependencies {
         android:name="com.tplmaps.android.sdk.API_KEY"
         android:value="YOUR_API_KEY_HERE" />
 ```
-5.	Initialize an instance of SearchManager class by passing your Activity’s reference as
+5.	Initialize Search Params with query and location to prioritize results,
+For example,
 ``` java
-SearchManager searchManager= new SearchManager(this);
+Params params = Params.builder()
+                .query("restaurant")
+                .location(new LngLat(33.729416, 73.038457))
+                .build();
 ```
-In the above code `this` belongs to your Activity.
 
-   - Implement `OnSearchResult` interface and its methods with your activity. There you will get responses against your search queries.
-   Interface’s callback will look like this
+   - Intialize a local reference of `OnSearchResult` interface OR implement it your activity class. You will get responses in their respective callback methods.
+For example,
 ``` java
-@Override
-public void onSearchResult(ArrayList<Place> results) { }
+OnSearchResult callback = new OnSearchResult() {
+            @Override
+            public void onSearchResult(ArrayList<Place> results) {
+                for(Place place:results) {
+                    Log.d(TAG, place.getName());
+                }
+            }
 
-@Override
-public void onSearchResultNotFound(Params params, long requestTimeInMS) { }
+            @Override
+            public void onSearchResultNotFound(Params params, long requestTimeInMS) { }
 
-@Override
-public void onSearchRequestFailure(Exception e) { }
+            @Override
+            public void onSearchRequestFailure(Exception e) { }
 
-@Override
-public void onSearchRequestCancel(Params params, long requestTimeInMS) { }
+            @Override
+            public void onSearchRequestCancel(Params params, long requestTimeInMS) { }
 
-@Override
-public void onSearchRequestSuspended(String errorMessage, Params params, long requestTimeInMS) { }
+            @Override
+            public void onSearchRequestSuspended(String errorMessage, Params params, long requestTimeInMS) { }
+        };
 ```
-6.	Register a search listener as
+7. Pass params and `OnSearchResult` callback instance to the `SearchManager.request()` method. You will received events callbacks.
 ``` java
-searchManager.setListener(this);
-```
-7. The method will take a reference of `OnSearchResult` interface’s instance Call `SearchManager.request (String, Params)` method by setting at least one param named Params.query you will get response in your callback methods defined by your listener. In case of missing some configurations related to the API or exceptions, you will get informed in these callbacks.
-``` java
-searchManager.request(url, Params.builder().query(String).location(LngLat).build());
+searchManager.request(url, params, callback);
 ```
 > **Note:** Call SearchManager.request (String, Params) for search query after an interval of minimum 3 seconds because of network limitations applied on our servers otherwise all your request will be suspended
 
