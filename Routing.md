@@ -76,8 +76,9 @@ new TPLRouteManager().calculate(this, config, new IMapRoute() {
 You can find API Documentation from [here](documentation/API/com/tpl/maps/sdk/routing/package-frame.html)
 ## Screenshot
 <p float="left">
- <img src="Documentation/Images/screenshots/Routing.png" width="250" />
+ <img src="documentation/Images/screenshots/Routing.png" width="250" />
 </p></br>
+
 
 
 

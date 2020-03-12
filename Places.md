@@ -83,7 +83,8 @@ searchManager.request(params, callback);
 You can find API Documentation from [here](Documentation/API/com/tplmaps/sdk/places/package-summary.html)
 ## Screenshot
 <p float="left">
- <img src="Documentation/Images/screenshots/Search.png" width="250" />
+ <img src="documentation/Images/screenshots/Search.png" width="250" />
 </p></br>
+
 
 
