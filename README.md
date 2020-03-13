@@ -31,17 +31,17 @@ A Native Android SDK to integrate 3D Vector Maps, Places & Routing API in your A
 
 
 ## Contributor
-**Muhammad Hassan Jamil**
-Assistant Manager & Team Lead (Android Development)
-[TPL Maps](https://tplmaps.com/)
-hassan.jamil@tplmaps.com
+**Muhammad Hassan Jamil** </br>
+Assistant Manager & Team Lead (Android Development) </br>
+[TPL Maps](https://tplmaps.com/)  </br>
+hassan.jamil@tplmaps.com  </br>
 
 ## Latest Release
 Always go for [latest release](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples/releases) while working with the TPL Maps Android SDK to get the more improved version, sample APK can be found with the release.
 
 
 ## API Documentation
-You can find API Documentation from [here](documentation/API/index.html)
+You can find API Documentation from [here](https://api.tplmaps.com/apiportal/#/portal/sdk-doc)
 
 ## [FAQs](Faqs.md)
 

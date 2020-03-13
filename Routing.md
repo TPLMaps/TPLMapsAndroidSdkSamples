@@ -73,7 +73,7 @@ new TPLRouteManager().calculate(this, config, new IMapRoute() {
 });
 ```
 ## API Documentation
-You can find API Documentation from [here](documentation/API/com/tpl/maps/sdk/routing/package-frame.html)
+You can find API Documentation from [here](https://api.tplmaps.com/api-documentation/com/tpl/maps/sdk/routing/package-summary.html)
 ## Screenshot
 <p float="left">
  <img src="documentation/Images/screenshots/Routing.png" width="250" />

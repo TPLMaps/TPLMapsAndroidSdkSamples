@@ -178,7 +178,7 @@ protected void onDestroy() {
 }
 ```
 
-8. **Implement** **MapView.OnMapReadyCallback** interface with your Activity and use the onMapReady(MapController) callback method to get a handle to the [MapController](documentation/API/com/tplmaps3d/MapController.html) object. The callback is triggered when the map is ready to be used. It provides a non-null instance of MapController. You can use the MapController object to set the view options for the map e.g. add a marker.
+8. **Implement MapView.OnMapReadyCallback** interface with your Activity and use the onMapReady(MapController) callback method to get a handle to the [MapController](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) object. The callback is triggered when the map is ready to be used. It provides a non-null instance of MapController. You can use the MapController object to set the view options for the map e.g. add a marker.
     The method will look like this:
 
 ```java
@@ -317,7 +317,7 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
 
 ## Map Objects
 
-Maps are represented in the API by the **[MapView](documentation/API/com/tplmaps3d/MapView.html)** and [**MapController**](documentation/API/com/tplmaps3d/MapController.html) classes.
+Maps are represented in the API by the **[MapView](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapView.html)** and [**MapController**](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) classes.
 
 ## The map object
 
@@ -403,7 +403,7 @@ You can configure the initial state of the map programmatically for now.
 
 This section describes how to set the initial state of the map if you have added a map to your application programmatically.
 
-If you have [Setup Maps](#_Setup_Maps) successfully, then you can configure its initial state by calling functionalities/method from [MapView](documentation/API/com/tplmaps3d/MapView.html) or [MapController](documentation/API/com/tplmaps3d/MapController.html) class objects your settings specified. You can get a MapController object in [MapView.OnMapReadyCallback.onMapReady()](documentation/API/com/tplmaps3d/MapView.OnMapReadyCallback.html) callback method like this:
+If you have [Setup Maps](#_Setup_Maps) successfully, then you can configure its initial state by calling functionalities/method from [MapView](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapView.html) or [MapController](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) class objects your settings specified. You can get a MapController object in [MapView.OnMapReadyCallback.onMapReady()](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapView.OnMapReadyCallback.html) callback method like this:
 
 ```java
   @Override
@@ -485,7 +485,7 @@ Funtion will work as second param set by the developer, MyLocationArg is an enum
 - **ZOOM_LOCATION_UPDATES** mean `MyLocationLayer` will be plotted and zoomed for location update received.
 
 The function will automatically listen for location updates received from location providers and will update the current location marker layer continuously.
- For more info please consult the API Documentation of [MapController](documentation/API/com/tplmaps3d/MapController.html) class.
+ For more info please consult the API Documentation of [MapController](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) class.
 
 You can make map listen and plot your location through Location marker (Green filled and white outlined circle shaped marker). Map will constantly listen your location and give you location updates through OnMyLocationChangeListener interface.
 
@@ -518,7 +518,7 @@ MapController.setOnMyLocationChangeListener(new MapController.OnMyLocationChange
 
 ### Marker
 
-Marker describe a single point or location on a map. They appear on the map as an icon and can display an info window with additional information when clicked. To draw marker on map, user must create MarkerOptions in which user can set different properties including location/point, icon, title, description etc. And then pass [MarkerOptions](documentation/API/com/tplmaps3d/MarkerOptions.html) to [addMarker()](documentation/API/com/tplmaps3d/MapController.html) method via `MapController`.
+Marker describe a single point or location on a map. They appear on the map as an icon and can display an info window with additional information when clicked. To draw marker on map, user must create MarkerOptions in which user can set different properties including location/point, icon, title, description etc. And then pass [MarkerOptions](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MarkerOptions.html) to [addMarker()](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) method via `MapController`.
 
 1. **Add a marker**:
 
@@ -572,7 +572,7 @@ User can also remove any shape polyline, polygon, and circle in same way
 
 ### Polyline
 
-Polyline is a path between two locations. There must be at least two points to draw a polyline. To draw polyline on map, user must create `PolylineOptions` in which user can set different properties including list of location/point, color, width, outline width, outline color etc. And then pass [PolylineOptions](documentation/API/com/tplmaps3d/PolylineOptions.html) to `addPolyline()` method via `MapController`.
+Polyline is a path between two locations. There must be at least two points to draw a polyline. To draw polyline on map, user must create `PolylineOptions` in which user can set different properties including list of location/point, color, width, outline width, outline color etc. And then pass [PolylineOptions](https://api.tplmaps.com/api-documentation/com/tplmaps3d/PolylineOptions.html) to `addPolyline()` method via `MapController`.
 
 ```java
  Polyline polyline = mapController.addPolyline(
@@ -586,7 +586,7 @@ Polyline is a path between two locations. There must be at least two points to d
 
 ### Polygon
 
-User can also draw a Polygon shape on map giving list of points. Polygon must have three points. To draw polygon on map, user must create PolygonOptions in which user can set different properties including list of location/point, fill color, outline width, outline color etc. And then pass [`PolygonOptions`](documentation/API/com/tplmaps3d/PolygonOptions.html) to `addPolygon()` method via `MapController`.
+User can also draw a Polygon shape on map giving list of points. Polygon must have three points. To draw polygon on map, user must create PolygonOptions in which user can set different properties including list of location/point, fill color, outline width, outline color etc. And then pass [`PolygonOptions`](https://api.tplmaps.com/api-documentation/com/tplmaps3d/PolygonOptions.html) to `addPolygon()` method via `MapController`.
 
 ```java
 ArrayList lngLats1 = new ArrayList<>();
@@ -605,7 +605,7 @@ Polygon polygon = mapController.addPolygon(
 
 ### Circle
 
-To draw circle on map, user must create CircleOptions in which user can set different properties including center point, radius, fill color, outline width, outline color etc. And then pass [`CircleOptions`](documentation/API/com/tplmaps3d/CircleOptions.html) to `addCircle() `method via `MapController`. Center point and radius must be set to draw a valid circle. 
+To draw circle on map, user must create CircleOptions in which user can set different properties including center point, radius, fill color, outline width, outline color etc. And then pass [`CircleOptions`](https://api.tplmaps.com/api-documentation/com/tplmaps3d/CircleOptions.html) to `addCircle() `method via `MapController`. Center point and radius must be set to draw a valid circle. 
 
 ```java
  Circle circle = mapController.addCircle(
@@ -617,7 +617,7 @@ To draw circle on map, user must create CircleOptions in which user can set diff
 
 ## Markers and shapes Events
 
-User can set click listener for markers, info windows and all shapes. Marker and info windows are clickable by default. But to get polyline, polygon and circle click listener, user must `setClickable(true)`. Click listeners can be set as follow: 
+User can set click listener for markers, info windows and all shapes. Marker and info windows are clickable by default. But to get polyline, polygon and circle click listener, user must `setClickable(true)`. Click listeners can be set as follow:
 
 ```java
 mapController.setOnMarkerClickListener(
@@ -648,7 +648,7 @@ mapController.setOnCircleClickListener(
 
 You can set custom map style by calling this method
 ``` java
-MapView.setMapStyle(String);  
+MapView.setMapStyle(String);
 ```
 
 
@@ -704,7 +704,7 @@ The following style options are supported:
 
 - color (an RGB hex string of format #RRGGBB) sets the color of the feature
 
-  > **Note:** You need to input color’s hex value in apostrophes character e.g. ”color”:”’#RRGGBB’”
+  > **Note:** You need to input color’s hex value in apostrophes character e.g. ”color”:”#RRGGBB”
 
 - width sets the width of the feature
    Specify value for feature road for different zoom levels 
@@ -769,7 +769,7 @@ The following style options are supported:
 ```
 
 ## API Documentation
-You can find API Documentation from [here](documentation/API/com/tplmaps3d/package-summary.html)
+You can find API Documentation from [here](https://api.tplmaps.com/api-documentation/com/tplmaps3d/package-summary.html)
 
 ## Screenshot
 

@@ -80,7 +80,7 @@ searchManager.request(params, callback);
 > **Note:** Call SearchManager.request (String, Params) for search query after an interval of minimum 3 seconds because of network limitations applied on our servers otherwise all your request will be suspended
 
 ## API Documentation
-You can find API Documentation from [here](Documentation/API/com/tplmaps/sdk/places/package-summary.html)
+You can find API Documentation from [here](https://api.tplmaps.com/api-documentation/com/tplmaps/sdk/places/package-summary.html)
 ## Screenshot
 <p float="left">
  <img src="documentation/Images/screenshots/Search.png" width="250" />
