@@ -10,7 +10,7 @@
 - [Latest Release](#latest-release)
 - [Developer guide](#developer-guide)
 - [API Documentation](#api-documentation)
-- [FAQs](faqs.md)
+- [FAQs](#faqs)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
