@@ -4,7 +4,7 @@
 
 ## Table Of Content
 - [Overview](#overview)
-- [Features:](#features)
+- [APIs](#apis)
 - [Screenshots](#screenshots)
 - [Contributor](#contributor)
 - [Latest Release](#latest-release)
@@ -20,7 +20,7 @@ A Native Android SDK to integrate 3D Vector Maps, Places & Routing API in your A
 
 > The project is tested on Android Studio versions 3.3, 3.3.1, 3.4.2, 3.5 & 3.6 - if you have issues building it, please upgrade to one of these versions. Try this samples project with latest version of [Android Studio](https://developer.android.com/studio)
 
-## Features:
+## APIs
 - [**Maps API**](/docs/Maps.md)
 - [**Places API**](/docs/Places.md)
 - [**Routing API**](/docs/Routing.md)
