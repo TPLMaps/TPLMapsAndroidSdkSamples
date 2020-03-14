@@ -1,6 +1,45 @@
 ![TPLMaps](https://dl.dropboxusercontent.com/s/ks2tbo6ghpwwda0/TPLMapsLogo.png)
+## Table Of Content
+- [Maps API](#maps-api)
+  * [Overview](#overview)
+  * [Getting Started](#getting-started)
+    + [Step 1. Download Android Studio](#step-1-download-android-studio)
+    + [Step 2. Create TPL Maps application project](#step-2-create-tpl-maps-application-project)
+    + [Step 3. Configure API key](#step-3-configure-api-key)
+    + [Step 4. Setup map in your application](#step-4-setup-map-in-your-application)
+    + [Step 5. Connect an Android device](#step-5-connect-an-android-device)
+    + [Step 6. Build and run your app](#step-6-build-and-run-your-app)
+    + [Next steps](#next-steps)
+  * [Setup Maps](#setup-maps)
+  * [Map Objects](#map-objects)
+  * [The map object](#the-map-object)
+    + [MapView](#mapview)
+  * [Map Mode](#map-mode)
+    + [Default (Day)](#default--day-)
+    + [Night](#night)
+    + [Change the map mode](#change-the-map-mode)
+  * [Configure maps state](#configure-maps-state)
+    + [Programmatically](#programmatically)
+      - [Configure Map Mode](#configure-map-mode)
+      - [Configure Camera Position](#configure-camera-position)
+      - [Configure Map UI Settings](#configure-map-ui-settings)
+      - [Configure Map Layers](#configure-map-layers)
+  * [Enable Location on map](#enable-location-on-map)
+    + [Example Screen](#example-screen)
+  * [Draw markers and shapes](#draw-markers-and-shapes)
+    + [Marker](#marker)
+    + [Polyline](#polyline)
+    + [Polygon](#polygon)
+    + [Circle](#circle)
+  * [Markers and shapes Events](#markers-and-shapes-events)
+  * [Add Style Map (JSON Formatted Style)](#add-style-map--json-formatted-style-)
+    + [featureType](#featuretype)
+    + [styler](#styler)
+  * [Sample JSON](#sample-json)
+  * [API Documentation](#api-documentation)
+  * [Screenshot](#screenshot)
 
-[TOC]
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 # Maps API
 
 ## Overview
@@ -52,17 +91,17 @@ Copy the key put it into meta-tag mentioned below and copy the tag in your proje
              android:value="YOUR_API_KEY_HERE" /> 
 ```
 
-### **Step 4.** Setup map in your application
+### Step 4. Setup map in your application
 
 For setting map in your android application, you need to follow the instructions given in [Setup Map](#_Setup_Maps_2) section of this document
 
-### **Step 5.** Connect an Android device
+### Step 5. Connect an Android device
 
 The simplest way to see your app in action is to connect an Android device to your computer. Follow the [instructions](http://developer.android.com/tools/device.html) to enable developer options on your Android device and configure your application and system to detect the device.
 
 Alternatively, you can use the Android Emulator to run your app. Use the [Android Virtual Device (AVD) Manager](http://developer.android.com/tools/devices/managing-avds.html) to configure one or more virtual devices which you'll be able to use with the Android Emulator when you build and run your app. When choosing your emulator, ensure that you use Android 4.2.2 or higher, and be careful to pick an image that includes the Google APIs, or the application will not have the requisite runtime APIs in order to execute. Also, take note of the instructions for [configuring virtual machine acceleration](http://developer.android.com/tools/devices/emulator.html#accel-vm), which you should use with an **x86 target AVD** as described in the instructions. This will improve your experience with the emulator.
 
-### **Step 6.** Build and run your app
+### Step 6. Build and run your app
 
 In Android Studio, click the **Run** menu option (or the play button icon) to run your app.
 
