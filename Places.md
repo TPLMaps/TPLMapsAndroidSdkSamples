@@ -1,4 +1,4 @@
-# Setup Places/Search API
+# Setup Places API
 To setup Places API in your application follow these steps
 1. Add the following recommended gradle configuration in your root/project level `build.gradle`
 
