@@ -2,19 +2,23 @@
 
 # TPL Maps Android SDK
 
+## Table Of Content
+- [Overview](#overview)
+- [Features:](#features)
+- [Screenshots](#screenshots)
+- [Contributor](#contributor)
+- [Latest Release](#latest-release)
+- [Developer guide](#developer-guide)
+- [API Documentation](#api-documentation)
+- [FAQs](faqs.md)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
+
 ## Overview
 A Native Android SDK to integrate 3D Vector Maps, Places & Routing API in your Android Application Project.
 
 > The project is tested on Android Studio versions 3.3, 3.3.1, 3.4.2, 3.5 & 3.6 - if you have issues building it, please upgrade to one of these versions. Try this samples project with latest version of [Android Studio](https://developer.android.com/studio)
-
-## Content
-[Overview](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples#overview)</br>
-[Features](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples#features)</br>
-[Screenshot](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples#screenshot)</br>
-[Developer Guide](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples#developer-guide)</br>
-[API Documentation](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples#api-documentation)</br>
-[Contributor](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples#contributor)</br>
-[FAQs](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples#faqs) 
 
 ## Features:
 - [**Maps API**](/docs/Maps.md)
