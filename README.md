@@ -5,11 +5,11 @@
 # TPL Maps Android SDK
 ## Table Of Content
 - [Overview](#overview)
-- [APIs](#apis)
+- [API Guides](#api-guides)
 - [Screenshots](#screenshots)
 - [Contributor](#contributor)
 - [Latest Release](#latest-release)
-- [API Documentation](#api-documentation)
+- [API Reference](#api-reference)
 - [FAQs](#faqs)
 
 ## Overview
