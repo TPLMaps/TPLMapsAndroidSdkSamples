@@ -3,6 +3,7 @@
 ![TPLMaps](https://dl.dropboxusercontent.com/s/ks2tbo6ghpwwda0/TPLMapsLogo.png)
 
 # TPL Maps Android SDK
+
 ## Table Of Content
 - [Overview](#overview)
 - [API Guides](#api-guides)
