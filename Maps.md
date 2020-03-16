@@ -113,7 +113,7 @@ When prompted to choose a device, choose one of the following options:
 
 Click **OK.** Android Studio will invoke Gradle to build your app, and then display the results on the device or on the emulator. It could take a couple of minutes before the app opens.
 
-You should see a map with a marker positioned over Sydney, Australia. If you don't see a map, confirm that you've completed all the steps described on this page. In particular, check that you've added an API key as described [above](https://developers.google.com/maps/documentation/android-api/start#get-key).
+You should see a map with a marker positioned over Sydney, Australia. If you don't see a map, confirm that you've completed all the steps described on this page. In particular, check that you've added an API key as described [above](#step-3-configure-api-key).
 
 ### Next steps
 
@@ -748,7 +748,7 @@ The following style options are supported:
 - width sets the width of the feature
    Specify value for feature road for different zoom levels 
    for example,
-```json
+```
 [[5,0.4px],[10,2px],…,[15,5px],[20,65px]]
 ```
    In this value, `[[5,0.4px]]` tuple defines width 0.4px at zoom level 5 and the next tuple `[10,2px] ` defines width 2px at zoom level 10 and width values between these two zoom levels are linearly interpolated.
@@ -757,7 +757,7 @@ The following style options are supported:
 - outline.width sets the outline width of the feature
 - Specify outline width for feature road for different zoom levels
    for example,
-```json
+```
 [[5,0.4px],[10,2px],…,[20,65px]]
 ```
    In this value, `[[5,0.4px]]` tuple defines width 0.4px at zoom level 5 and the next tuple `[10,2px]` defines width 2px at zoom level 10 and width values between these two zoom levels are linearly interpolated.
@@ -811,7 +811,6 @@ The following style options are supported:
 You can find API Documentation from [here](https://api.tplmaps.com/api-documentation/com/tplmaps3d/package-summary.html)
 
 ## Screenshot
-
 <p float="left">
  <img src="documentation/Images/screenshots/Maps.png" width="250" />
 </p></br>
