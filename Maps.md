@@ -93,7 +93,7 @@ Copy the key put it into meta-tag mentioned below and copy the tag in your proje
 
 ### Step 4. Setup map in your application
 
-For setting map in your android application, you need to follow the instructions given in [Setup Map](#_Setup_Maps) section of this document
+For setting map in your android application, you need to follow the instructions given in [Setup Map](#setup-maps) section of this document
 
 ### Step 5. Connect an Android device
 
