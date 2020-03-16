@@ -32,7 +32,7 @@
     + [Polygon](#polygon)
     + [Circle](#circle)
   * [Markers and shapes Events](#markers-and-shapes-events)
-  * [Add Style Map (JSON Formatted Style)](#add-style-map--json-formatted-style-)
+  * [Add Style Map JSON Formatted](#add-style-map-json-formatted)
     + [featureType](#featuretype)
     + [styler](#styler)
   * [Sample JSON](#sample-json)
@@ -683,7 +683,7 @@ mapController.setOnCircleClickListener(
 
  
 
-## Add Style Map (JSON Formatted Style)
+## Add Style Map JSON Formatted
 
 You can set custom map style by calling this method
 ``` java
