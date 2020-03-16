@@ -9,7 +9,6 @@
 - [Screenshots](#screenshots)
 - [Contributor](#contributor)
 - [Latest Release](#latest-release)
-- [Developer guide](#developer-guide)
 - [API Documentation](#api-documentation)
 - [FAQs](#faqs)
 ## Overview
