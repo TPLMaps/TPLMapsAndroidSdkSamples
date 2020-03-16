@@ -442,7 +442,7 @@ You can configure the initial state of the map programmatically for now.
 
 This section describes how to set the initial state of the map if you have added a map to your application programmatically.
 
-If you have [Setup Maps](#_Setup_Maps) successfully, then you can configure its initial state by calling functionalities/method from [MapView](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapView.html) or [MapController](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) class objects your settings specified. You can get a MapController object in [MapView.OnMapReadyCallback.onMapReady()](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapView.OnMapReadyCallback.html) callback method like this:
+If you have [Setup Maps](#_Setup_Maps) successfully, then you can configure its initial state by calling functionalities/method from [MapView](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapView.html) or [MapController](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) class objects your settings specified. You can get a MapController object in [MapView.OnMapReadyCallback.onMapReady()](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapView.OnMapReadyCallback.html)  callback method like this:
 
 ```java
   @Override
@@ -463,14 +463,15 @@ mMapView.setMapMode(MapMode.NIGHT | MapMode.DEFAULT);
 
 #### Configure Camera Position
 
-First, you need to get a MapController class object as defined above in this section. And then you can call MapController.setCamera(CameraPosition) or MapController.animateCamera(CameraPosition, int) to set camera without or with animation respectively. You need to build a CameraPosition class object with your values and passing it as an argument to both the methods. MapController.animateCamera(CameraPosition, int)will take animation duration in milliseconds as second argument. These allow you to specify the initial camera position. 
+First, you need to get a MapController class object as defined above in this section. And then you can call MapController.setCamera(CameraPosition) or MapController.animateCamera(CameraPosition, int) to set camera without or with animation respectively. You need to build a CameraPosition class object with your values and passing it as an argument to both the methods. MapController.animateCamera(CameraPosition, int) will take animation duration in milliseconds as second argument. These allow you to specify the initial camera position. 
 
 The code specified below will take camera to the **position** (Faisal Mosque, Islamabad) on **zoom level** 17.0F (float) with **tilt** 1.0F (float) and **rotation** of 250.0F (float value in degrees) by performing animation **duration** of 2000 milliseconds:
 
 ```java
 mapController.animateCamera(new CameraPosition.builder()
 .position(new LngLat(73.037142, 33.729763))
-.zoom(17.0F)     .tilt(1.0F)
+.zoom(17.0F)
+.tilt(1.0F)
 .rotation((float) Math.toRadians(250.0F))
 .build(), 2000);
 ```
