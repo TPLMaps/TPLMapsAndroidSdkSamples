@@ -72,7 +72,7 @@ Follow these steps to create a new app project including a map activity:
 
 5. Select **Empty Activity** in the 'Add an activity to Mobile' dialog. Then click **Next**.
 
-6. Enter the activity name **‘ActivityTPLMaps’**, layout name **‘layout_tpl_maps.xml’** and title as prompted. Then click **Finish**.
+6. Enter the activity name **‘ActivityMaps’**, layout name **‘layout_maps.xml’** and title as prompted. Then click **Finish**.
 
 Android Studio starts Gradle and builds your project. This may take a few seconds. For more information about creating a project in Android Studio, see the [Android Studio documentation](https://developer.android.com/sdk/installing/create-project.html).
 
