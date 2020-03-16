@@ -133,13 +133,13 @@ public class ActivityRouting extends BaseMapActivity {
         // Source location
         Place source = new Place();
         source.setName("Source");
-        source.setX(Double.valueOf(arrSource[1]));
-        source.setY(Double.valueOf(arrSource[0]));
+        source.setX(Double.parseDouble(arrSource[1]));
+        source.setY(Double.parseDouble(arrSource[0]));
         // Destination Location
         Place destination = new Place();
         destination.setName("Destination");
-        destination.setX(Double.valueOf(arrDestination[1]));
-        destination.setY(Double.valueOf(arrDestination[0]));
+        destination.setX(Double.parseDouble(arrDestination[1]));
+        destination.setY(Double.parseDouble(arrDestination[0]));
 
         locations.add(source);
         locations.add(destination);
@@ -179,11 +179,11 @@ public class ActivityRouting extends BaseMapActivity {
                     mapController.getMapCameraPosition().getZoom());
             HashMap<String, String> mapValues = routeUtils.zoomToPointsBoundingBox(listNodes);
 
-            double zoom = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_LEVEL)));
-            int zoomEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_EASED)));
-            double lat = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LAT)));
-            double lng = Double.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LNG)));
-            int positionEased = Integer.valueOf(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_EASED)));
+            double zoom = Double.parseDouble(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_LEVEL)));
+            int zoomEased = Integer.parseInt(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_ZOOM_EASED)));
+            double lat = Double.parseDouble(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LAT)));
+            double lng = Double.parseDouble(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_LNG)));
+            int positionEased = Integer.parseInt(Objects.requireNonNull(mapValues.get(RouteUtils.KEY_POSITION_EASED)));
 
             mapController.setZoomBy((float) zoom, zoomEased);
             mapController.setLngLat(new LngLat(lng, lat), positionEased);
