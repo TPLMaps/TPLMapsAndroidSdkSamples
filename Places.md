@@ -23,7 +23,7 @@ distributionUrl=https://services.gradle.org/distributions/gradle-5.4.1-all.zip
 2. Add the following gradle dependency in android application module’s `build.gradle`
 ``` groovy
 dependencies {
-  implementation 'com.tpl.maps.sdk:places:1.5.1'
+  implementation 'com.tpl.maps.sdk:places:1.5.2'
 }
 ```
 3. Add Internet permission in your `AndroidManifest.xml`
