@@ -149,7 +149,7 @@ allprojects {
 
 ```groovy
 dependencies {   
-    implementation 'com.tpl.maps.sdk:maps:1.5.1'   
+    implementation 'com.tpl.maps.sdk:maps:1.5.2'   
 }
 ```
 
