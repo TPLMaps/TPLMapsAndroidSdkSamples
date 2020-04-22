@@ -1,4 +1,4 @@
-![TPLMaps](https://dl.dropboxusercontent.com/s/ks2tbo6ghpwwda0/TPLMapsLogo.png)
+![TPLMaps](https://www.dropbox.com/s/7tz2mqu0ucl8009/tplmaps_logo.png?raw=1)
 ## Table Of Content
 - [Maps API](#maps-api)
   * [Overview](#overview)
