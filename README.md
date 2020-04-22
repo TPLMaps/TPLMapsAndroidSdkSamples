@@ -1,6 +1,6 @@
 <img src="https://img.shields.io/badge/latest--release-1.5.2-green" />
 
-![TPLMaps](https://dl.dropboxusercontent.com/s/ks2tbo6ghpwwda0/TPLMapsLogo.png)
+![TPLMaps](https://www.dropbox.com/s/7tz2mqu0ucl8009/tplmaps_logo.png?raw=1)
 
 # TPL Maps Android SDK
 
