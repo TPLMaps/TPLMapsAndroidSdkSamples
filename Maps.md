@@ -795,13 +795,7 @@ The following style options are supported:
   ]
 ```
 ## Proguard
-If you got **NoSuchMethodError** exception like:
-```
-JNI DETECTED ERROR IN APPLICATION: JNI GetMethodID called with pending exception java.lang.NoSuchMethodError: no non-static method "Lcom/tplmaps3d/MapController;.startUrlRequest(Ljava/lang/String;J)Z"
-YYYY-MM-DD HH:mm:ss.SSS PID/com.example.app A/der.customerap: java_vm_ext.cc:570]   at long com.tplmaps3d.MapController.nativeInit(com.tplmaps3d.MapController, android.content.res.AssetManager) (:-2)
-```
-Add this rule when using proguard to avoid the type of exceptions:
-
+Add this rule when using proguard:
 ```groovy
 -keep class com.tplmaps3d.** { *; } 
 ```
