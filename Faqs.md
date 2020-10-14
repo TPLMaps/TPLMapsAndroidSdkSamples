@@ -1,10 +1,7 @@
 # FAQs
 
 ## Question 1
-
 ### Application is crashing while starting routing sample on devices targeting API Level >= 28
-
-
 Crash StackTrace:
 ```
 java.lang.NoClassDefFoundError: Failed resolution of: Lorg/apache/http/ProtocolVersion;
@@ -22,3 +19,20 @@ This is a [bug](https://issuetracker.google.com/issues/79478779#comment3) on the
 ```
 [Answer Reference](https://stackoverflow.com/questions/50461881/java-lang-noclassdeffounderrorfailed-resolution-of-lorg-apache-http-protocolve)
 
+
+
+## Question 2
+
+### SDK is throwing NoSuchMethodError 'JNI' is unable to GetMethodId of startUrlRequest(String), when generating build using proguard
+Stacktrace:
+```
+JNI DETECTED ERROR IN APPLICATION: JNI GetMethodID called with pending exception java.lang.NoSuchMethodError: no non-static method "Lcom/tplmaps3d/MapController;.startUrlRequest(Ljava/lang/String;J)Z"
+YYYY-MM-DD HH:mm:ss.SSS PID/com.example.app A/der.customerap: java_vm_ext.cc:570]   at long com.tplmaps3d.MapController.nativeInit(com.tplmaps3d.MapController, android.content.res.AssetManager) (:-2)
+```
+
+### Solution
+You are obfuscating your source so JNI is unable to find references of the sources (Classes/Methods), adding this rule in your proguard script will helpto avoid the type of exceptions:
+
+```groovy
+-keep class com.tplmaps3d.** { *; } 
+```

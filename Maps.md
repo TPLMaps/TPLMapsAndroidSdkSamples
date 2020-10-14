@@ -36,6 +36,7 @@
     + [featureType](#featuretype)
     + [styler](#styler)
   * [Sample JSON](#sample-json)
+  * [Proguard](#proguard)
   * [API Documentation](#api-documentation)
   * [Screenshot](#screenshot)
 
@@ -87,8 +88,8 @@ Create an account on [TPLMaps LBS Portal](https://api.tplmaps.com/apiportal).
 Copy the key put it into meta-tag mentioned below and copy the tag in your project’s **AndroidManifest.xml** under `<application>` tag
 
 ```xml
-  <meta-data android:name="com.tplmaps.android.sdk.API_KEY"
-             android:value="YOUR_API_KEY_HERE" /> 
+<meta-data android:name="com.tplmaps.android.sdk.API_KEY"
+           android:value="YOUR_API_KEY_HERE" /> 
 ```
 
 ### Step 4. Setup map in your application
@@ -142,7 +143,7 @@ allprojects {
 ​        Use **distributionUrl** for your root/gradle/wrapper/**gradle-wrapper.properties**
 
 ```groovy
-     distributionUrl = https://services.gradle.org/distributions/gradle-5.4.1-all.zip     
+distributionUrl=https://services.gradle.org/distributions/gradle-5.4.1-all.zip     
 ```
 
 2. **Add the following gradle dependency** in your android application module’s **build.gradle** file:
@@ -170,15 +171,16 @@ dependencies {
 5. **Add** **MapView** **in your layout** file
 
 ```xml
-  <com.tplmaps3d.MapView android:id="@+id/map"
-                         android:layout_width="match_parent"
-                         android:layout_height="match_parent"  />  
+<com.tplmaps3d.MapView android:id="@+id/map"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"  />  
 ```
 
-6. **Get MapView resource in your Activity’s** **onCreate()** **method**, also call mapView.onCreate() life cycle method by adding the following lines of code
+6. **Get MapView resource in your Activity’s** **onCreate()** **method**, also call mapView.onCreate(Bundle) life cycle method by adding the following lines of code
 
 ```java
- MapView  mapView = (MapView) findViewById(R.id.map);  mapView.onCreate(savedInstanceState);  
+MapView  mapView = (MapView) findViewById(R.id.map);
+mapView.onCreate(savedInstanceState);  
 ```
 
 7. **Call MapView’s life cycle methods** into your Activity's
@@ -230,7 +232,7 @@ public void onMapReady(final  MapController mapController) {
 9. Load Map by adding the below lines of code. The method **loads map asynchronously** and you will **get callback in** onMapReady(MapController)**when map ready**. The method will take a reference of MapView.OnMapReadyCallback instance as parameter.
 
 ```java
-  mapView.loadMapAsync(this);  
+mapView.loadMapAsync(this);  
 ```
 
 > **Note:** MapView.loadMapAsync() must be called from the main thread, and the callback will be executed in the main thread
@@ -273,7 +275,6 @@ public void onMapReady(final  MapController mapController) {
 
 ```java
 public class ActivityMaps extends AppCompatActivity implements MapView.OnMapReadyCallback {
-    
     private static final String TAG = ActivityTPLMaps.class.getSimpleName();
     private MapView mapView;    
     
@@ -348,8 +349,6 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
  
 ```
 
- 
-
 11. You will get TPL Maps loaded successfully in your application.
 
 12. Furthermore, you can view or download/clone our open source samples project repository to get help for sample implementation of features of SDK.
@@ -406,15 +405,15 @@ Typical road map in **Night mode**. Shows darker theme of roads, some features b
 
 ### Change the map mode
 
-To set the mode of a map, call the MapView object's setMapMode() method, passing one of the type constants defined in MapMode e.g. MapMode.NIGHT
+To set the mode of a map, call the `MapView.setMapMode(MapMode)` method, passing one of the type constants defined in `MapMode` enum e.g. `MapMode.DEFAULT` or  `MapMode.NIGHT` 
 
 For example, to display Night mode:
 
 ```java
-mMapView.setMapMode(MapMode.NIGHT);
+mapView.setMapMode(MapMode.NIGHT);
 ```
 
->**Note**: If you want use this functionality as default then call this method with desired input before calling MapView.loadMapAsync() method. Otherwise, if you want to have this functionality on runtime then you can call this method in OnMapReadyCallback.onMapReady()callback method.
+>**Note**: If you want use this functionality as default then call this method with desired input before calling `MapView.loadMapAsync()` method. Otherwise, if you want to have this functionality on runtime then you can call this method in `OnMapReadyCallback.onMapReady()` callback method.
 
 The image below shows a comparison of default (day) and night maps for the same location:
 <p float="left">
@@ -445,84 +444,83 @@ This section describes how to set the initial state of the map if you have added
 If you have [Setup Maps](#_Setup_Maps) successfully, then you can configure its initial state by calling functionalities/method from [MapView](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapView.html) or [MapController](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) class objects your settings specified. You can get a MapController object in [MapView.OnMapReadyCallback.onMapReady()](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapView.OnMapReadyCallback.html)  callback method like this:
 
 ```java
-  @Override
-  public void onMapReady(final  MapController mapController) {
+@Override
+public void onMapReady(final  MapController mapController) {
 	// TODO:  Use MapController class object to perform map operations   
-  }  
+}  
 ```
 
 #### Configure Map Mode
 
-Call MapView.setMapMode() as below. This allows you to specify the mode of map to display. Pass MapMode.DEFAULT or MapMode.NIGHT as an argument to the method
+Call `MapView.setMapMode()` as below. This allows you to specify the mode of map to display. Pass `MapMode.DEFAULT` or `MapMode.NIGHT` as an argument to the method
 
 ```java
-mMapView.setMapMode(MapMode.NIGHT | MapMode.DEFAULT);
+mapView.setMapMode(MapMode.NIGHT | MapMode.DEFAULT);
 ```
 
->**Note**: If you want use this functionality as default then call this method with desired input before calling MapView.loadMapAsync() method. Otherwise, if you want to have this functionality on runtime then you can call this method in OnMapReadyCallback.onMapReady()callback method.
+>**Note**: If you want use this functionality as default then call this method with desired input before calling `MapView.loadMapAsync()` method. Otherwise, if you want to have this functionality on runtime then you can call this method in `OnMapReadyCallback.onMapReady()` callback method.
 
 #### Configure Camera Position
 
-First, you need to get a MapController class object as defined above in this section. And then you can call MapController.setCamera(CameraPosition) or MapController.animateCamera(CameraPosition, int) to set camera without or with animation respectively. You need to build a CameraPosition class object with your values and passing it as an argument to both the methods. MapController.animateCamera(CameraPosition, int) will take animation duration in milliseconds as second argument. These allow you to specify the initial camera position. 
+First, you need to get a MapController class object as defined above in this section. And then you can call `MapController.setCamera(CameraPosition)` or `MapController.animateCamera(CameraPosition, int)` to set camera without or with animation respectively. You need to build a CameraPosition class object with your values and passing it as an argument to both the methods. `MapController.animateCamera(CameraPosition, int)` will take animation duration in milliseconds as second argument. These allow you to specify the initial camera position. 
 
 The code specified below will take camera to the **position** (Faisal Mosque, Islamabad) on **zoom level** 17.0F (float) with **tilt** 1.0F (float) and **rotation** of 250.0F (float value in degrees) by performing animation **duration** of 2000 milliseconds:
 
 ```java
 mapController.animateCamera(new CameraPosition.builder()
-.position(new LngLat(73.037142, 33.729763))
-.zoom(17.0F)
-.tilt(1.0F)
-.rotation((float) Math.toRadians(250.0F))
-.build(), 2000);
+    .position(new LngLat(73.037142, 33.729763))
+    .zoom(17.0F)
+    .tilt(1.0F)
+    .rotation((float) Math.toRadians(250.0F))
+    .build(), 2000);
 ```
 
-> **Note**: Pass rotation value by converting it in Radian unit
+> **Note**: Pass rotation value in Radians (Unit)
 
 #### Configure Map UI Settings
 
-First, you need to get a MapController class object as defined above in this section. And then you can get Map UISettings from MapController by calling MapController.getUiSettings() after you can change or setup the following settings. These allow you to specify the initial Map UI settings.
+First, you need to get a MapController class object as defined above in this section. And then you can get Map `UISettings` from `MapController` by calling `MapController.getUiSettings()` after you can change or setup the following settings. These allow you to specify the initial Map UI settings.
 
 - **Compass** You can show/hide compass by passing true or false value to the method as follow:
-
-```java
-mapController.getUiSettings().showCompass(true);
-```
+  ```java
+  mapController.getUiSettings().showCompass(true);
+  ```
 
 - **Zoom Controls** You can show/hide zoom controls by passing true or false value to the method as follow:
-
-```java
-mapController.getUiSettings().showZoomControls(true);
-```
+  ```java
+  mapController.getUiSettings().showZoomControls(true);
+  ```
 
 #### Configure Map Layers
 
 - **Map Mode** You can change MapMode as follows:
   ```java
-  mMapView.setMapMode(MapMode.NIGHT| MapMode.DEFAULT);
+  mapView.setMapMode(MapMode.NIGHT| MapMode.DEFAULT);
   ```
+  
 - **3D buildings** You can show/hide building by passing true or false value to the method as follow:
-```java
-mMapView.setBuildingsEnabled(true|false);
-```
+  ```java
+  mapView.setBuildingsEnabled(true|false);
+  ```
 - **POIs (Point of interests)** You can show/hide pois by passing true or false value to the method as follow:
-```java
-mMapView.setPOIsEnabled(true|false);
-```
+  ```java
+  mapView.setPOIsEnabled(true|false);
+  ```
 - **Traffic** You can hide/show traffic layer as follow:
   ```java
-  mMapView.setTrafficEnabled(true|false);  
+  mapView.setTrafficEnabled(true|false);  
   ```
 - **My Location Controls** To use or enable My Location functionality and map UI control, See [Enable Location on map](#_Enable_Location_on_2) section below, in this document
 
 ## Enable Location on map
 
-You can plot your current location on map by calling `MapController.setMyLocationEnabled(boolean, MyLocationArg);` Map will listen and plot your location through Location marker (Green filled and white outlined circle shaped marker, as screenshot below). The function will require a location runtime permission check above its calling. Add the permission check above this code snippet.
-Funtion will work as second param set by the developer, MyLocationArg is an enum having values **NONE, SHOW_MY_LOCATION_BUTTON, ZOOM_LOCATION_ON_FIRST_FIX & ZOOM_LOCATION_UPDATES** function will listen and set location as required by the developers,
+You can plot your current location on map by calling `mapController.setMyLocationEnabled(boolean, MyLocationArg);` Map will listen and plot your location through Location marker (Green filled and white outlined circle shaped marker, as screenshot below). The function will require a location runtime permission check above its calling. Add the permission check above this code snippet.
+Function will work as second param set by the developer, `MapController.MyLocationArg` is an enum having values `NONE, SHOW_MY_LOCATION_BUTTON, ZOOM_LOCATION_ON_FIRST_FIX & ZOOM_LOCATION_UPDATES` function will listen and set location as required by the developers,
 
-- **NONE** mean just plot the unzoomed `MyLocationLayer` (current location marker) on map.
-- **SHOW_MY_LOCATION_BUTTON** mean `MyLocationLayer` will be plotted unzoomed, but MyLocation Button will be visible to zoom on location.
+- **NONE** mean just plot the `MyLocationLayer` (current location marker) on map without camera animation.
+- **SHOW_MY_LOCATION_BUTTON** mean `MyLocationLayer` will be plotted normally, but MyLocation Button will be visible to perform interaction to zoom on layer.
 - **ZOOM_LOCATION_ON_FIRST_FIX** mean `MyLocationLayer` will be plotted and zoomed for just first location update received.
-- **ZOOM_LOCATION_UPDATES** mean `MyLocationLayer` will be plotted and zoomed for location update received.
+- **ZOOM_LOCATION_UPDATES** mean `MyLocationLayer` will be plotted and zoomed for periodic location updates received.
 
 The function will automatically listen for location updates received from location providers and will update the current location marker layer continuously.
  For more info please consult the API Documentation of [MapController](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) class.
@@ -531,11 +529,11 @@ You can make map listen and plot your location through Location marker (Green fi
 
 ```java
 // To enable map to listen and plot your location plus it will zoom to your location on map
-mapController.setMyLocationEnabled(true, MapController.MyLocationArg.ZOOM_ON_LOCATION);
+mapController.setMyLocationEnabled(true, MapController.MyLocationArg.ZOOM_LOCATION_ON_FIRST_FIX);
 // You can get your plotted/current location, code snippet
-LngLat myLngLat = mMapController.getMyLocation(MapView);
+LngLat myLngLat = mapController.getMyLocation(MapView);
 // You can get your location in callback methods of the interface 
-MapController.setOnMyLocationChangeListener(new MapController.OnMyLocationChangeListener() { 
+mapController.setOnMyLocationChangeListener(new mapController.OnMyLocationChangeListener() { 
 @Override
     public void onMyLocationChanged(Location location) {
         // Everytime when location update received
@@ -561,63 +559,52 @@ MapController.setOnMyLocationChangeListener(new MapController.OnMyLocationChange
 Marker describe a single point or location on a map. They appear on the map as an icon and can display an info window with additional information when clicked. To draw marker on map, user must create MarkerOptions in which user can set different properties including location/point, icon, title, description etc. And then pass [MarkerOptions](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MarkerOptions.html) to [addMarker()](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) method via `MapController`.
 
 1. **Add a marker**:
-
-```java
- Marker marker = mapController.addMarker(new MarkerOptions()
- .position(new LngLat(73.092159, 33.728945))
- .title("title")
- .description("Description"));
-```
-
+   ```java
+   Marker marker = mapController.addMarker(new MarkerOptions()
+                       .position(new LngLat(73.092159, 33.728945))
+                       .title("title")
+                       .description("Description"));
+   ```
 2. **Customize marker icon**
-
 User can specify a custom icon by using the IconFactory object and passing it to the marker. If user don’t specify an `icon`, marker will be given the default marker icon. User can also set size of custom marker with an additional IconSize parameter
-
-```java
-marker1.setIcon(IconFactory.defaultMarker(IconFactory.ORANGE));
-marker1.setIcon(IconFactory.fromResource(R.drawable.ic_pin_drop));
-marker1.setIcon(IconFactory.fromResource(R.drawable.ic_pin_drop, new IconSize(50, 50)));
-```
+   ```java
+   marker.setIcon(IconFactory.defaultMarker(IconFactory.ORANGE));
+   marker.setIcon(IconFactory.fromResource(R.drawable.ic_pin_drop));
+   marker.setIcon(IconFactory.fromResource(R.drawable.ic_pin_drop, new IconSize(50, 50)));
+   ```
 
 3. **Set or customize an info window:**
-
 If user has set title or description of marker, then a default info window will be shown on marker click. But user can also set a custom info window to markers as follow: 
-
-```java
-mapController.setCustomInfoWindow(new MapController.CustomInfoWindow() {
-    @Override
-    public View onInfoWindow(Marker marker) { return null; }
-    @Override
-    public View onInfoWindowContent(Marker marker) {   return view; } 
-});
-```
+   ```java
+   mapController.setCustomInfoWindow(new MapController.CustomInfoWindow() {
+       @Override
+       public View onInfoWindow(Marker marker) { return null; }
+       @Override
+       public View onInfoWindowContent(Marker marker) {   return view; } 
+   });
+   ```
 Custom info window can be set by returning view in two callback methods. Controller first call `onInfoWindow()` method if returned view is null then `onInfoWindowContent() `gets called. If both are null then default info window will be shown.
 
 4. **Remove marker**:
-
-User can remove a specific marker by two ways as follow:
-
-```java
-marker.remove();
-mapController.removeMarker(marker);
-```
-
-All markers can also be removed in single call
-
-```
-mapController.removeAllMarkers();
-```
-
-User can also remove any shape polyline, polygon, and circle in same way
+   User can remove a specific marker by two ways as follow:
+   ```java
+   Marker.remove();
+   MapController.removeMarker(marker);
+   ```
+   All markers can also be removed in single call
+   ```java
+   MapController.removeAllMarkers();
+   ```
+> User can also remove any shape polyline, polygon, and circle in same way
 
 ### Polyline
 
 Polyline is a path between two locations. There must be at least two points to draw a polyline. To draw polyline on map, user must create `PolylineOptions` in which user can set different properties including list of location/point, color, width, outline width, outline color etc. And then pass [PolylineOptions](https://api.tplmaps.com/api-documentation/com/tplmaps3d/PolylineOptions.html) to `addPolyline()` method via `MapController`.
 
 ```java
- Polyline polyline = mapController.addPolyline(
+Polyline polyline = mapController.addPolyline(
      new PolylineOptions()
-     .add(new LngLat(73.094177, 33.729113), new LngLat(73.090913,33.727616))
+     .add(new LngLat(73.094177, 33.729113), new LngLat(73.090913, 33.727616))
      .color(Color.WHITE)
      .width(10)
      .outlineWidth(2)
@@ -629,14 +616,14 @@ Polyline is a path between two locations. There must be at least two points to d
 User can also draw a Polygon shape on map giving list of points. Polygon must have three points. To draw polygon on map, user must create PolygonOptions in which user can set different properties including list of location/point, fill color, outline width, outline color etc. And then pass [`PolygonOptions`](https://api.tplmaps.com/api-documentation/com/tplmaps3d/PolygonOptions.html) to `addPolygon()` method via `MapController`.
 
 ```java
-ArrayList lngLats1 = new ArrayList<>();
-lngLats1.add(new LngLat(73.092159, 33.728945));
-lngLats1.add(new LngLat(73.092620, 33.727624));
-lngLats1.add(new LngLat(73.091322, 33.726795));
-lngLats1.add(new LngLat(73.092159, 33.728945));
+ArrayList listLngLats = new ArrayList<>();
+listLngLats.add(new LngLat(73.092159, 33.728945));
+listLngLats.add(new LngLat(73.092620, 33.727624));
+listLngLats.add(new LngLat(73.091322, 33.726795));
+listLngLats.add(new LngLat(73.092159, 33.728945));
 Polygon polygon = mapController.addPolygon(
     new PolygonOptions()
-    .addAll(lngLats1)
+    .addAll(listLngLats)
     .order(2)
     .fillColor(Color.BLACK)
     .outlineColor(Color.GRAY)
@@ -648,7 +635,7 @@ Polygon polygon = mapController.addPolygon(
 To draw circle on map, user must create CircleOptions in which user can set different properties including center point, radius, fill color, outline width, outline color etc. And then pass [`CircleOptions`](https://api.tplmaps.com/api-documentation/com/tplmaps3d/CircleOptions.html) to `addCircle() `method via `MapController`. Center point and radius must be set to draw a valid circle. 
 
 ```java
- Circle circle = mapController.addCircle(
+Circle circle = mapController.addCircle(
      new CircleOptions()
      .center(new LngLat(73.092159, 33.728945))
      .radius(50)
@@ -688,7 +675,7 @@ mapController.setOnCircleClickListener(
 
 You can set custom map style by calling this method
 ``` java
-MapView.setMapStyle(String);
+mapView.setMapStyle(String);
 ```
 
 
@@ -806,6 +793,11 @@ The following style options are supported:
                  }
                 }
   ]
+```
+## Proguard
+Add this rule when using proguard:
+```groovy
+-keep class com.tplmaps3d.** { *; } 
 ```
 
 ## API Documentation
