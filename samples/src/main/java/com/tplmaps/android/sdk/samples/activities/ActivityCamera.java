@@ -31,10 +31,10 @@ public class ActivityCamera extends BaseMapActivity implements MapView.OnMapRead
                     .tilt(0)
                     .rotation(0f)
                     .build(), 0);
+            LngLat southwest = new LngLat(73.035070, 33.637313);
+            LngLat northeast = new LngLat(73.041247, 33.659408);
             // Zoom camera to bounds of Sector I-10, Islamabad with animation
-            mMapView.getMapController().setBounds(
-                    new Bounds(new LngLat(73.035070, 33.637313),
-                            new LngLat(73.041247, 33.659408)), 200, 1000);
+            mMapView.getMapController().setBounds(new Bounds(southwest, northeast), 300, 1000);
         });
     }
 

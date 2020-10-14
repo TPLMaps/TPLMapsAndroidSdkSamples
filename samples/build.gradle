@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.tplmaps.android.sdksamples"
-        minSdkVersion 17
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "${rootProject.ext.version}"
@@ -38,7 +38,7 @@ dependencies {
     implementation 'ch.acra:acra:4.9.1'
     implementation 'com.google.android.material:material:1.2.0-alpha05'
     //MAPS: Dependency to utilize Maps API artifact of SDK
-    implementation "com.tpl.maps.sdk:maps:${rootProject.ext.version}"
+    implementation 'com.tpl.maps.sdk:maps:1.5.2.03'
     //SEARCH/PLACES: Dependency added to utilize Places API artifact of SDK
     implementation "com.tpl.maps.sdk:places:${rootProject.ext.version}"
     //ROUTING: Dependency added to utilize Routing artifact of SDK
@@ -49,4 +49,7 @@ dependencies {
     //implementation project(':routing')
     //implementation project(':places')
     ////////////////////// END ///////////////////////////
+
+    //implementation 'com.android.volley:volley:1.1.1'
+    //implementation 'com.google.code.gson:gson:2.8.6'
 }
