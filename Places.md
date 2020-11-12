@@ -32,14 +32,14 @@ dependencies {
 ```
 4. Configure API Key
       - Create an account on [TPLMaps LBS Portal](https://api.tplmaps.com/apiportal).
-      - In your **User Profile** menu, under **Billing**, find **API Key** Tab and [**Generate New Key**](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option.
-      - Copy the key put it into `<meta-data>` tag mentioned below and copy the tag in your project’s `AndroidManifest.xml` under `<application>` tag
+      - Get the Key, from your **Dashboard**, find **API Keys** Tab and [Generate New Key](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option.
+      - Copy the key put it into `meta-tag` mentioned below and copy the tag in your project’s **AndroidManifest.xml** under `<application>` tag
 ``` xml
       <meta-data
         android:name="com.tplmaps.android.sdk.API_KEY"
         android:value="YOUR_API_KEY_HERE" />
 ```
-5.	**Initialize Search Params** with **query** and **location** to prioritize results,
+5.	**Initialize Search `Params`** with **query** and **location** to prioritize results,
 For example,
 ``` java
 Params params = Params.builder()
@@ -77,7 +77,7 @@ OnSearchResult callback = new OnSearchResult() {
 ``` java
 searchManager.request(params, callback);
 ```
-> **Note:** Call SearchManager.request (String, Params) for search query after an interval of minimum 3 seconds because of network limitations applied on our servers otherwise all your request will be suspended
+> **Note:** Call `SearchManager.request (String, Params)` for search query after an interval of minimum 3 seconds because of network limitations applied on our servers otherwise all your request will be suspended
 
 ## API Documentation
 You can find API Documentation from [here](https://api.tplmaps.com/api-documentation/com/tplmaps/sdk/places/package-summary.html)
