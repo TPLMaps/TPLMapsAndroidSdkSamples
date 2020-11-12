@@ -1,4 +1,4 @@
-package com.tplmaps.android.sdk.samples.activities;
+package com.tplmaps.android.sdk.samples;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
 
         initViews();
         if (getSupportActionBar() != null)
-            getSupportActionBar().setTitle("SDK v" + BuildConfig.VERSION_NAME);
+            getSupportActionBar().setTitle("TPLMaps SDK v" + BuildConfig.VERSION_NAME);
         //CommonUtils.showToast(this, getDeviceAbi(), Toast.LENGTH_LONG, true);
     }
 

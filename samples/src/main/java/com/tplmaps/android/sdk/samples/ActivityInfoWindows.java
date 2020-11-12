@@ -1,4 +1,4 @@
-package com.tplmaps.android.sdk.samples.activities;
+package com.tplmaps.android.sdk.samples;
 
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
@@ -9,18 +9,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import com.tplmaps.android.R;
 import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
+import com.tplmaps3d.MapView;
 import com.tplmaps3d.Marker;
 import com.tplmaps3d.MarkerOptions;
 
 
-public class ActivityInfoWindows extends BaseMapActivity {
+public class ActivityInfoWindows extends AppCompatActivity implements MapView.OnMapReadyCallback {
 
     private static final String TAG = ActivityMaps.class.getSimpleName();
 
+    private MapView mMapView;
     private MapController mMapController;
 
     @Override
@@ -28,7 +33,12 @@ public class ActivityInfoWindows extends BaseMapActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_windows);
 
-        onMapCreate(savedInstanceState);
+        // Getting MapView resource from layout
+        mMapView = findViewById(R.id.map);
+        // Calling MapView's onCreate() lifecycle method
+        mMapView.onCreate(savedInstanceState);
+        // Loading map Asynchronously vie registering call
+        mMapView.loadMapAsync(this);
     }
 
     @Override
@@ -154,7 +164,7 @@ public class ActivityInfoWindows extends BaseMapActivity {
         infoView.setLayoutParams(infoViewParams);
 
         ImageView infoImageView = new ImageView(ActivityInfoWindows.this);
-        Drawable drawable = getResources().getDrawable(android.R.drawable.ic_dialog_map);
+        Drawable drawable = ContextCompat.getDrawable(this, android.R.drawable.ic_dialog_map);
         infoImageView.setImageDrawable(drawable);
         infoView.addView(infoImageView);
 
@@ -175,5 +185,47 @@ public class ActivityInfoWindows extends BaseMapActivity {
         infoView.addView(subInfoView);
 
         return infoView;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mMapView != null)
+            mMapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        if (mMapView != null)
+            mMapView.onLowMemory();
     }
 }

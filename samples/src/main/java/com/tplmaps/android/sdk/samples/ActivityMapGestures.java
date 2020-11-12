@@ -1,4 +1,4 @@
-package com.tplmaps.android.sdk.samples.activities;
+package com.tplmaps.android.sdk.samples;
 
 import android.graphics.PointF;
 import android.os.Bundle;
@@ -6,16 +6,21 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.tplmaps.android.R;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
+import com.tplmaps3d.MapView;
 import com.tplmaps3d.TouchInput;
 
 import java.text.DecimalFormat;
 
-public class ActivityMapGestures extends BaseMapActivity implements CompoundButton.OnCheckedChangeListener {
+public class ActivityMapGestures extends AppCompatActivity implements MapView.OnMapReadyCallback,
+        CompoundButton.OnCheckedChangeListener {
 
     //private static final String TAG = ActivityMaps.class.getSimpleName();
+    private MapView mMapView;
     TextView tvListener, tvValues;
 
     @Override
@@ -23,7 +28,12 @@ public class ActivityMapGestures extends BaseMapActivity implements CompoundButt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_gestures);
 
-        onMapCreate(savedInstanceState);
+        // Getting MapView resource from layout
+        mMapView = findViewById(R.id.map);
+        // Calling MapView's onCreate() lifecycle method
+        mMapView.onCreate(savedInstanceState);
+        // Loading map Asynchronously vie registering call
+        mMapView.loadMapAsync(this);
 
         tvListener = findViewById(R.id.tv_listener);
         tvValues = findViewById(R.id.tv_value);
@@ -263,5 +273,47 @@ public class ActivityMapGestures extends BaseMapActivity implements CompoundButt
 
         DecimalFormat decimalFormat = new DecimalFormat(pattern.toString());
         return Double.valueOf(decimalFormat.format(d));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mMapView != null)
+            mMapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        if (mMapView != null)
+            mMapView.onLowMemory();
     }
 }

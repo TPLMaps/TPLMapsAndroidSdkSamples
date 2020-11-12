@@ -1,8 +1,10 @@
-package com.tplmaps.android.sdk.samples.activities;
+package com.tplmaps.android.sdk.samples;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
 import com.tplmaps3d.CameraPosition;
@@ -11,15 +13,21 @@ import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
 import com.tplmaps3d.sdk.model.Bounds;
 
-public class ActivityCamera extends BaseMapActivity implements MapView.OnMapReadyCallback {
+public class ActivityCamera extends AppCompatActivity implements MapView.OnMapReadyCallback {
     private static final String TAG = ActivityCamera.class.getSimpleName();
+    private MapView mMapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
-        onMapCreate(savedInstanceState);
+        // Getting MapView resource from layout
+        mMapView = findViewById(R.id.map);
+        // Calling MapView's onCreate() lifecycle method
+        mMapView.onCreate(savedInstanceState);
+        // Loading map Asynchronously vie registering call
+        mMapView.loadMapAsync(this);
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
@@ -64,10 +72,53 @@ public class ActivityCamera extends BaseMapActivity implements MapView.OnMapRead
         mapController.getUiSettings().showMyLocationButton(true);
 
         // Camera Change (ChangeStart, Change, ChangeEnd) listeners
-        mapController.setOnCameraChangeStartedListener(cameraPostion -> Log.i(TAG, "Camera Change Started"));
-        mapController.setOnCameraChangeListener(cameraPosition -> Log.i(TAG, "Camera Changing"));
-        mapController.setOnCameraChangeEndListener(cameraPosition -> {
-            Log.i(TAG, "Camera Change End: " + cameraPosition.toString());
-        });
+        mapController.setOnCameraChangeStartedListener(cameraPostion ->
+                Log.i(TAG, "Camera Change Started"));
+        mapController.setOnCameraChangeListener(cameraPosition ->
+                Log.i(TAG, "Camera Changing"));
+        mapController.setOnCameraChangeEndListener(cameraPosition ->
+                Log.i(TAG, "Camera Change End: " + cameraPosition.toString()));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mMapView != null)
+            mMapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        if (mMapView != null)
+            mMapView.onLowMemory();
     }
 }

@@ -1,21 +1,23 @@
-package com.tplmaps.android.sdk.samples.activities;
+package com.tplmaps.android.sdk.samples;
 
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
 import com.tplmaps3d.MapController;
+import com.tplmaps3d.MapView;
 
-public class ActivityUIControls extends BaseMapActivity implements CompoundButton.OnCheckedChangeListener {
+public class ActivityUIControls extends AppCompatActivity implements MapView.OnMapReadyCallback,
+        CompoundButton.OnCheckedChangeListener {
 
     //private static final String TAG = ActivityUIControls.class.getSimpleName();
 
     private MapController mMapController;
-
-    private CheckBox cbMyLocationButton;
+    private MapView mMapView;
 
 
     @Override
@@ -23,7 +25,12 @@ public class ActivityUIControls extends BaseMapActivity implements CompoundButto
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ui_controls);
 
-        onMapCreate(savedInstanceState);
+        // Getting MapView resource from layout
+        mMapView = findViewById(R.id.map);
+        // Calling MapView's onCreate() lifecycle method
+        mMapView.onCreate(savedInstanceState);
+        // Loading map Asynchronously vie registering call
+        mMapView.loadMapAsync(this);
     }
 
     @Override
@@ -46,7 +53,7 @@ public class ActivityUIControls extends BaseMapActivity implements CompoundButto
         cbZoomControls.setOnCheckedChangeListener(this);
         CheckBox cbMyLocation = findViewById(R.id.cb_my_location);
         cbMyLocation.setOnCheckedChangeListener(this);
-        cbMyLocationButton = findViewById(R.id.cb_my_location_button);
+        CheckBox cbMyLocationButton = findViewById(R.id.cb_my_location_button);
         cbMyLocationButton.setOnCheckedChangeListener(this);
     }
 
@@ -60,22 +67,17 @@ public class ActivityUIControls extends BaseMapActivity implements CompoundButto
 
     @Override
     public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-
         switch (compoundButton.getId()) {
-
             case R.id.cb_compass:
                 // Show compass
                 if (mMapController != null)
                     mMapController.getUiSettings().showCompass(isChecked);
-
                 break;
-
             case R.id.cb_zoom_controls:
                 // Show zoom controls
                 if (mMapController != null)
                     mMapController.getUiSettings().showZoomControls(isChecked);
                 break;
-
             case R.id.cb_my_location:
                 try {
                     if (mMapController != null) {
@@ -87,7 +89,6 @@ public class ActivityUIControls extends BaseMapActivity implements CompoundButto
                     e.printStackTrace();
                 }
                 break;
-
             case R.id.cb_my_location_button:
                 try {
                     // Show My Location Button
@@ -98,5 +99,47 @@ public class ActivityUIControls extends BaseMapActivity implements CompoundButto
                 }
                 break;
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mMapView != null)
+            mMapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        if (mMapView != null)
+            mMapView.onLowMemory();
     }
 }

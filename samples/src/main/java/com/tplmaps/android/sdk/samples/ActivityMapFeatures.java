@@ -1,28 +1,39 @@
-package com.tplmaps.android.sdk.samples.activities;
+package com.tplmaps.android.sdk.samples;
 
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.tplmaps.android.R;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapMode;
+import com.tplmaps3d.MapView;
 
-public class ActivityMapFeatures extends BaseMapActivity implements CompoundButton.OnCheckedChangeListener {
+public class ActivityMapFeatures extends AppCompatActivity implements MapView.OnMapReadyCallback,
+        CompoundButton.OnCheckedChangeListener {
 
     //private static final String TAG = ActivityMaps.class.getSimpleName();
+
+    private MapView mMapView;
 
     final boolean ENABLE_NIGHT_MODE_DEFAULT = false;
     final boolean ENABLE_BUILDINGS_DEFAULT = true;
     final boolean ENABLE_POIS_DEFAULT = true;
-    final boolean ENABLE_TRAFFIC_DEFAULT = true;
+    final boolean ENABLE_TRAFFIC_DEFAULT = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_features);
 
-        onMapCreate(savedInstanceState);
+        // Getting MapView resource from layout
+        mMapView = findViewById(R.id.map);
+        // Calling MapView's onCreate() lifecycle method
+        mMapView.onCreate(savedInstanceState);
+        // Loading map Asynchronously vie registering call
+        mMapView.loadMapAsync(this);
 
         CheckBox cbNightMode = findViewById(R.id.cb_night_mode);
         cbNightMode.setOnCheckedChangeListener(this);
@@ -91,5 +102,47 @@ public class ActivityMapFeatures extends BaseMapActivity implements CompoundButt
                 mMapView.setTrafficEnabled(checked);
                 break;
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mMapView != null)
+            mMapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        if (mMapView != null)
+            mMapView.onLowMemory();
     }
 }

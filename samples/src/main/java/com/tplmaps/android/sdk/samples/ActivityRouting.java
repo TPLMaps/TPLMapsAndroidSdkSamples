@@ -1,4 +1,4 @@
-package com.tplmaps.android.sdk.samples.activities;
+package com.tplmaps.android.sdk.samples;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.snackbar.Snackbar;
@@ -19,6 +20,7 @@ import com.tpl.maps.sdk.utils.boundingBox.RouteUtils;
 import com.tplmaps.android.R;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
+import com.tplmaps3d.MapView;
 import com.tplmaps3d.PolylineOptions;
 
 import java.util.ArrayList;
@@ -26,10 +28,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class ActivityRouting extends BaseMapActivity {
+public class ActivityRouting extends AppCompatActivity implements MapView.OnMapReadyCallback {
 
-    TPLRouteManager mRouteManager;
-    BottomSheetBehavior bottomSheetBehavior;
+    private TPLRouteManager mRouteManager;
+    //private BottomSheetBehavior bottomSheetBehavior;
+    private MapView mMapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +52,16 @@ public class ActivityRouting extends BaseMapActivity {
         String strDest = "33.522695,73.094223";
         ((EditText) findViewById(R.id.destination)).setText(strDest);
 
-        onMapCreate(savedInstanceState);
+        // Getting MapView resource from layout
+        mMapView = findViewById(R.id.map);
+        // Calling MapView's onCreate() lifecycle method
+        mMapView.onCreate(savedInstanceState);
+        // Loading map Asynchronously vie registering call
+        mMapView.loadMapAsync(this);
     }
 
     private void initBottomSheet() {
-        bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet));
+        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet));
         findViewById(R.id.header_arrow).setOnClickListener(view -> {
             if (bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
                 bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
@@ -64,7 +72,7 @@ public class ActivityRouting extends BaseMapActivity {
             }
         });
 
-        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+        bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 if (newState == BottomSheetBehavior.STATE_EXPANDED) {
@@ -191,9 +199,49 @@ public class ActivityRouting extends BaseMapActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if (mMapView != null)
+            mMapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mMapView != null)
+            mMapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mMapView != null)
+            mMapView.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mMapView != null)
+            mMapView.onStop();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        mRouteManager.onDestroy();
-        mRouteManager = null;
+        if (mMapView != null)
+            mMapView.onDestroy();
+
+        if (mRouteManager != null) {
+            mRouteManager.onDestroy();
+            mRouteManager = null;
+        }
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        if (mMapView != null)
+            mMapView.onLowMemory();
     }
 }

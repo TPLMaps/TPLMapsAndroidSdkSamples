@@ -1,4 +1,4 @@
-package com.tplmaps.android.sdk.samples.activities;
+package com.tplmaps.android.sdk.samples;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -53,8 +53,10 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
     protected void onDestroy() {
         super.onDestroy();
 
-        searchManager.onDestroy();
-        searchManager = null;
+        if (searchManager != null) {
+            searchManager.onDestroy();
+            searchManager = null;
+        }
     }
 
     private void setViews() {
