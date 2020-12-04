@@ -76,7 +76,7 @@ This part describes how to create a map using Google Map SDK and TPL Maps SDK.
    Add build dependencies to the **build.gradle** file of your app module.
 
    ```groovy
-   implementation 'com.tpl.maps.sdk:maps:1.5.2.03'  
+   implementation 'com.tpl.maps.sdk:maps:1.5.2.04'  
    ```
 
 5. Add `MapView` to the activity layout file.

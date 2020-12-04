@@ -1,10 +1,14 @@
 package com.tplmaps.android.sdk.samples;
 
+import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
@@ -37,24 +41,41 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
     public void onMapReady(final MapController mapController) {
 
         mMapController = mapController;
+        // TODO: Do your map tasks here
 
-        mMapController.getLocationConfig()
+        // Setting map max tilt value
+        mapController.setMaxTilt(85);
+
+        // Settings map location permission and setting related configuration
+        mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialogContent("Permission Required",
-                        "Location permission is required for the application to show your" +
-                                " precise and accurate location on map");
+                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                        getString(R.string.dialog_reason_message));
 
         // Setting controls here because functionality of these controls belongs to the MapView
         // And MapView should be ready to perform these actions on it
-        CheckBox cbCompass = findViewById(R.id.cb_compass);
-        cbCompass.setOnCheckedChangeListener(this);
-        CheckBox cbZoomControls = findViewById(R.id.cb_zoom_controls);
-        cbZoomControls.setOnCheckedChangeListener(this);
-        CheckBox cbMyLocation = findViewById(R.id.cb_my_location);
-        cbMyLocation.setOnCheckedChangeListener(this);
-        CheckBox cbMyLocationButton = findViewById(R.id.cb_my_location_button);
-        cbMyLocationButton.setOnCheckedChangeListener(this);
+        ((CheckBox) findViewById(R.id.cb_compass)).setOnCheckedChangeListener(this);
+        ((CheckBox) findViewById(R.id.cb_zoom_controls)).setOnCheckedChangeListener(this);
+        ((CheckBox) findViewById(R.id.cb_my_location_updates)).setOnCheckedChangeListener(this);
+        ((CheckBox) findViewById(R.id.cb_my_location_button)).setOnCheckedChangeListener(this);
+
+        mapController.setOnMyLocationChangeListener(new MapController.OnMyLocationChangeListener() {
+            @Override
+            public void onMyLocationChanged(Location location) {
+                Log.d("App", "onMyLocationChanged " + location.toString());
+            }
+
+            @Override
+            public void onMyLocationFirstFix(Location location) {
+                Log.d("Location", "onMyLocationFirstFix " + location.toString());
+            }
+
+            @Override
+            public void onMyLastLocationUpdate(Location location) {
+                Log.d("Location", "onMyLastLocationUpdate " + location.toString());
+            }
+        });
     }
 
     @Override
@@ -63,6 +84,13 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (mMapController != null)
             mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -78,7 +106,7 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
                 if (mMapController != null)
                     mMapController.getUiSettings().showZoomControls(isChecked);
                 break;
-            case R.id.cb_my_location:
+            case R.id.cb_my_location_updates:
                 try {
                     if (mMapController != null) {
                         // Enable/Disable My Location

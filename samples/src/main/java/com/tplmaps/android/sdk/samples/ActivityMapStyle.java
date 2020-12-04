@@ -1,7 +1,10 @@
 package com.tplmaps.android.sdk.samples;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
@@ -11,6 +14,7 @@ import com.tplmaps3d.MapView;
 public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMapReadyCallback {
 
     private MapView mMapView;
+    private MapController mMapController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +34,21 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
 
     @Override
     public void onMapReady(MapController mapController) {
-
+        mMapController = mapController;
         // TODO: Do you map tasks here
 
         // Setting custom map style after map ready (post-call)
         setMapStyle(mMapView);
 
-        // Loading Default Map Controls
+        // Setting map max tilt value
         mapController.setMaxTilt(85);
+        // Settings map location permission and setting related configuration
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialogContent("Permission Required",
-                        "Location permission is required for the application to show your" +
-                                " precise and accurate location on map");
+                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                        getString(R.string.dialog_reason_message));
+        // Loading Default Map UI Controls
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
     }
@@ -51,6 +56,21 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
     private void setMapStyle(MapView map) {
         // Set style specified in a resource file
         map.setMapStyle(R.raw.sample_map_style1);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (mMapController != null)
+            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

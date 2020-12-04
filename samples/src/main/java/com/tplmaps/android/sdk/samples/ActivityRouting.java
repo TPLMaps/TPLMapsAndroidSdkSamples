@@ -1,5 +1,6 @@
 package com.tplmaps.android.sdk.samples;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -33,6 +35,7 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
     private TPLRouteManager mRouteManager;
     //private BottomSheetBehavior bottomSheetBehavior;
     private MapView mMapView;
+    private MapController mMapController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,13 +105,18 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
 
     @Override
     public void onMapReady(MapController mapController) {
-        // Loading Default Map Controls
+        mMapController = mapController;
+        // TODO: Do you map tasks here
+
+        // Setting map max tilt value
+        mapController.setMaxTilt(85);
+        // Settings map location permission and setting related configuration
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialogContent("Permission Required",
-                        "Location permission is required for the application to show your" +
-                                " precise and accurate location on map");
+                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                        getString(R.string.dialog_reason_message));
+        // Loading Default Map UI Controls
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
 
@@ -196,6 +204,21 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
             mapController.setZoomBy((float) zoom, zoomEased);
             mapController.setLngLat(new LngLat(lng, lat), positionEased);
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (mMapController != null)
+            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
