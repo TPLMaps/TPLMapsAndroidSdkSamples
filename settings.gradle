@@ -1,10 +1,12 @@
 include ':samples'
 
+/*
 //include ':core'
 //project(':core').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\core')
-//include ':maps'
-//project(':maps').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\maps')
-//include ':places'
-//project(':places').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\places')
-//include ':routing'
-//project(':routing').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\routing')
+include ':maps'
+project(':maps').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\maps')
+include ':places'
+project(':places').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\places')
+include ':routing'
+project(':routing').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\routing')
+*/

@@ -29,10 +29,10 @@
             android:textSize="12sp" />
 
         <CheckBox
-            android:id="@+id/cb_my_location"
+            android:id="@+id/cb_my_location_updates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/my_location"
+            android:text="@string/my_location_updates"
             android:textSize="12sp" />
 
         <CheckBox

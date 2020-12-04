@@ -1,9 +1,12 @@
 package com.tplmaps.android.sdk.samples;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
@@ -46,7 +49,10 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
 
     @Override
     public void onMapReady(final MapController mapController) {
+        // TODO: Do your map tasks here
 
+        // Setting map max tilt value
+        mapController.setMaxTilt(85);
         mapController.setLngLat(new LngLat(73.093104, 33.730494));
         mapController.setZoomBy(15);
         mMapController = mapController;
@@ -88,12 +94,13 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         });
 
         // Loading Default Map Controls
+        // Settings map location permission and setting related configuration
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialogContent("Permission Required",
-                        "Location permission is required for the application to show your" +
-                                " precise and accurate location on map");
+                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                        getString(R.string.dialog_reason_message));
+        // Loading Default Map UI Controls
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
 
@@ -186,6 +193,21 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
                 .order(1).clickable(true));
 
         tplCircle.remove();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (mMapController != null)
+            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

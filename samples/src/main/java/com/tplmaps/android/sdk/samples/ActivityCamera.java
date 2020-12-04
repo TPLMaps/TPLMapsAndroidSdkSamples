@@ -1,9 +1,12 @@
 package com.tplmaps.android.sdk.samples;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
@@ -16,6 +19,7 @@ import com.tplmaps3d.sdk.model.Bounds;
 public class ActivityCamera extends AppCompatActivity implements MapView.OnMapReadyCallback {
     private static final String TAG = ActivityCamera.class.getSimpleName();
     private MapView mMapView;
+    private MapController mMapController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
 
     @Override
     public void onMapReady(MapController mapController) {
+        mMapController = mapController;
         // TODO: Do your map tasks here
 
         // Setting map max tilt value
@@ -61,13 +66,13 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
                 .tilt(1f)
                 .build(), 2000);
 
-        // Loading Default Map Controls
+        // Settings map location permission and setting related configuration
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialogContent("Permission Required",
-                        "Location permission is required for the application to show your" +
-                                " precise and accurate location on mapController");
+                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                        getString(R.string.dialog_reason_message));
+        // Loading Default Map UI Controls
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
 
@@ -78,6 +83,21 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
                 Log.i(TAG, "Camera Changing"));
         mapController.setOnCameraChangeEndListener(cameraPosition ->
                 Log.i(TAG, "Camera Change End: " + cameraPosition.toString()));
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (mMapController != null)
+            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

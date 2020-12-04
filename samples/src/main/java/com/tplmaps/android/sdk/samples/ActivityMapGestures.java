@@ -1,11 +1,14 @@
 package com.tplmaps.android.sdk.samples;
 
+import android.content.Intent;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
@@ -85,17 +88,18 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
     public void onMapReady(final MapController mapController) {
 
         mMapController = mapController;
+        // TODO: Do your map tasks here
 
         mapController.setPickRadius(getResources().getInteger(R.integer.pick_radius));
-
-        // Loading Default Map Controls
+        // Setting map max tilt value
         mapController.setMaxTilt(85);
+        // Settings map location permission and setting related configuration
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialogContent("Permission Required",
-                        "Location permission is required for the application to show your" +
-                                " precise and accurate location on map");
+                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                        getString(R.string.dialog_reason_message));
+        // Loading Default Map UI Controls
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
 
@@ -273,6 +277,21 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
 
         DecimalFormat decimalFormat = new DecimalFormat(pattern.toString());
         return Double.valueOf(decimalFormat.format(d));
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (mMapController != null)
+            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
