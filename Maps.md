@@ -150,7 +150,7 @@ distributionUrl=https://services.gradle.org/distributions/gradle-5.4.1-all.zip
 
 ```groovy
 dependencies {   
-    implementation 'com.tpl.maps.sdk:maps:1.5.2.03'   
+    implementation 'com.tpl.maps.sdk:maps:1.5.2.04'   
 }
 ```
 
@@ -525,7 +525,7 @@ Function will work as second param set by the developer, `MapController.MyLocati
 The function will automatically listen for location updates received from location providers and will update the current location marker layer continuously.
  For more info please consult the API Documentation of [MapController](https://api.tplmaps.com/api-documentation/com/tplmaps3d/MapController.html) class.
 
-You can make map listen and plot your location through Location marker (Green filled and white outlined circle shaped marker). Map will constantly listen your location and give you location updates through `OnMyLocationChangeListener` interface.
+You can make map listen and plot your location through Location marker (Green filled and white outlined circle shaped marker). Map will constantly listen your location and give you location updates through `OnMyLocationChangeListener` interface, implement the functions in `onMapReady(MapController)` callback method.
 
 ```java
 // To enable map to listen and plot your location plus it will zoom to your location on map
@@ -542,7 +542,43 @@ mapController.setOnMyLocationChangeListener(new mapController.OnMyLocationChange
     public void onMyLocationFirstFix(Location location) {
         // Just for the first time when location change or update received
     }
+
+    @Override
+    public void onMyLastLocationUpdate(Location location) {
+        // Everytime when location button pressed and it will get the last location
+    }
 });
+```
+If you want to change location default configurations, implement it in `onMapReady(MapController)` callback method.
+Code snippet,
+
+```java
+// Settings map location permission and setting related configuration
+mapController.getLocationConfig()
+    .setLocationSettings(true)
+    .setPermissionRequestIfDenied(true)
+    .setPermissionReasonDialog("TITLE", "MESSAGE");
+```
+Also implement the `Activity`'s result methods as:
+
+```java
+@Override
+public void onRequestPermissionsResult(int requestCode, 
+                                       @NonNull String[] permissions, 
+                                       @NonNull int[]grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    if (mMapController != null) {
+        mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+}
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, 
+                                @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (mMapController != null)
+        mMapController.onActivityResult(requestCode, resultCode, data);
+}
 ```
 
 ### Example Screen
