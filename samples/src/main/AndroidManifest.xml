@@ -82,7 +82,7 @@
 
         <meta-data
             android:name="@string/metadata_name_api_key"
-            android:value="$2a$10$t3SHTS2HAjk64SRr6EyM1e8kxZcDi5Dd49wiLrm4Jo0wBPiyk8Suy" />
+            android:value="MAPS-API-KEY" />
     </application>
 
 </manifest>
