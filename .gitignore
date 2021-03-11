@@ -8,3 +8,7 @@
 /captures
 .externalNativeBuild
 .idea
+samples/release/samples-release.aab
+*.apk
+samples/release/output.json
+.idea/
