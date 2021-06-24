@@ -22,22 +22,33 @@ distributionUrl=https://services.gradle.org/distributions/gradle-5.4.1-all.zip
 2. Add the following **gradle dependency** in android application module’s `build.gradle`
 ``` groovy
 dependencies {
-  implementation 'com.tpl.maps.sdk:routing:1.5.2'
+  implementation 'com.tpl.maps.sdk:routing:1.6.3'
 }
 ```
 3. Add Internet **permission** in your `AndroidManifest.xml`
 ``` xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
-4. **Configure API Key**
-      - Create an account on [TPLMaps LBS Portal](https://api.tplmaps.com/apiportal).
-      - Get the Key, from your **Dashboard**, find **API Keys** Tab and [Generate New Key](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option.
-      - Copy the key put it into `meta-tag` mentioned below and copy the tag in your project’s **AndroidManifest.xml** under `<application>` tag
-``` xml
-      <meta-data
-        android:name="com.tplmaps.android.sdk.API_KEY"
-        android:value="YOUR_API_KEY_HERE" />
-```
+4. **Configure API key & ORIGIN**
+
+	Create an account on [TPLMaps LBS Portal](https://api.tplmaps.com/apiportal).
+
+	Get the Key (without **ORIGIN**), from your **Dashboard**, find **API Keys** Tab and [Generate New Key](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option. 
+
+	Copy the key put it into `meta-tag` mentioned below and copy the tag in your project’s **AndroidManifest.xml** under `<application>` tag
+
+    ```xml
+    <meta-data android:name="com.tplmaps.android.sdk.API_KEY"
+               android:value="YOUR_API_KEY_HERE" />
+    ```
+    If you generate **API Key** with the **ORIGIN** mentioned, you must need to add the ORIGIN in **AndroidManifest.xml** in the tag mentioned below with API Key.
+
+	> The tag below is **optional** for non-origin based API Key.
+
+    ```xml
+    <meta-data android:name="com.tplmaps.android.sdk.ORIGIN"
+               android:value="YOUR_ORIGIN_HERE" />
+    ```
 5.	**Initialize locations array** with source and destination locations
 ``` java
 // Initializing locations array

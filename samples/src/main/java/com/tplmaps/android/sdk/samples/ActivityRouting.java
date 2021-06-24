@@ -49,6 +49,12 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
         // Initiating bottom sheet and setting its default state
         initBottomSheet();
 
+        findViewById(R.id.calculate).setOnClickListener(view -> {
+            String source = ((EditText) findViewById(R.id.source)).getText().toString();
+            String destination = ((EditText) findViewById(R.id.destination)).getText().toString();
+            calculateRoute(mMapController, source, destination);
+        });
+
         // Filled field with sample location values
         String strSrc = "33.711556,73.058382";
         ((EditText) findViewById(R.id.source)).setText(strSrc);
@@ -114,7 +120,7 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                .setPermissionReasonDialogContent(getString(R.string.dialog_reason_title),
                         getString(R.string.dialog_reason_message));
         // Loading Default Map UI Controls
         mapController.getUiSettings().showZoomControls(true);
@@ -170,6 +176,9 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
         List<com.tpl.maps.sdk.routing.LngLat> listNodes = new ArrayList<>();
         // Calling for calculating routes for source and destination locations with config
         mRouteManager.calculate(this, config, (endPoints, routes) -> {
+            if (mapController == null)
+                return;
+
             for (int i = 0; i < routes.size(); i++) {
                 // Drawing/Rendering route on map
                 TPLRoute route = routes.get(i);
@@ -217,8 +226,8 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (mMapController != null)
-            mMapController.onActivityResult(requestCode, resultCode, data);
+        /*if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);*/
     }
 
     @Override

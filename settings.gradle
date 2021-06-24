@@ -1,12 +1,9 @@
 include ':samples'
 
-/*
-//include ':core'
-//project(':core').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\core')
+/*def basePath = "/mnt/848AFDBB8AFDAA36/Development/Workspaces/AndroidStudioProjects/tplmaps/tangram-core/tangram-core-sdk/tplmaps3d/tplmaps-android-sdk/"
 include ':maps'
-project(':maps').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\maps')
+project(':maps').projectDir = new File(basePath + "/maps")
 include ':places'
-project(':places').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\places')
+project(':places').projectDir = new File(basePath + "/places")
 include ':routing'
-project(':routing').projectDir = new File('E:\\Development\\Workspaces\\AndroidStudioProjects\\tplmaps\\tplmaps-android-sdk\\routing')
-*/
+project(':routing').projectDir = new File(basePath + "/routing")*/

@@ -69,7 +69,7 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                .setPermissionReasonDialogContent(getString(R.string.dialog_reason_title),
                         getString(R.string.dialog_reason_message));
         // Loading Default Map UI Controls
         mapController.getUiSettings().showZoomControls(true);
@@ -205,8 +205,8 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (mMapController != null)
-            mMapController.onActivityResult(requestCode, resultCode, data);
+        /*if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);*/
     }
 
     @Override

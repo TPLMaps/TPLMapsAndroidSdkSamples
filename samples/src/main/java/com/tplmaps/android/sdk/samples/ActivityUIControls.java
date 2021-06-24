@@ -50,7 +50,7 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                .setPermissionReasonDialogContent(getString(R.string.dialog_reason_title),
                         getString(R.string.dialog_reason_message));
 
         // Setting controls here because functionality of these controls belongs to the MapView
@@ -71,10 +71,10 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
                 Log.d("Location", "onMyLocationFirstFix " + location.toString());
             }
 
-            @Override
+            /*@Override
             public void onMyLastLocationUpdate(Location location) {
                 Log.d("Location", "onMyLastLocationUpdate " + location.toString());
-            }
+            }*/
         });
     }
 
@@ -89,8 +89,8 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (mMapController != null)
-            mMapController.onActivityResult(requestCode, resultCode, data);
+        /*if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);*/
     }
 
     @Override
@@ -111,7 +111,7 @@ public class ActivityUIControls extends AppCompatActivity implements MapView.OnM
                     if (mMapController != null) {
                         // Enable/Disable My Location
                         mMapController.setMyLocationEnabled(isChecked,
-                                MapController.MyLocationArg.ZOOM_LOCATION_UPDATES);
+                                MapController.MyLocationArg.ZOOM_LOCATION_ON_FIRST_FIX);
                     }
                 } catch (SecurityException e) {
                     e.printStackTrace();

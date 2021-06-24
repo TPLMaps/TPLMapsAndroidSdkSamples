@@ -78,17 +78,25 @@ Android Studio starts Gradle and builds your project. This may take a few second
 
 When the build is finished, Android Studio opens the layout_tpl_maps.xml and the ActivityTPLMaps.java files in the editor. *(Note that your activity may have a different name, but it will be the one you configured during setup)*. The next section describes getting the API key in more detail.
 
-### Step 3. Configure API key
+### Step 3. Configure API key & ORIGIN
 
 Create an account on [TPLMaps LBS Portal](https://api.tplmaps.com/apiportal).
 
-Get the Key, from your **Dashboard**, find **API Keys** Tab and [Generate New Key](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option.
+Get the Key (without **ORIGIN**), from your **Dashboard**, find **API Keys** Tab and [Generate New Key](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option. 
 
 Copy the key put it into `meta-tag` mentioned below and copy the tag in your project’s **AndroidManifest.xml** under `<application>` tag
 
 ```xml
 <meta-data android:name="com.tplmaps.android.sdk.API_KEY"
-           android:value="YOUR_API_KEY_HERE" /> 
+           android:value="YOUR_API_KEY_HERE" />
+```
+If you generate **API Key** with the **ORIGIN** mentioned, you must need to add the ORIGIN in **AndroidManifest.xml** in the tag mentioned below with API Key.
+
+> The tag below is **optional** for non-origin based API Key.
+
+```xml
+<meta-data android:name="com.tplmaps.android.sdk.ORIGIN"
+           android:value="YOUR_ORIGIN_HERE" />
 ```
 
 ### Step 4. Setup map in your application
@@ -150,7 +158,7 @@ distributionUrl=https://services.gradle.org/distributions/gradle-5.4.1-all.zip
 
 ```groovy
 dependencies {   
-    implementation 'com.tpl.maps.sdk:maps:1.5.2.04'   
+    implementation 'com.tpl.maps.sdk:maps:1.6.3'   
 }
 ```
 

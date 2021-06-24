@@ -8,7 +8,6 @@
 
     <application
         android:name=".sdk.samples.MyApplication"
-        android:networkSecurityConfig="@xml/nsc"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -82,7 +81,9 @@
 
         <meta-data
             android:name="@string/metadata_name_api_key"
-            android:value="MAPS-API-KEY" />
+            android:value="MAPS-API-KEY-HERE" />
+        <!--<meta-data android:name="@string/metadata_name_origin"
+            android:value="ORIGIN-HERE" />-->
     </application>
 
 </manifest>

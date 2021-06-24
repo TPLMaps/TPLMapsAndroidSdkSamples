@@ -46,7 +46,7 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
         mapController.getLocationConfig()
                 .setLocationSettings(true)
                 .setPermissionRequestIfDenied(true)
-                .setPermissionReasonDialog(getString(R.string.dialog_reason_title),
+                .setPermissionReasonDialogContent(getString(R.string.dialog_reason_title),
                         getString(R.string.dialog_reason_message));
         // Loading Default Map UI Controls
         mapController.getUiSettings().showZoomControls(true);
@@ -69,8 +69,8 @@ public class ActivityMapStyle extends AppCompatActivity implements MapView.OnMap
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (mMapController != null)
-            mMapController.onActivityResult(requestCode, resultCode, data);
+        /*if (mMapController != null)
+            mMapController.onActivityResult(requestCode, resultCode, data);*/
     }
 
     @Override

@@ -54,12 +54,21 @@ This part describes how to create a map using Google Map SDK and TPL Maps SDK.
 
 2. Get the Key, from your **Dashboard**, find **API Keys** Tab and [Generate New Key](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option.
 
-3. Copy the key put it into `<meta-tag` mentioned below and copy the tag in your project’s **AndroidManifest.xml** under `<application>` tag
+3. Get the Key (without **ORIGIN**), from your **Dashboard**, find **API Keys** Tab and [Generate New Key](https://api.tplmaps.com/apiportal/#/app/billing/api-key-management) from the option. 
 
-   ```xml
-   <meta-data android:name="com.tplmaps.android.sdk.API_KEY"
-               android:value="YOUR_TPL_MAPS_API_KEY_HERE" /> 
-   ```
+   Copy the key put it into `meta-tag` mentioned below and copy the tag in your project’s **AndroidManifest.xml** under `<application>` tag
+
+    ```xml
+    <meta-data android:name="com.tplmaps.android.sdk.API_KEY"
+               android:value="YOUR_API_KEY_HERE" />
+    ```
+    If you generate **API Key** with the **ORIGIN** mentioned, you must need to add the ORIGIN in **AndroidManifest.xml** in the tag mentioned below with API Key.
+    > The tag below is **optional** for non-origin based API Key.
+
+    ```xml
+    <meta-data android:name="com.tplmaps.android.sdk.ORIGIN"
+               android:value="YOUR_ORIGIN_HERE" />
+    ```
 
 4. Add dependency url in your root project's **build.gradle** .
 
@@ -76,7 +85,7 @@ This part describes how to create a map using Google Map SDK and TPL Maps SDK.
    Add build dependencies to the **build.gradle** file of your app module.
 
    ```groovy
-   implementation 'com.tpl.maps.sdk:maps:1.5.2.04'  
+   implementation 'com.tpl.maps.sdk:maps:1.6.3'  
    ```
 
 5. Add `MapView` to the activity layout file.
