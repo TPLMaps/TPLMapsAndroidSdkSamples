@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/latest--release-1.6.3-green" />
+<!-- <img src="https://img.shields.io/badge/latest--release-1.6.3-green" /> -->
 
 ![TPLMaps](https://www.dropbox.com/s/7tz2mqu0ucl8009/tplmaps_logo.png?raw=1)
 
