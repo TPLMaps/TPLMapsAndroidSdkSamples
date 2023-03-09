@@ -38,6 +38,8 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
         // Loading map Asynchronously vie registering call
         mMapView.loadMapAsync(this);
 
+
+
         tvListener = findViewById(R.id.tv_listener);
         tvValues = findViewById(R.id.tv_value);
 
@@ -279,13 +281,13 @@ public class ActivityMapGestures extends AppCompatActivity implements MapView.On
         return Double.parseDouble(decimalFormat.format(d));
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (mMapController != null)
-            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+//                                           @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (mMapController != null)
+//            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

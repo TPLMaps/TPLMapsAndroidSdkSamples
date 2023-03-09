@@ -32,6 +32,10 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
     }*/
 
     private void initViews() {
+
+        Button btnAdmin = findViewById(R.id.btn_adminArea);
+        btnAdmin.setOnClickListener(this);
+
         Button btnMaps = findViewById(R.id.btn_maps);
         btnMaps.setOnClickListener(this);
 
@@ -95,6 +99,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_map_style:
                 startActivity(new Intent(ActivityMain.this, ActivityMapStyle.class));
+                break;
+            case R.id.btn_adminArea:
+                startActivity(new Intent(ActivityMain.this, ActivityAdminArea.class));
                 break;
         }
     }

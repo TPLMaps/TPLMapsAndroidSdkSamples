@@ -104,6 +104,8 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
 
+
+
     }
 
     Marker marker1;
@@ -174,8 +176,9 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         lngLats2.add(new LngLat(73.093758, 33.728300));
         lngLats2.add(new LngLat(73.093190, 33.729430));
         lngLats2.add(new LngLat(73.092159, 33.728945));
+
         mMapController.addPolygon(new PolygonOptions().addAll(lngLats2)
-                .order(2).fillColor(Color.YELLOW).outlineColor(Color.GREEN).outlineWidth(10).clickable(true));
+                .order(10).fillColor(0x7F00FF00).outlineColor(Color.GREEN).outlineWidth(10).clickable(true));
 
         mMapController.removePolygon(tplPolygon);
     }
@@ -195,13 +198,13 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         tplCircle.remove();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (mMapController != null)
-            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+//                                           @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (mMapController != null)
+//            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

@@ -46,7 +46,9 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
             LngLat southwest = new LngLat(73.035070, 33.637313);
             LngLat northeast = new LngLat(73.041247, 33.659408);
             // Zoom camera to bounds of Sector I-10, Islamabad with animation
-            mMapView.getMapController().setBounds(new Bounds(southwest, northeast), 300, 1000);
+            mMapView.getMapController().setBounds(new Bounds(southwest, northeast) , 300 , 1000);
+
+
         });
     }
 
@@ -85,13 +87,13 @@ public class ActivityCamera extends AppCompatActivity implements MapView.OnMapRe
                 Log.i(TAG, "Camera Change End: " + cameraPosition.toString()));
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (mMapController != null)
-            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+//                                           @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (mMapController != null)
+//            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

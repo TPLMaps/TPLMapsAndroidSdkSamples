@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,25 +21,25 @@ import com.tplmaps.sdk.places.SearchManager;
 import com.tplmaps.sdk.utils.StringUtils;
 import com.tplmaps3d.sdk.utils.CommonUtils;
 
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class ActivitySearch extends AppCompatActivity implements OnSearchResult {
+public class ActivityAdminArea extends AppCompatActivity implements OnSearchResult {
 
     SearchManager searchManager;
     ImageView ivSearch, ivCancel;
     EditText etSearch;
+    TextView tv_detail;
 
-    private static final String TAG = ActivitySearch.class.getSimpleName();
+    private static final String TAG = ActivityAdminArea.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_request_admin_area);
 
         // Initialize SearchManager
         searchManager = new SearchManager(this);
@@ -64,6 +65,7 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
 
         // Get search field
         etSearch = findViewById(R.id.etSearch);
+        tv_detail = findViewById(R.id.tv_detail);
 
         LngLat islamabad = new LngLat(33.717864, 73.071648);
 
@@ -73,9 +75,11 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
         ivSearch.setOnClickListener(view -> {
             // Request for query after initializing SearchManager
             // put your query string with location to get your nearer results first
-            searchManager.requestIn(Params.builder()
-                    .query(etSearch.getText().toString())
-                            .city("Karachi")
+            Double lat = Double.valueOf(etSearch.getText().toString().split(",")[0]);
+            Double lng = Double.valueOf(etSearch.getText().toString().split(",")[1]);
+
+            searchManager.requestNearbyAdminArea(Params.builder()
+                    .location(new LngLat(lat,lng))
                     .build(), this);
         });
         etSearch.setOnEditorActionListener(
@@ -86,9 +90,12 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
                             || actionId == EditorInfo.IME_ACTION_DONE
                             || event.getAction() == KeyEvent.ACTION_DOWN
                             && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                        searchManager.request(Params.builder()
-                                .query(etSearch.getText().toString())
-                                        .location(islamabad)
+
+                        Double lat = Double.valueOf(etSearch.getText().toString().split(",")[0]);
+                        Double lng = Double.valueOf(etSearch.getText().toString().split(",")[1]);
+
+                        searchManager.requestNearbyAdminArea(Params.builder()
+                                .location(new LngLat(lat,lng))
                                 .build(), this);
                         return true;
                     }
@@ -112,23 +119,36 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
         if (results == null)
             return;
 
-        strResults = new ArrayList<>();
-        for (Place place : results) {
-            strResults.add(place.getName());
-        }
 
-        adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_2, android.R.id.text1, strResults);
-        ListView listView = findViewById(R.id.listview);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener((adapterView, view, i, l) -> {
-            Place place = results.get(i);
-            String strLocation = place.getName()
-                    + "\n" + place.getY() + "," + place.getX();
-            Log.i(StringUtils.TAG, strLocation);
-            /*CommonUtils.showToast(ActivitySearch.this, strLocation,
-                    Toast.LENGTH_SHORT, true);*/
-        });
+        tv_detail.setText("DIVISION: "+results.get(0).getDivision()+
+                "\nADDRESS: "+results.get(0).getAddressNearby()+
+                "\nPROVINCE: "+results.get(0).getProvinceNearby()+
+                "\nCITY: "+results.get(0).getCity()+
+                "\nSTREET: "+results.get(0).getStreet()+
+                "\nDISTRICT: "+results.get(0).getDistrict()+
+                "\nTEHSIL: "+results.get(0).getTehsil()+
+                "\nSECTOR: "+results.get(0).getSector()
+
+
+        );
+
+//        strResults = new ArrayList<>();
+//        for (Place place : results) {
+//            strResults.add(place.getName());
+//        }
+//
+//        adapter = new ArrayAdapter<>(this,
+//                android.R.layout.simple_list_item_2, android.R.id.text1, strResults);
+//        ListView listView = findViewById(R.id.listview);
+//        listView.setAdapter(adapter);
+//        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+//            Place place = results.get(i);
+//            String strLocation = place.getName()
+//                    + "\n" + place.getY() + "," + place.getX();
+//            Log.i(StringUtils.TAG, strLocation);
+//            /*CommonUtils.showToast(ActivitySearch.this, strLocation,
+//                    Toast.LENGTH_SHORT, true);*/
+//        });
     }
 
     void clearList() {

@@ -1,11 +1,13 @@
 package com.tplmaps.android.sdk.samples;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
+import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
 import com.tplmaps3d.sdk.utils.CommonUtils;
@@ -33,6 +35,8 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
         mMapView.onCreate(savedInstanceState);
         // Loading map Asynchronously vie registering call
         mMapView.loadMapAsync(this);
+
+
     }
 
     @Override
@@ -48,6 +52,26 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
          * you can also call function in onMapReady callback method means traffic update
          * will be applied when map will be on ready to render state.*/
         //mMapView.setTrafficEnabled(true);
+        mapController.getUiSettings().showZoomControls(true);
+        mapController.getUiSettings().showMyLocationButton(true);
+
+
+        mapController.setMyLocationEnabled(true , MapController.MyLocationArg.ZOOM_LOCATION_ON_FIRST_FIX);
+
+        mapController.setOnMyLocationChangeListener(new MapController.OnMyLocationChangeListener() {
+            @Override
+            public void onMyLocationChanged(Location location) {
+
+            }
+
+            @Override
+            public void onMyLocationFirstFix(Location location) {
+
+
+            }
+        });
+
+
     }
 
 

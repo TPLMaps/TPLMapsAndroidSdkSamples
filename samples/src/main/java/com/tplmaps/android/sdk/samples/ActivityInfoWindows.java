@@ -42,6 +42,8 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         mMapView.onCreate(savedInstanceState);
         // Loading map Asynchronously vie registering call
         mMapView.loadMapAsync(this);
+
+        mMapController.clearMap();
     }
 
     @Override
@@ -74,6 +76,7 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         // Loading Default Map UI Controls
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
+
 
     }
 
@@ -194,13 +197,13 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         return infoView;
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (mMapController != null)
-            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+//                                           @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (mMapController != null)
+//            mMapController.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
