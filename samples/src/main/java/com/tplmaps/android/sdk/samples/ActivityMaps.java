@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.tplmaps.android.R;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
+import com.tplmaps3d.MapMode;
 import com.tplmaps3d.MapView;
 import com.tplmaps3d.sdk.utils.CommonUtils;
 
@@ -35,7 +36,6 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
         mMapView.onCreate(savedInstanceState);
         // Loading map Asynchronously vie registering call
         mMapView.loadMapAsync(this);
-
 
     }
 

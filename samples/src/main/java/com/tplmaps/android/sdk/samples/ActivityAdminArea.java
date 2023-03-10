@@ -1,6 +1,9 @@
 package com.tplmaps.android.sdk.samples;
 
+
 import android.os.Bundle;
+
+import android.text.PrecomputedText;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
@@ -12,13 +15,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.tplmaps.android.R;
+
+
 import com.tplmaps.sdk.places.LngLat;
 import com.tplmaps.sdk.places.OnSearchResult;
 import com.tplmaps.sdk.places.Params;
 import com.tplmaps.sdk.places.Place;
 import com.tplmaps.sdk.places.SearchManager;
-import com.tplmaps.sdk.utils.StringUtils;
 import com.tplmaps3d.sdk.utils.CommonUtils;
 
 import java.text.SimpleDateFormat;
