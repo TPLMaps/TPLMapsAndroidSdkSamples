@@ -1,4 +1,4 @@
-<img src="https://img.shields.io/badge/latest--release-1.6.3-green" />
+<!-- <img src="https://img.shields.io/badge/latest--release-1.6.3-green" /> -->
 
 ![TPLMaps](https://www.dropbox.com/s/7tz2mqu0ucl8009/tplmaps_logo.png?raw=1)
 
@@ -17,7 +17,7 @@
 
 A Native Android SDK to integrate 3D Vector Maps, Places & Routing API in your Android Application Project.
 
-> The project is tested on Android Studio versions 3.3, 3.3.1, 3.4.2, 3.5, 3.6 & 3.6.2 - if you have issues building it, please upgrade to one of these versions. Try this samples project with latest version of [Android Studio](https://developer.android.com/studio)
+> The project is tested on Android Studio versions Dolphin | 2021.3.1 Patch 1 if you have issues building it, please upgrade to one of these versions. Try this samples project with latest version of [Android Studio](https://developer.android.com/studio)
 
 ## API Guides
 - [Maps API](Maps.md)
@@ -38,10 +38,14 @@ A Native Android SDK to integrate 3D Vector Maps, Places & Routing API in your A
 </p>
 
 ## Contributor
-**Muhammad Hassan Jamil** </br>
-Assistant Manager & Team Lead (Android Development) </br>
 [TPL Maps](https://tplmaps.com/)  </br>
-hassan.jamil@tplmaps.com  </br>
+**Daniyal Ahmed Khan** </br>
+Manager & Team Lead (Android Development) </br>
+daniyal.khan@tplmaps.com  </br>
+
+**Abdul Basit** </br>
+Head of Analytics & Data Services – Information Technology (IT) </br>
+Abdul.Basit@tplmaps.com </br>
 
 ## Latest Release
 Always go for [latest release](https://github.com/TPLMaps/TPLMapsAndroidSdkSamples/releases) while working with the TPL Maps Android SDK to get the more improved version, sample APK can be found with the release.
