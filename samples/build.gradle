@@ -52,14 +52,14 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0-rc01'
     // Dependency to utilize MAPS artifact of SDK
     //implementation "com.tpl.maps.sdk:maps:1.1.0.4-test"
-    // implementation "com.tpl.maps.sdk:maps:1.6.7"
+     implementation "com.tpl.maps.sdk:maps:1.6.7.1"
     // Dependency to utilize PLACES artifact of SDK
    implementation "com.tpl.maps.sdk:places:1.6.7"
     // Dependency to utilize ROUTING artifact of SDK
     implementation "com.tpl.maps.sdk:routing:${rootProject.ext.version}"
     ////////////////////// For internal developers use ////////////////////////////////
     //implementation project(':core')
-   implementation project(':maps')
+ //  implementation project(':maps')
     //implementation project(':routing')
   // implementation project(':places')
     ////////////////////// END ///////////////////////////

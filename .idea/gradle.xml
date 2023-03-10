@@ -12,7 +12,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/samples" />
-            <option value="$PROJECT_DIR$/../TplMaps-Tayyab/tangram-platform-sdk/maps" />
           </set>
         </option>
       </GradleProjectSettings>
