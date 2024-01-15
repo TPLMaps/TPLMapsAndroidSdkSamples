@@ -43,7 +43,7 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
         // Loading map Asynchronously vie registering call
         mMapView.loadMapAsync(this);
 
-        mMapController.clearMap();
+//        mMapController.clearMap();
     }
 
     @Override
@@ -100,6 +100,7 @@ public class ActivityInfoWindows extends AppCompatActivity implements MapView.On
                 .title("marker2")
                 .description("This is not my spot!").flat(false).order(0)
                 .icon(IconFactory.defaultMarker(IconFactory.YELLOW)));
+
         marker2.showInfoWindow();
 
         //marker2.setTitle("Titlum");

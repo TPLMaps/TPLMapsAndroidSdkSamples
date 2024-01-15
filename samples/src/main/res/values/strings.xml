@@ -13,9 +13,10 @@
     <string name="pois">POIs</string>
     <string name="map_features_gestures">Map Gestures</string>
     <string name="search">Search</string>
-    <string name="search_text">Search Text</string>
+    <string name="search_text">Search Location</string>
     <string name="map_style">Map Style</string>
     <string name="admin_area">Near By Admin Area</string>
+    <string name="locate_me">Locate Me Demo</string>
     <string name="camera">Camera</string>
     <string name="map_features">Map Features</string>
     <string name="point_of_interests">Point of Interests</string>

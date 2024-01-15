@@ -20,9 +20,12 @@ import com.tpl.maps.sdk.routing.structures.Place;
 import com.tpl.maps.sdk.routing.structures.TPLRoute;
 import com.tpl.maps.sdk.utils.boundingBox.RouteUtils;
 import com.tplmaps.android.R;
+import com.tplmaps3d.IconFactory;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapView;
+import com.tplmaps3d.Marker;
+import com.tplmaps3d.MarkerOptions;
 import com.tplmaps3d.PolylineOptions;
 
 import java.util.ArrayList;
@@ -190,13 +193,14 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
                 mapController.addPolyline(new PolylineOptions()
                         .add(lnglats)
                         .color((i == 0) ? Color.BLUE : Color.GRAY)
-                        .width(10)
-                        .order(5)
+                        .width(3)
+                        .order(2)
                         .outlineWidth(2)
                         .clickable(true));
 
                 listNodes.addAll(route.getRouteNodes());
             }
+
 
             // Setting map (regarding route's extent e.g. zoom and position)
             RouteUtils routeUtils = new RouteUtils(mMapView.getWidth(), mMapView.getHeight(),
@@ -213,6 +217,20 @@ public class ActivityRouting extends AppCompatActivity implements MapView.OnMapR
             mapController.setZoomBy((float) zoom, zoomEased);
             mapController.setLngLat(new LngLat(lng, lat), positionEased);
         });
+
+        Marker marker = mapController.addMarker(new MarkerOptions()
+                .position(
+                        new LngLat(73.058382, 33.711556))
+                .title("title").description("Description"));
+
+        Marker marker1 = mapController.addMarker(new MarkerOptions()
+                .position(
+                        new LngLat(73.094223, 33.522695))
+                .title("title").description("Description"));
+
+        marker1.setIcon(IconFactory.fromResource(R.drawable.ic_pin_drop));
+        marker.setIcon(IconFactory.fromResource(R.drawable.current_location_marker));
+
     }
 
 //    @Override

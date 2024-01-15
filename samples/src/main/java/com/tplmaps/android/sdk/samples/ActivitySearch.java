@@ -73,9 +73,10 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
         ivSearch.setOnClickListener(view -> {
             // Request for query after initializing SearchManager
             // put your query string with location to get your nearer results first
-            searchManager.requestIn(Params.builder()
+            //,
+            searchManager.request(Params.builder()
                     .query(etSearch.getText().toString())
-                            .city("Karachi")
+                            .location(islamabad)
                     .build(), this);
         });
         etSearch.setOnEditorActionListener(
@@ -86,10 +87,12 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
                             || actionId == EditorInfo.IME_ACTION_DONE
                             || event.getAction() == KeyEvent.ACTION_DOWN
                             && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+
                         searchManager.request(Params.builder()
                                 .query(etSearch.getText().toString())
-                                        .location(islamabad)
+                                .location(islamabad)
                                 .build(), this);
+
                         return true;
                     }
                     // Return true if you have consumed the action, else false.
@@ -143,7 +146,9 @@ public class ActivitySearch extends AppCompatActivity implements OnSearchResult 
 
     @Override
     public void onSearchResult(ArrayList<Place> results) {
+
         populateListView(results);
+
     }
 
     @Override

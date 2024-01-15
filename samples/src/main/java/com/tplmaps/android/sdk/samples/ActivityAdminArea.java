@@ -24,6 +24,7 @@ import com.tplmaps.sdk.places.OnSearchResult;
 import com.tplmaps.sdk.places.Params;
 import com.tplmaps.sdk.places.Place;
 import com.tplmaps.sdk.places.SearchManager;
+import com.tplmaps.sdk.utils.StringUtils;
 import com.tplmaps3d.sdk.utils.CommonUtils;
 
 import java.text.SimpleDateFormat;
@@ -96,12 +97,13 @@ public class ActivityAdminArea extends AppCompatActivity implements OnSearchResu
                             || event.getAction() == KeyEvent.ACTION_DOWN
                             && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
 
-                        Double lat = Double.valueOf(etSearch.getText().toString().split(",")[0]);
-                        Double lng = Double.valueOf(etSearch.getText().toString().split(",")[1]);
+//                        Double lat = Double.valueOf(etSearch.getText().toString().split(",")[0]);
+//                        Double lng = Double.valueOf(etSearch.getText().toString().split(",")[1]);
 
-                        searchManager.requestNearbyAdminArea(Params.builder()
-                                .location(new LngLat(lat,lng))
-                                .build(), this);
+//                        searchManager.requestAreaDetail(Params.builder()
+//                                        .query(etSearch.getText().toString())
+//                               // .location(new LngLat(lat,lng))
+//                                .build(), this);
                         return true;
                     }
                     // Return true if you have consumed the action, else false.
@@ -124,36 +126,37 @@ public class ActivityAdminArea extends AppCompatActivity implements OnSearchResu
         if (results == null)
             return;
 
-
-        tv_detail.setText("DIVISION: "+results.get(0).getDivision()+
-                "\nADDRESS: "+results.get(0).getAddressNearby()+
-                "\nPROVINCE: "+results.get(0).getProvinceNearby()+
-                "\nCITY: "+results.get(0).getCity()+
-                "\nSTREET: "+results.get(0).getStreet()+
-                "\nDISTRICT: "+results.get(0).getDistrict()+
-                "\nTEHSIL: "+results.get(0).getTehsil()+
-                "\nSECTOR: "+results.get(0).getSector()
-
-
-        );
-
-//        strResults = new ArrayList<>();
-//        for (Place place : results) {
-//            strResults.add(place.getName());
-//        }
 //
-//        adapter = new ArrayAdapter<>(this,
-//                android.R.layout.simple_list_item_2, android.R.id.text1, strResults);
-//        ListView listView = findViewById(R.id.listview);
-//        listView.setAdapter(adapter);
-//        listView.setOnItemClickListener((adapterView, view, i, l) -> {
-//            Place place = results.get(i);
-//            String strLocation = place.getName()
-//                    + "\n" + place.getY() + "," + place.getX();
-//            Log.i(StringUtils.TAG, strLocation);
-//            /*CommonUtils.showToast(ActivitySearch.this, strLocation,
-//                    Toast.LENGTH_SHORT, true);*/
-//        });
+//        tv_detail.setText("DIVISION: "+results.get(0).getDivision()+
+//                "\nADDRESS: "+results.get(0).getAddressNearby()+
+//                "\nPROVINCE: "+results.get(0).getProvinceNearby()+
+//                "\nCITY: "+results.get(0).getCity()+
+//                "\nSTREET: "+results.get(0).getStreet()+
+//                "\nDISTRICT: "+results.get(0).getDistrict()+
+//                "\nTEHSIL: "+results.get(0).getTehsil()+
+//                "\nSECTOR: "+results.get(0).getSector()
+//
+//
+//        );
+
+        strResults = new ArrayList<>();
+        for (Place place : results) {
+            strResults.add("ADD: " + place.getAddressNearby()
+                    + "\n" + "Tehsil: " +place.getTehsil() + "\n" + "District: " +place.getDistrict() );
+        }
+
+        adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_2, android.R.id.text1, strResults);
+        ListView listView = findViewById(R.id.listview);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Place place = results.get(i);
+            String strLocation = place.getAddressNearby()
+                    + "\n" + place.getY() + "," + place.getX();
+            Log.i(StringUtils.TAG, strLocation);
+            /*CommonUtils.showToast(ActivitySearch.this, strLocation,
+                    Toast.LENGTH_SHORT, true);*/
+        });
     }
 
     void clearList() {

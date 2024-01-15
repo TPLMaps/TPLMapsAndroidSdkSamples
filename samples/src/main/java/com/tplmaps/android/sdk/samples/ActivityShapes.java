@@ -3,6 +3,7 @@ package com.tplmaps.android.sdk.samples;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tplmaps.android.R;
+import com.tplmaps3d.CameraPosition;
 import com.tplmaps3d.Circle;
 import com.tplmaps3d.CircleOptions;
 import com.tplmaps3d.IconFactory;
@@ -52,14 +54,9 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         // TODO: Do your map tasks here
 
         // Setting map max tilt value
-        mapController.setMaxTilt(85);
-        mapController.setLngLat(new LngLat(73.093104, 33.730494));
-        mapController.setZoomBy(15);
+//
         mMapController = mapController;
-        addMarkers();
-        addPolyLines();
-        addPolygons();
-        addCircles();
+
 
         mMapController.setOnMapClickListener(lngLat -> {
             Log.i(TAG, "Called: onMapClick lnglat = " + lngLat.longitude + " , " + lngLat.latitude);
@@ -104,6 +101,20 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
         mapController.getUiSettings().showZoomControls(true);
         mapController.getUiSettings().showMyLocationButton(true);
 
+
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                addMarkers();
+                addPolyLines();
+                addPolygons();
+                addCircles();
+
+            }
+        }, 2000);
 
 
     }
@@ -194,6 +205,16 @@ public class ActivityShapes extends AppCompatActivity implements MapView.OnMapRe
                 .center(new LngLat(73.093104, 33.730494))
                 .radius(150).fillColor(Color.BLUE)
                 .order(1).clickable(true));
+
+
+//        CameraPosition cameraPosition = new CameraPosition(mMapController , new LngLat(73.092159, 33.728945) , 14.0F, 0 , 0);
+//
+//        mMapController.animateCamera(cameraPosition , 500);
+
+
+        mMapController.setMaxTilt(85);
+        mMapController.setLngLat(new LngLat(73.093104, 33.730494));
+        mMapController.setZoomBy(15);
 
         tplCircle.remove();
     }

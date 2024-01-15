@@ -2,16 +2,32 @@ package com.tplmaps.android.sdk.samples;
 
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.JsonObject;
 import com.tplmaps.android.R;
+import com.tplmaps3d.CameraPosition;
 import com.tplmaps3d.LngLat;
 import com.tplmaps3d.MapController;
 import com.tplmaps3d.MapMode;
 import com.tplmaps3d.MapView;
 import com.tplmaps3d.sdk.utils.CommonUtils;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ActivityMaps extends AppCompatActivity implements MapView.OnMapReadyCallback {
 
@@ -22,6 +38,7 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
 
         // Getting MapView resource from layout
         mMapView = findViewById(R.id.map);
@@ -52,24 +69,11 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
          * you can also call function in onMapReady callback method means traffic update
          * will be applied when map will be on ready to render state.*/
         //mMapView.setTrafficEnabled(true);
-        mapController.getUiSettings().showZoomControls(true);
-        mapController.getUiSettings().showMyLocationButton(true);
+        mapController.getUiSettings().showZoomControls(false);
+        mapController.getUiSettings().showMyLocationButton(false);
 
 
         mapController.setMyLocationEnabled(true , MapController.MyLocationArg.ZOOM_LOCATION_ON_FIRST_FIX);
-
-        mapController.setOnMyLocationChangeListener(new MapController.OnMyLocationChangeListener() {
-            @Override
-            public void onMyLocationChanged(Location location) {
-
-            }
-
-            @Override
-            public void onMyLocationFirstFix(Location location) {
-
-
-            }
-        });
 
 
     }
@@ -116,4 +120,5 @@ public class ActivityMaps extends AppCompatActivity implements MapView.OnMapRead
         if (mMapView != null)
             mMapView.onLowMemory();
     }
+
 }

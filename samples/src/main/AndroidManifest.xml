@@ -21,12 +21,9 @@
         <activity
             android:name=".sdk.samples.ActivityMain"
             android:configChanges="screenSize|orientation"
+            android:exported="true"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".sdk.samples.ActivityMaps"
@@ -84,11 +81,26 @@
             android:label="@string/routing"
             android:parentActivityName=".sdk.samples.ActivityMain" />
 
+        <activity
+            android:name=".sdk.samples.ActivityLocateMeDemo"
+            android:configChanges="screenSize|orientation"
+            android:label="@string/routing"
+            android:exported="true"
+            android:parentActivityName=".sdk.samples.ActivityMain">
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
+        </activity>
+
         <meta-data
             android:name="@string/metadata_name_api_key"
             android:value="$2a$10$bWCSBfSJFAHSsa8yD3g3Sej2QfUC2vGJp1VoJHsZFlw9gwl7XBST2" />
-        <!--<meta-data android:name="@string/metadata_name_origin"
-            android:value="ORIGIN-HERE" />-->
+
+
     </application>
 
 </manifest>

@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tplmaps.android.BuildConfig;
 import com.tplmaps.android.R;
 
 public class ActivityMain extends AppCompatActivity implements View.OnClickListener {
@@ -18,8 +17,8 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initViews();
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setTitle("TPLMaps SDK v" + BuildConfig.VERSION_NAME);
+//        if (getSupportActionBar() != null)
+//            getSupportActionBar().setTitle("TPLMaps SDK v" + BuildConfig.VERSION_NAME);
         //CommonUtils.showToast(this, getDeviceAbi(), Toast.LENGTH_LONG, true);
     }
 
@@ -65,6 +64,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
 
         Button btnMapStyle = findViewById(R.id.btn_map_style);
         btnMapStyle.setOnClickListener(this);
+
+        Button btn_locateMe = findViewById(R.id.btn_locateMe);
+        btn_locateMe.setOnClickListener(this);
     }
 
     @Override
@@ -102,6 +104,9 @@ public class ActivityMain extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_adminArea:
                 startActivity(new Intent(ActivityMain.this, ActivityAdminArea.class));
+                break;
+            case R.id.btn_locateMe:
+                startActivity(new Intent(ActivityMain.this, ActivityLocateMeDemo.class));
                 break;
         }
     }
