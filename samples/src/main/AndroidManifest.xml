@@ -98,7 +98,7 @@
 
         <meta-data
             android:name="@string/metadata_name_api_key"
-            android:value="$2a$10$bWCSBfSJFAHSsa8yD3g3Sej2QfUC2vGJp1VoJHsZFlw9gwl7XBST2" />
+            android:value="" />
 
 
     </application>
